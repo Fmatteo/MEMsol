@@ -38,15 +38,15 @@ endif;
       <div class="content-wrapper">
         <div class="container">
           <!-- Content Header (Page header) -->
-         
+         <h1 style="margin-top:0px; margin-left: 117px; padding:20px; padding-right:100px; position: relative;    "><?php echo $branch_name;?></h1>
 
           <!-- Main content -->
 
           <section class="content-fluid" style="margin-left:150px;">
-            <div class="row" style="margin-top:70px;">
+            <div class="row" style="margin-top:20px;">
 	      <div class="col-md-8">
-        
-              <div class="box box-primary">
+
+              <div class="box box-primary" style="border-radius:20px;">
                 <div class="box-header with-border">
                   <h3 class="box-title">Transactions</h3>
                 </div><!-- /.box-header -->
@@ -161,7 +161,7 @@ endif;
 
               
               <!-- About Me Box -->
-              <div class="box box-primary">
+              <div class="box box-primary" style="border-radius:20px;">
                 <div class="box-header with-border">
                   <h3 class="box-title">About Us</h3>
                 </div><!-- /.box-header -->
