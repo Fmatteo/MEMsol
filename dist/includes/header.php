@@ -66,8 +66,7 @@ $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die
                     </a>
               <ul class="treeview-menu">
        <li>
-                        <!-- Inner Menu: contains the notifications -->
-                        <ul class="menu">
+                        
               <li><!-- start notification -->
                             <a href="category.php">
                               <i class="glyphicon glyphicon-user text-green"></i> Company Name
@@ -99,7 +98,7 @@ $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die
                         </ul>
                       </li>
                      
-                    </ul>
+                    
                   </li>
     <li class="treeview">
       <a href="stockin.php">
