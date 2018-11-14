@@ -1,4 +1,4 @@
-  <?php session_start();
+<?php session_start();
 if(empty($_SESSION['id'])):
 header('Location:../index.php');
 endif;
@@ -23,53 +23,11 @@ endif;
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
+    
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
-      .col-lg-3{
-        margin:50px 0x;
-      }
-      
-      .box-primary{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 20px;
-        border:1px solid black;
-        box-shadow: 0px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-
-
-      } 
-
-      .content-wrapper{
-        font-family: 'Comfortaa', cursive;
-
-      }
-
-      .box-title{
-        font-family: 'Comfortaa', cursive;
-      }
-
-      h3{
-        font-family: 'Comfortaa', cursive;
-      }
-
-      .box-body{
-        font-family: 'Comfortaa', cursive;
-      }
     
-        .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
-      }
-      h3{
-          color:white;
-        }
-        
-        
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -83,9 +41,11 @@ endif;
          
 
           <!-- Main content -->
-          <section class="content">
-            <div class="row">
+
+          <section class="content-fluid" style="margin-left:150px;">
+            <div class="row" style="margin-top:70px;">
 	      <div class="col-md-8">
+        
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Transactions</h3>
