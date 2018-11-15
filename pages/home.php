@@ -36,9 +36,9 @@ endif;
       <?php include('../dist/includes/header.php');?>
       <!-- Full Width Column -->
       <div class="content-wrapper">
+       <!-- Content Header (Page header) -->
+       <h1 style="margin-top:0px; margin-left: 117px; padding:20px; padding-right:100px; padding-left: 145px; position: relative; background-color:white; color:black"><?php echo $branch_name;?></h1>
         <div class="container">
-          <!-- Content Header (Page header) -->
-         <h1 style="margin-top:0px; margin-left: 117px; padding:20px; padding-right:100px; position: relative;    "><?php echo $branch_name;?></h1>
 
           <!-- Main content -->
 
