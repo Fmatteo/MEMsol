@@ -1,4 +1,4 @@
-<?php session_start();
+  <?php session_start();
 if(empty($_SESSION['id'])):
 header('Location:../index.php');
 endif;
@@ -23,30 +23,227 @@ endif;
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-    
+    <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
+    #sidebar-btn{
+      display:inline-block;
+      vertical-align:middle;
+      width: 20px;
+      height:15px;
+      cursor: pointer;
+      margin:20px;  
+      position: absolute;
+      top:50px;
+      right: -60px;   
+    }
+    #sidebar-btn span{
+      height: 3px;
+      background:#111;
+      margin-bottom: 5px;
+      display: block;
+    }
+    #sidebar-btn span:nth-child(2){
+      width:75%;
+
+    }
+    #sidebar-btn span:nth-child(3){
+      width:50%;
+
+    }
     
+   .skin-red .wrapper, .skin-red .main-sidebar, .skin-red .left-side{
+    background-color: black;
+    width:250;
+    height:100%;
+    display: block;
+    left:-240px;
+    top:0px;
+    
+    
+    }
+    .skin-red .wrapper, .skin-red .main-sidebar, .skin-red .left-side,.visible{
+    left:0px;
+    
+    }
+
     </style>
+    
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav" onload="myFunction()">
+    
+
+
+
     <div class="wrapper">
       <?php include('../dist/includes/header.php');?>
       <!-- Full Width Column -->
       <div class="content-wrapper">
-       <!-- Content Header (Page header) -->
-       <h1 style="margin-top:0px; margin-left: 117px; padding:20px; padding-right:100px; padding-left: 145px; position: relative; background-color:white; color:black"><?php echo $branch_name;?></h1>
-        <div class="container">
+     
+            <!-- Navbar Right Menu -->
+            <aside class="main-sidebar" class="visible">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- search form -->
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+             <div id="sidebar-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+     
+            <li class="treeview">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="glyphicon glyphicon-refresh text-red"></i> Reorder
+                      <span class="label label-danger">
+                      <?php 
+                      $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
+                      $row=mysqli_fetch_array($query);
+                      echo $row['count'];
+                      ?>  
+                      </span>
+                    </a>  
+              <ul class="treeview-menu">
+       <li class="header">You have <?php echo$row['count'];?> products that needs reorder</li>
+                      <li>
+                        <!-- Inner Menu: contains the notifications -->
+                        <ul class="menu">
+                        <?php
+                        $queryprod=mysqli_query($con,"select prod_name from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
+        while($rowprod=mysqli_fetch_array($queryprod)){
+      ?>
+                          <li><!-- start notification -->
+                            <a href="reorder.php">
+                              <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
+                            </a>
+                          </li><!-- end notification -->
+                          <?php }?>
+                        </ul>
+                      </li>
+                      <li class="footer"><a href="inventory.php">View all</a></li>
+                    </ul>
+                  </li>
+            <li class="treeview">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="glyphicon glyphicon-wrench"></i> Maintenance
+                      
+                    </a>
+              <ul class="treeview-menu">
+       <li>
+                        
+              <li><!-- start notification -->
+                            <a href="category.php">
+                              <i class="glyphicon glyphicon-user text-green"></i> Company Name
+                            </a>
+                          </li><!-- end notification -->
+                          <li><!-- start notification -->
+                            <a href="customer.php">
+                              <i class="glyphicon glyphicon-user text-green"></i> Customer
+                            </a>
+                          </li><!-- end notification -->
+                          <li><!-- start notification -->
+                            <a href="creditor.php">
+                              <i class="glyphicon glyphicon-user text-green"></i> Credit Applicants
+                            </a>
+                          </li><!-- end notification -->
+              <li><!-- start notification -->
+                            <a href="product.php">
+                              <i class="glyphicon glyphicon-cutlery text-green"></i> Product
+                            </a>
+                          </li><!-- end notification -->
+             
+              <li><!-- start notification -->
+                            <a href="supplier.php">
+                              <i class="glyphicon glyphicon-send text-green"></i> Distributor
+                            </a>
+                          </li><!-- end notification -->
+                         
+             
+                        </ul>
+                      </li>
+                     
+                    
+                  </li>
+    <li class="treeview">
+      <a href="stockin.php">
+                      <i class="glyphicon glyphicon-list text-green"></i> Stock in/out
+                      
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                      </li>
+                     
+                    </ul>
+                  </li>
+    <li class="treeview">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="glyphicon glyphicon-stats text-red"></i> Report
+                     
+                    </a>
+                   <ul class="treeview-menu">
+                     
+                          <li><!-- start notification -->
+                            <a href="inventory.php">
+                              <i class="glyphicon glyphicon-ok text-green"></i>Inventory
+                            </a>
+                          </li><!-- end notification -->
+                        <li><!-- start notification -->
+                         <a href="sales.php">
+                              <i class="glyphicon glyphicon-usd text-blue"></i>Sales
+                            </a>
+                          </li><!-- end notification -->
+              <li><!-- start notification -->
+                         <a href="receivables.php">
+                              <i class="glyphicon glyphicon-th-list text-redr"></i>Account Receivables
+                            </a>
+                          </li><!-- end notification -->
+              <li><!-- start notification -->
+                         <a href="income.php">
+                              <i class="glyphicon glyphicon-th-list text-redr"></i>Branch Income
+                            </a>
+                          </li><!-- end notification -->
+                          <li><!-- start notification -->
+                         <a href="purchase_request.php">
+                              <i class="glyphicon glyphicon-usd text-blue"></i>Purchase Request
+                            </a>
+                          </li><!-- end notification -->
+                        </ul>
+                      </li>
+                    
+    <li class="treeview">
+      <a href="profile.php" class="dropdown-toggle">
+                      <i class="glyphicon glyphicon-cog text-orange"></i>
+                      <?php echo $_SESSION['name'];?>
+                    </a>
+                  </li>
+
+    <li class="treeview">
+       <a href="logout.php" class="dropdown-toggle">
+                      <i class="glyphicon glyphicon-off text-red"></i> Logout 
+                      
+                    </a>
+                  </li>       
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+
+
+
+
+        <div class="container" style="padding-top:40px;">
+          <!-- Content Header (Page header) -->
+         
 
           <!-- Main content -->
-
-          <section class="content-fluid" style="margin-left:150px;">
-            <div class="row" style="margin-top:20px;">
-	      <div class="col-md-8">
-
-              <div class="box box-primary" style="border-radius:20px;">
+          <section class="content">
+            <div class="row">
+        <div class="col-md-8">
+              <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Transactions</h3>
                 </div><!-- /.box-header -->
@@ -131,8 +328,8 @@ endif;
                           </a>
                         </div>
                       </div><!-- ./col -->
-					  
-					  
+            
+            
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-green">
@@ -148,8 +345,8 @@ endif;
                           </a>
                         </div>
                       </div><!-- ./col -->
-					  
-					  
+            
+            
                   </div><!--row-->
                   
       
@@ -161,13 +358,13 @@ endif;
 
               
               <!-- About Me Box -->
-              <div class="box box-primary" style="border-radius:20px;">
+              <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">About Us</h3>
                 </div><!-- /.box-header -->
     <?php
     $branch=$_SESSION['branch'];
-	
+  
     $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die(mysqli_error());
       $row=mysqli_fetch_array($query);
       
@@ -189,17 +386,31 @@ endif;
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div>   
-			
-			
+      
+      
           </div><!-- /.row -->
-	  
+    
             
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
       <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
-	<script>
+
+
+      <script scr="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script>
+        
+          $(document).ready(function(){
+              $('#sidebar-btn').click(function(){
+                $('.skin-red .wrapper, .skin-red .main-sidebar, .skin-red .left-side').toggleClass('visible');
+              });
+          });
+
+
+      </script>
+   
+  <script>
     $(function() {
       $(".btn_delete").click(function(){
       var element = $(this);
@@ -207,29 +418,29 @@ endif;
       var dataString = 'id=' + id;
       if(confirm("Sure you want to delete this item?"))
       {
-	$.ajax({
-	type: "GET",
-	url: "temp_trans_del.php",
-	data: dataString,
-	success: function(){
-		
-	      }
-	  });
-	  
-	  $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
-	  .animate({ opacity: "hide" }, "slow");
+  $.ajax({
+  type: "GET",
+  url: "temp_trans_del.php",
+  data: dataString,
+  success: function(){
+    
+        }
+    });
+    
+    $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
+    .animate({ opacity: "hide" }, "slow");
       }
       return false;
       });
 
       });
     </script>
-	
-	<script type="text/javascript" src="autosum.js"></script>
+  
+  <script type="text/javascript" src="autosum.js"></script>
   
     <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<script src="../dist/js/jquery.min.js"></script>
+  <script src="../dist/js/jquery.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/select2/select2.full.min.js"></script>
@@ -243,6 +454,7 @@ endif;
     <script src="../dist/js/demo.js"></script>
     <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script scr="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     
     <script>
       $(function () {
