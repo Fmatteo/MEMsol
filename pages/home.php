@@ -1,4 +1,4 @@
-  <?php session_start();
+<?php session_start();
 if(empty($_SESSION['id'])):
 header('Location:../index.php');
 endif;
@@ -31,19 +31,58 @@ endif;
     <style>
     
     
-   .sidebar{
-    background-color: black;
-    width:250;
+   .sidebar {  
+    width: 250;
     height:100%;
     display: block;
-    left:-240px;
-    top:0px;
+    left: -240px;
+    top: 0px;
     transition: left 0.3s linear;
-    
     }
-    .sidebar.visible{
+
+    .sidebar.visible {
     left:0px;
     transition: left 0.3s linear;
+    }
+
+    .nav-txt {
+      color: white;
+    }
+
+    .subnav-txt:hover {
+      color: #59abe3;
+    }
+
+    .nav-txt:hover {
+      background-color: #1f3a93;
+      color: white;
+      transition: all .2s;
+    }
+
+    .main-sidebar {
+      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      position: fixed;
+      z-index: 5;
+    }
+
+    .main-sidebar * a {
+      color: white;
+    }
+
+    .treeview-menu {
+      background-color: #1f3a93;
+    }
+
+    .reorder-count {
+      font-size: 10px !important;
+    }
+
+    .box-header {
+      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+    }
+
+    .box-title {
+      color: white;
     }
 
     </style>
@@ -69,8 +108,8 @@ endif;
           <ul class="sidebar-menu">
              
             <li class="treeview">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="glyphicon glyphicon-refresh text-red"></i> Reorder
+              <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
+                      <i class="glyphicon glyphicon-refresh text-white"></i> Reorder
                       <span class="label label-danger">
                       <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
@@ -80,7 +119,7 @@ endif;
                       </span>
                     </a>  
               <ul class="treeview-menu">
-       <li class="header">You have <?php echo$row['count'];?> products that needs reorder</li>
+       <li class="header nav-txt reorder-count">You have <?php echo$row['count'];?> products that needs reorder</li>
                       <li>
                         <!-- Inner Menu: contains the notifications -->
                         <ul class="menu">
@@ -96,41 +135,41 @@ endif;
                           <?php }?>
                         </ul>
                       </li>
-                      <li class="footer"><a href="inventory.php">View all</a></li>
+                      <li class="footer nav-txt"><a href="inventory.php" class="subnav-txt">View all</a></li>
                     </ul>
                   </li>
             <li class="treeview">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="glyphicon glyphicon-wrench"></i> Maintenance
+              <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
+                      <i class="glyphicon glyphicon-wrench text-white"></i> Maintenance
                       
                     </a>
               <ul class="treeview-menu">
        <li>
                         
               <li><!-- start notification -->
-                            <a href="category.php">
-                              <i class="glyphicon glyphicon-user text-green"></i> Company Name
+                            <a href="category.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-user text-white"></i> Company Name
                             </a>
                           </li><!-- end notification -->
-                          <li><!-- start notification -->
-                            <a href="customer.php">
-                              <i class="glyphicon glyphicon-user text-green"></i> Customer
+                          <li class="nav-txt"><!-- start notification -->
+                            <a href="customer.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-user text-white"></i> Customer
                             </a>
                           </li><!-- end notification -->
-                          <li><!-- start notification -->
-                            <a href="creditor.php">
-                              <i class="glyphicon glyphicon-user text-green"></i> Credit Applicants
+                          <li class="nav-txt"><!-- start notification -->
+                            <a href="creditor.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-user text-white"></i> Credit Applicants
                             </a>
                           </li><!-- end notification -->
-              <li><!-- start notification -->
-                            <a href="product.php">
-                              <i class="glyphicon glyphicon-cutlery text-green"></i> Product
+              <li class="nav-txt"><!-- start notification -->
+                            <a href="product.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-cutlery text-white"></i> Product
                             </a>
                           </li><!-- end notification -->
              
-              <li><!-- start notification -->
-                            <a href="supplier.php">
-                              <i class="glyphicon glyphicon-send text-green"></i> Distributor
+              <li class="nav-txt"><!-- start notification -->
+                            <a href="supplier.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-send text-white"></i> Distributor
                             </a>
                           </li><!-- end notification -->
                          
@@ -141,8 +180,8 @@ endif;
                     
                   </li>
     <li class="treeview">
-      <a href="stockin.php">
-                      <i class="glyphicon glyphicon-list text-green"></i> Stock in/out
+      <a href="stockin.php" class="dropdown-toggle nav-txt">
+                      <i class="glyphicon glyphicon-list text-white"></i> Stock in/out
                       
                     </a>
                     <ul class="dropdown-menu">
@@ -152,50 +191,50 @@ endif;
                     </ul>
                   </li>
     <li class="treeview">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="glyphicon glyphicon-stats text-red"></i> Report
+      <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
+                      <i class="glyphicon glyphicon-stats text-white"></i> Report
                      
                     </a>
                    <ul class="treeview-menu">
                      
                           <li><!-- start notification -->
-                            <a href="inventory.php">
-                              <i class="glyphicon glyphicon-ok text-green"></i>Inventory
+                            <a href="inventory.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-ok text-white"></i>Inventory
                             </a>
                           </li><!-- end notification -->
                         <li><!-- start notification -->
-                         <a href="sales.php">
-                              <i class="glyphicon glyphicon-usd text-blue"></i>Sales
+                         <a href="sales.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-usd text-white"></i>Sales
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="receivables.php">
-                              <i class="glyphicon glyphicon-th-list text-redr"></i>Account Receivables
+                         <a href="receivables.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-th-list text-white"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="income.php">
-                              <i class="glyphicon glyphicon-th-list text-redr"></i>Branch Income
+                         <a href="income.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-th-list text-white"></i>Branch Income
                             </a>
                           </li><!-- end notification -->
                           <li><!-- start notification -->
-                         <a href="purchase_request.php">
-                              <i class="glyphicon glyphicon-usd text-blue"></i>Purchase Request
+                         <a href="purchase_request.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-usd text-white"></i>Purchase Request
                             </a>
                           </li><!-- end notification -->
                         </ul>
                       </li>
                     
     <li class="treeview">
-      <a href="profile.php" class="dropdown-toggle">
-                      <i class="glyphicon glyphicon-cog text-orange"></i>
+      <a href="profile.php" class="dropdown-toggle nav-txt">
+                      <i class="glyphicon glyphicon-cog text-white"></i>
                       <?php echo $_SESSION['name'];?>
                     </a>
                   </li>
 
     <li class="treeview">
-       <a href="logout.php" class="dropdown-toggle">
-                      <i class="glyphicon glyphicon-off text-red"></i> Logout 
+       <a href="logout.php" class="dropdown-toggle nav-txt">
+                      <i class="glyphicon glyphicon-off text-white"></i> Logout 
                       
                     </a>
                   </li>       
@@ -215,7 +254,7 @@ endif;
           <!-- Main content -->
           <section class="content">
             <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Transactions</h3>
@@ -224,7 +263,7 @@ endif;
                   <div class="row">
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box bg-blue">
                           <div class="inner">
                             <h3>Purchase</h3>
                             <p>Cash</p>
@@ -241,7 +280,7 @@ endif;
 
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-red">
+                        <div class="small-box bg-blue">
                           <div class="inner">
                             <h3>Stock i/o</h3>
                             <p>Products</p>
@@ -257,7 +296,7 @@ endif;
                       
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-yellow">
+                        <div class="small-box bg-blue">
                           <div class="inner">
                             <h3>Payment</h3>
                             <p>Customer</p>
@@ -272,7 +311,7 @@ endif;
                       </div><!-- ./col -->
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-red">
+                        <div class="small-box bg-blue">
                           <div class="inner">
                             <h3>Credit</h3>
                             <p>Apply</p>
@@ -288,7 +327,7 @@ endif;
 
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-orange">
+                        <div class="small-box bg-blue">
                           <div class="inner">
                             <h3>Products</h3>
                             <p>View/Add</p>
@@ -305,7 +344,7 @@ endif;
             
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box bg-blue">
                           <div class="inner">
                             <h3>History</h3>
                             <p>Company/Distributor</p>
@@ -327,37 +366,7 @@ endif;
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
             
-        <div class="col-md-4">
 
-              
-              <!-- About Me Box -->
-              <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">About Us</h3>
-                </div><!-- /.box-header -->
-    <?php
-    $branch=$_SESSION['branch'];
-  
-    $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die(mysqli_error());
-      $row=mysqli_fetch_array($query);
-      
-?>
-                <div class="box-body">
-                  <strong><i class="glyphicon glyphicon-map-marker margin-r-5"></i> Company Address</strong>
-                  <p class="text-muted">
-                    <?php echo $row['branch_address'];?>
-                  </p>
-
-                  <hr>
-
-                  <strong><i class="glyphicon glyphicon-phone-alt margin-r-5"></i> Contact Number/s</strong>
-                  <p class="text-muted"><?php echo $row['branch_contact'];?></p>
-
-                  <hr>
-
-                  
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
             </div>   
       
       
