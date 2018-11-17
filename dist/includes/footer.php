@@ -7,7 +7,7 @@
 
 </style>
 <script src="../dist/js/date_time.js"></script>           
-<footer class="main-footer" style="text-align:center">
+<footer class="main-footer" style="text-align:left; color:black">
         <strong>Copyright &copy; 2018 <a href="">Sales and Inventory with Credit Management System</a>.</strong>
         All rights reserved.
         <b><span id="date_time" class="pull-right"></span></b>

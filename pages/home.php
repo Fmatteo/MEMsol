@@ -26,53 +26,31 @@ endif;
     <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <script scr="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <style>
-    #sidebar-btn{
-      display:inline-block;
-      vertical-align:middle;
-      width: 20px;
-      height:15px;
-      cursor: pointer;
-      margin:20px;  
-      position: absolute;
-      top:50px;
-      right: -60px;   
-    }
-    #sidebar-btn span{
-      height: 3px;
-      background:#111;
-      margin-bottom: 5px;
-      display: block;
-    }
-    #sidebar-btn span:nth-child(2){
-      width:75%;
-
-    }
-    #sidebar-btn span:nth-child(3){
-      width:50%;
-
-    }
     
-   .skin-red .wrapper, .skin-red .main-sidebar, .skin-red .left-side{
+    
+   .sidebar{
     background-color: black;
     width:250;
     height:100%;
     display: block;
     left:-240px;
     top:0px;
-    
+    transition: left 0.3s linear;
     
     }
-    .skin-red .wrapper, .skin-red .main-sidebar, .skin-red .left-side,.visible{
+    .sidebar.visible{
     left:0px;
-    
+    transition: left 0.3s linear;
     }
 
     </style>
     
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-  <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav" onload="myFunction()">
+  <body>
     
 
 
@@ -83,18 +61,13 @@ endif;
       <div class="content-wrapper">
      
             <!-- Navbar Right Menu -->
-            <aside class="main-sidebar" class="visible">
+            <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-             <div id="sidebar-btn">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-     
+             
             <li class="treeview">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-refresh text-red"></i> Reorder
@@ -398,12 +371,12 @@ endif;
     </div><!-- ./wrapper -->
 
 
-      <script scr="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      
       <script>
         
           $(document).ready(function(){
               $('#sidebar-btn').click(function(){
-                $('.skin-red .wrapper, .skin-red .main-sidebar, .skin-red .left-side').toggleClass('visible');
+                $('.sidebar').toggleClass('visible');
               });
           });
 
