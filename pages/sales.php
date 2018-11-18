@@ -66,7 +66,7 @@ endif;
   width: 12px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(#000, green);
+  background:linear-gradient(darkblue,white);
   border-radius: 6px;
 }
 
@@ -122,6 +122,10 @@ endif;
 
     .box-title {
       color: white;
+    }
+
+    body{
+      background-color: white;
     }
 
     </style>
@@ -537,7 +541,7 @@ if(password==pass)
 alert('Correct Password, Click OK to Enter Website.');
 else
 {
-  window.location="http://localhost/sysdevs/pages/home.php"
+  window.location="http://localhost/MEMsol/pages/home.php"
 }
 
 </script>

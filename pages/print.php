@@ -35,14 +35,20 @@ endif;
             display:none !important;
           }
       }
+      body{
+        background-color: white;
+      }
+      .container{
+        border:1px solid black;
+      }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-  <body class="hold-transition skin-blue layout-top-nav">
+  <body>
     <div class="wrapper">
       
       <!-- Full Width Column -->
-      <div class="content-wrapper">
+      
         <div class="container">
 
           <section class="content">
@@ -52,7 +58,7 @@ endif;
 
               </div>
                 
-                <div class="box-body">
+                
 
                   <!-- Date range -->
                   <form method="post" action="transaction_add.php">

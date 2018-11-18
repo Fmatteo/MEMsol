@@ -24,6 +24,13 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
+    ::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(darkblue,white);
+  border-radius: 6px;
+}
       .sidebar{  
     width:250;
     height:100%;

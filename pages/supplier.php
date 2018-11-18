@@ -24,7 +24,7 @@
   width: 12px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(#000, green);
+  background:linear-gradient(darkblue,white);
   border-radius: 6px;
 }
 

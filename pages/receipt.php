@@ -42,6 +42,10 @@ date_default_timezone_set('Asia/Manila');
   background:linear-gradient(#000, green);
   border-radius: 6px;
 }
+.container{
+  border:1px solid black;
+
+}
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -49,7 +53,7 @@ date_default_timezone_set('Asia/Manila');
     <div class="wrapper">
       
       <!-- Full Width Column -->
-      <div class="content-wrapper">
+      <div class="">
         <div class="container">
 
           <section class="content">
