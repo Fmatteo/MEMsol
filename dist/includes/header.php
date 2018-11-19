@@ -20,15 +20,15 @@ $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die
 }
 
 .navbar-brand {
-  background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+  background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   padding-left: 15px;
 }
 
 .main-header {
-  border-bottom: 1.5px solid #3498db;
   z-index: 0;
+  border-bottom: 1.5px solid #c1392b;
 }
 
 </style>

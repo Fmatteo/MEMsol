@@ -28,16 +28,16 @@
   border-radius: 6px;
 }
 
-       .sidebar{  
-    width:250;
+    .sidebar {  
+    width: 250;
     height:100%;
     display: block;
-    left:-240px;
-    top:0px;
+    left: -240px;
+    top: 0px;
     transition: left 0.3s linear;
-    
     }
-    .sidebar.visible{
+
+    .sidebar.visible {
     left:0px;
     transition: left 0.3s linear;
     }
@@ -47,17 +47,17 @@
     }
 
     .subnav-txt:hover {
-      color: #59abe3;
+      color: #ff0000;
     }
 
     .nav-txt:hover {
-      background-color: #1f3a93;
+      background-color: #7d0000;
       color: white;
       transition: all .2s;
     }
 
     .main-sidebar {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
       position: fixed;
       z-index: 5;
     }
@@ -67,7 +67,7 @@
     }
 
     .treeview-menu {
-      background-color: #1f3a93;
+      background-color: #7d0000;
     }
 
     .reorder-count {
@@ -75,11 +75,36 @@
     }
 
     .box-header {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
     }
 
     .box-title {
       color: white;
+      text-align: center;
+      display: block !important;
+    }
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
+
+    .save-btn {
+      margin: 5px;
+    }
+
+    .clear-btn {
+      margin: 5px;
+    }
+
+    .input-group {
+      text-align: center;
+      width: 100%;
     }
     
     </style>
@@ -102,7 +127,7 @@
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-refresh text-white"></i> Reorder
-                      <span class="label label-danger">
+                      <span class="label label-success">
                       <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
                       $row=mysqli_fetch_array($query);
@@ -121,7 +146,7 @@
       ?>
                           <li><!-- start notification -->
                             <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
+                              <i class="glyphicon glyphicon-refresh text-green"></i> <?php echo $rowprod['prod_name'];?>
                             </a>
                           </li><!-- end notification -->
                           <?php }?>
@@ -237,7 +262,7 @@
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <h1>
-              <a class="btn btn-lg btn-warning" href="home.php">Back</a>
+              <a class="btn btn-lg btn-danger" href="home.php">Back</a>
               
             </h1>
             <ol class="breadcrumb">
@@ -252,7 +277,7 @@
             
 			
             <div class="col-xs-9">
-              <div class="box box-primary">
+              <div class="box box-danger">
     
                 <div class="box-header">
                   <h3 class="box-title">Distributor List</h3>
@@ -289,7 +314,7 @@
 				<div id="updateordinance<?php echo $row['supplier_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	<div class="modal-dialog">
 	  <div class="modal-content" style="height:auto">
-              <div class="modal-header">
+              <div class="modal-header box-header" style="color:white">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
                 <h4 class="modal-title">Update Distributor Details</h4>
@@ -322,10 +347,10 @@
 						  				  <div class="history">
           </div>
               <div class="modal-footer">
-                <button class="btn btn-warning historyButton" value="<?php echo $row['supplier_id'];?>">History</button>
-        <button class="btn btn-warning deleteButton" value="<?php echo $row['supplier_name'];?>">Delete</button>
+                <button class="btn btn-success historyButton" value="<?php echo $row['supplier_id'];?>">History</button>
+        <button class="btn btn-danger deleteButton" value="<?php echo $row['supplier_name'];?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
 			  </form>
             </div>
@@ -352,7 +377,7 @@
 			
           </div><!-- /.row -->
 	  <div class="col-md-3">
-              <div class="box box-primary">
+              <div class="box box-danger">
                 <div class="box-header">
                   <h3 class="box-title">Add New Distributor</h3>
                 </div>
@@ -381,10 +406,10 @@
 				
 					  <div class="form-group">
 						<div class="input-group">
-						  <button class="btn btn-primary" id="daterange-btn" name="">
+						  <button class="btn btn-primary save-btn" id="daterange-btn" name="">
 							Save
 						  </button>
-						  <button class="btn" id="daterange-btn">
+						  <button class="btn btn-danger clear-btn" id="daterange-btn">
 							Clear
 						  </button>
 						</div>

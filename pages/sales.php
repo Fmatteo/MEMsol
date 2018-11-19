@@ -70,16 +70,16 @@ endif;
   border-radius: 6px;
 }
 
-       .sidebar{  
-    width:250;
+    .sidebar {  
+    width: 250;
     height:100%;
     display: block;
-    left:-240px;
-    top:0px;
+    left: -240px;
+    top: 0px;
     transition: left 0.3s linear;
-    
     }
-    .sidebar.visible{
+
+    .sidebar.visible {
     left:0px;
     transition: left 0.3s linear;
     }
@@ -89,17 +89,17 @@ endif;
     }
 
     .subnav-txt:hover {
-      color: #59abe3;
+      color: #ff0000;
     }
 
     .nav-txt:hover {
-      background-color: #1f3a93;
+      background-color: #7d0000;
       color: white;
       transition: all .2s;
     }
 
     .main-sidebar {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
       position: fixed;
       z-index: 5;
     }
@@ -109,7 +109,7 @@ endif;
     }
 
     .treeview-menu {
-      background-color: #1f3a93;
+      background-color: #7d0000;
     }
 
     .reorder-count {
@@ -117,11 +117,19 @@ endif;
     }
 
     .box-header {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
     }
 
     .box-title {
       color: white;
+      text-align: center;
+      display: block !important;
     }
 
     body{
@@ -148,7 +156,7 @@ endif;
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-refresh text-white"></i> Reorder
-                      <span class="label label-danger">
+                      <span class="label label-success">
                       <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
                       $row=mysqli_fetch_array($query);
@@ -167,7 +175,7 @@ endif;
       ?>
                           <li><!-- start notification -->
                             <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
+                              <i class="glyphicon glyphicon-refresh text-green"></i> <?php echo $rowprod['prod_name'];?>
                             </a>
                           </li><!-- end notification -->
                           <?php }?>
@@ -286,7 +294,7 @@ endif;
           <!-- Main content -->
           <section class="content">
             <div class="col-md-12">
-			  <div class="box box-primary angel">
+			  <div class="box box-danger angel">
 				<div class="box-header">
 				  <h3 class="box-title">Select Date</h3>
 				</div>
@@ -341,7 +349,7 @@ $branch=$_SESSION['branch'];
 				  <h5><b>Cash Sales Report as of <?php echo date("M d, Y",strtotime($start))." to ".date("M d, Y",strtotime($end));?></b></h5>
                   
 				  <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-							<a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
+							<a class = "btn btn-danger btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
 						
 		
 			<table id="example1" class="table table-bordered table-striped">

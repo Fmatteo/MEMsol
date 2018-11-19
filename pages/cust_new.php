@@ -35,16 +35,16 @@ endif;
   border-radius: 6px;
 }
 
-   .sidebar{  
-    width:250;
+  .sidebar {  
+    width: 250;
     height:100%;
     display: block;
-    left:-240px;
-    top:0px;
+    left: -240px;
+    top: 0px;
     transition: left 0.3s linear;
-    
     }
-    .sidebar.visible{
+
+    .sidebar.visible {
     left:0px;
     transition: left 0.3s linear;
     }
@@ -54,17 +54,17 @@ endif;
     }
 
     .subnav-txt:hover {
-      color: #59abe3;
+      color: #ff0000;
     }
 
     .nav-txt:hover {
-      background-color: #1f3a93;
+      background-color: #7d0000;
       color: white;
       transition: all .2s;
     }
 
     .main-sidebar {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
       position: fixed;
       z-index: 5;
     }
@@ -74,7 +74,7 @@ endif;
     }
 
     .treeview-menu {
-      background-color: #1f3a93;
+      background-color: #7d0000;
     }
 
     .reorder-count {
@@ -82,11 +82,27 @@ endif;
     }
 
     .box-header {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
     }
 
     .box-title {
       color: white;
+      text-align: center;
+      display: block !important;
+    }
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
+
+    .form-horizontal .control-label {
+      text-align: left;
     }
      
     </style>
@@ -109,7 +125,7 @@ endif;
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-refresh text-white"></i> Reorder
-                      <span class="label label-danger">
+                      <span class="label label-success">
                       <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
                       $row=mysqli_fetch_array($query);
@@ -128,7 +144,7 @@ endif;
       ?>
                           <li><!-- start notification -->
                             <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
+                              <i class="glyphicon glyphicon-refresh text-green"></i> <?php echo $rowprod['prod_name'];?>
                             </a>
                           </li><!-- end notification -->
                           <?php }?>
@@ -244,7 +260,7 @@ endif;
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <h1>
-              <a class="btn btn-lg btn-warning" href="home.php">Back</a>
+              <a class="btn btn-lg btn-danger" href="home.php">Back</a>
               
             </h1>
             <ol class="breadcrumb">
@@ -257,7 +273,7 @@ endif;
           <section class="content">
             <div class="row">
              <div class="col-md-8">
-              <div class="box box-primary">
+              <div class="box box-danger">
                 <div class="box-header with-border">
                   <h3 class="box-title">Add New Customer</h3>
                 </div>
@@ -266,7 +282,7 @@ endif;
                   <form method="post" action="customer_add.php" enctype="multipart/form-data" class="form-horizontal">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label">Last Name</label>
+                        <label for="date" class="col-sm-4 control-label">Last Name</label>
                         <div class="input-group col-sm-8">
                           <input type="text" class="form-control pull-right" id="date" name="last" placeholder="Customer Last Name" required>
                         </div><!-- /.input group -->
@@ -275,7 +291,7 @@ endif;
                     
                     <div class="col-md-6">  
                       <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label">First Name</label>
+                        <label for="date" class="col-sm-4 control-label">First Name</label>
                         <div class="input-group col-md-8">
                           <input type="text" class="form-control pull-right" id="date" name="first" placeholder="Customer First Name">
                         </div><!-- /.input group -->
@@ -284,7 +300,7 @@ endif;
 
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label">Contact #</label>
+                        <label for="date" class="col-sm-4 control-label">Contact #</label>
                         <div class="input-group col-md-8">  
                           <input type="text" class="form-control pull-right" id="date" name="contact" placeholder="Contact Number">
                         </div>
@@ -293,7 +309,7 @@ endif;
                           
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label">Address</label>   
+                        <label for="date" class="col-sm-4 control-label">Address</label>   
                         <div class="input-group col-md-8">
                           <textarea class="form-control pull-right" id="date" name="address" placeholder="Complete Address"></textarea>
                         </div>
@@ -316,7 +332,7 @@ endif;
               </div><!-- /.box -->
             </div>
             <div class="col-md-4">
-              <div class="box box-primary">
+              <div class="box box-danger">
                 <div class="box-header with-border">
                   <h3 class="box-title">Search Existing Customer</h3>
                 </div>

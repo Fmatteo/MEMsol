@@ -24,31 +24,94 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
    
+   .sidebar {  
+    width: 250;
+    height:100%;
+    display: block;
+    left: -240px;
+    top: 0px;
+    transition: left 0.3s linear;
+    }
+
+    .sidebar.visible {
+    left:0px;
+    transition: left 0.3s linear;
+    }
+
+    .nav-txt {
+      color: white;
+    }
+
+    .subnav-txt:hover {
+      color: #ff0000;
+    }
+
+    .nav-txt:hover {
+      background-color: #7d0000;
+      color: white;
+      transition: all .2s;
+    }
+
+    .main-sidebar {
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
+      position: fixed;
+      z-index: 5;
+    }
+
+    .main-sidebar * a {
+      color: white;
+    }
+
+    .treeview-menu {
+      background-color: #7d0000;
+    }
+
+    .reorder-count {
+      font-size: 10px !important;
+    }
+
+    .box-header {
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
+    }
+
+    .box-title {
+      color: white;
+      text-align: center;
+      display: block !important;
+    }
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
+
       
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <body>
-    <div class="wrapper">
+  <div class="wrapper">
       <?php include('../dist/includes/header.php');?>
       <!-- Full Width Column -->
       <div class="content-wrapper">
-        <aside class="main-sidebar" class="visible">
+     
+            <!-- Navbar Right Menu -->
+            <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-             <div id="sidebar-btn">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-     
+             
             <li class="treeview">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="glyphicon glyphicon-refresh text-red"></i> Reorder
-                      <span class="label label-danger">
+              <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
+                      <i class="glyphicon glyphicon-refresh text-white"></i> Reorder
+                      <span class="label label-success">
                       <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
                       $row=mysqli_fetch_array($query);
@@ -57,7 +120,7 @@ endif;
                       </span>
                     </a>  
               <ul class="treeview-menu">
-       <li class="header">You have <?php echo$row['count'];?> products that needs reorder</li>
+       <li class="header nav-txt reorder-count">You have <?php echo$row['count'];?> products that needs reorder</li>
                       <li>
                         <!-- Inner Menu: contains the notifications -->
                         <ul class="menu">
@@ -67,47 +130,47 @@ endif;
       ?>
                           <li><!-- start notification -->
                             <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
+                              <i class="glyphicon glyphicon-refresh text-green"></i> <?php echo $rowprod['prod_name'];?>
                             </a>
                           </li><!-- end notification -->
                           <?php }?>
                         </ul>
                       </li>
-                      <li class="footer"><a href="inventory.php">View all</a></li>
+                      <li class="footer nav-txt"><a href="inventory.php" class="subnav-txt">View all</a></li>
                     </ul>
                   </li>
             <li class="treeview">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="glyphicon glyphicon-wrench"></i> Maintenance
+              <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
+                      <i class="glyphicon glyphicon-wrench text-white"></i> Maintenance
                       
                     </a>
               <ul class="treeview-menu">
        <li>
                         
               <li><!-- start notification -->
-                            <a href="category.php">
-                              <i class="glyphicon glyphicon-user text-green"></i> Company Name
+                            <a href="category.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-user text-white"></i> Company Name
                             </a>
                           </li><!-- end notification -->
-                          <li><!-- start notification -->
-                            <a href="customer.php">
-                              <i class="glyphicon glyphicon-user text-green"></i> Customer
+                          <li class="nav-txt"><!-- start notification -->
+                            <a href="customer.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-user text-white"></i> Customer
                             </a>
                           </li><!-- end notification -->
-                          <li><!-- start notification -->
-                            <a href="creditor.php">
-                              <i class="glyphicon glyphicon-user text-green"></i> Credit Applicants
+                          <li class="nav-txt"><!-- start notification -->
+                            <a href="creditor.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-user text-white"></i> Credit Applicants
                             </a>
                           </li><!-- end notification -->
-              <li><!-- start notification -->
-                            <a href="product.php">
-                              <i class="glyphicon glyphicon-cutlery text-green"></i> Product
+              <li class="nav-txt"><!-- start notification -->
+                            <a href="product.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-cutlery text-white"></i> Product
                             </a>
                           </li><!-- end notification -->
              
-              <li><!-- start notification -->
-                            <a href="supplier.php">
-                              <i class="glyphicon glyphicon-send text-green"></i> Distributor
+              <li class="nav-txt"><!-- start notification -->
+                            <a href="supplier.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-send text-white"></i> Distributor
                             </a>
                           </li><!-- end notification -->
                          
@@ -118,8 +181,8 @@ endif;
                     
                   </li>
     <li class="treeview">
-      <a href="stockin.php">
-                      <i class="glyphicon glyphicon-list text-green"></i> Stock in/out
+      <a href="stockin.php" class="dropdown-toggle nav-txt">
+                      <i class="glyphicon glyphicon-list text-white"></i> Stock in/out
                       
                     </a>
                     <ul class="dropdown-menu">
@@ -129,50 +192,50 @@ endif;
                     </ul>
                   </li>
     <li class="treeview">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="glyphicon glyphicon-stats text-red"></i> Report
+      <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
+                      <i class="glyphicon glyphicon-stats text-white"></i> Report
                      
                     </a>
                    <ul class="treeview-menu">
                      
                           <li><!-- start notification -->
-                            <a href="inventory.php">
-                              <i class="glyphicon glyphicon-ok text-green"></i>Inventory
+                            <a href="inventory.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-ok text-white"></i>Inventory
                             </a>
                           </li><!-- end notification -->
                         <li><!-- start notification -->
-                         <a href="sales.php">
-                              <i class="glyphicon glyphicon-usd text-blue"></i>Sales
+                         <a href="sales.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-usd text-white"></i>Sales
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="receivables.php">
-                              <i class="glyphicon glyphicon-th-list text-redr"></i>Account Receivables
+                         <a href="receivables.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-th-list text-white"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="income.php">
-                              <i class="glyphicon glyphicon-th-list text-redr"></i>Branch Income
+                         <a href="income.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-th-list text-white"></i>Branch Income
                             </a>
                           </li><!-- end notification -->
                           <li><!-- start notification -->
-                         <a href="purchase_request.php">
-                              <i class="glyphicon glyphicon-usd text-blue"></i>Purchase Request
+                         <a href="purchase_request.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-usd text-white"></i>Purchase Request
                             </a>
                           </li><!-- end notification -->
                         </ul>
                       </li>
                     
     <li class="treeview">
-      <a href="profile.php" class="dropdown-toggle">
-                      <i class="glyphicon glyphicon-cog text-orange"></i>
+      <a href="profile.php" class="dropdown-toggle nav-txt">
+                      <i class="glyphicon glyphicon-cog text-white"></i>
                       <?php echo $_SESSION['name'];?>
                     </a>
                   </li>
 
     <li class="treeview">
-       <a href="logout.php" class="dropdown-toggle">
-                      <i class="glyphicon glyphicon-off text-red"></i> Logout 
+       <a href="logout.php" class="dropdown-toggle nav-txt">
+                      <i class="glyphicon glyphicon-off text-white"></i> Logout 
                       
                     </a>
                   </li>       
@@ -180,11 +243,12 @@ endif;
         </section>
         <!-- /.sidebar -->
       </aside>
+
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <h1>
-              <a class="btn btn-lg btn-warning" href="reorder.php">Back</a>
-              <a class="btn btn-lg btn-info" href="purchase_request.php">View Purchase Request</a>
+              <a class="btn btn-lg btn-danger" href="reorder.php">Back</a>
+              <a class="btn btn-lg btn-warning" href="purchase_request.php">View Purchase Request</a>
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -198,7 +262,7 @@ endif;
 	      
             
             <div class="col-xs-12">
-              <div class="box box-primary">
+              <div class="box box-danger">
     
                 <div class="box-header">
                   <h3 class="box-title">Reorder List</h3>
@@ -234,14 +298,14 @@ endif;
                         
 
                         <td>
-				<a href="#updateordinance<?php echo $row['prod_id'];?>" data-target="#updateordinance<?php echo $row['prod_id'];?>" data-toggle="modal" class="btn btn-primary">Cancel</a>
+				<a href="#updateordinance<?php echo $row['prod_id'];?>" data-target="#updateordinance<?php echo $row['prod_id'];?>" data-toggle="modal" class="btn btn-danger">Cancel</a>
 			
 						</td>
           </tr>
 <div id="updateordinance<?php echo $row['prod_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	<div class="modal-dialog">
 	  <div class="modal-content" style="height:auto">
-              <div class="modal-header">
+              <div class="modal-header box-header" style="color:white;">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
                 <h4 class="modal-title">Cancel Purchase Request</h4>
@@ -259,7 +323,7 @@ endif;
               </div>
               <div class="modal-footer">
 		<button type="submit" class="btn btn-primary">Remove</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
 			  </form>
             </div>

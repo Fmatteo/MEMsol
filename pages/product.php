@@ -31,16 +31,16 @@ endif;
   border-radius: 6px;
 }
 
-      .sidebar{  
-    width:250;
+    .sidebar {  
+    width: 250;
     height:100%;
     display: block;
-    left:-240px;
-    top:0px;
+    left: -240px;
+    top: 0px;
     transition: left 0.3s linear;
-    
     }
-    .sidebar.visible{
+
+    .sidebar.visible {
     left:0px;
     transition: left 0.3s linear;
     }
@@ -50,17 +50,17 @@ endif;
     }
 
     .subnav-txt:hover {
-      color: #59abe3;
+      color: #ff0000;
     }
 
     .nav-txt:hover {
-      background-color: #1f3a93;
+      background-color: #7d0000;
       color: white;
       transition: all .2s;
     }
 
     .main-sidebar {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
       position: fixed;
       z-index: 5;
     }
@@ -70,7 +70,7 @@ endif;
     }
 
     .treeview-menu {
-      background-color: #1f3a93;
+      background-color: #7d0000;
     }
 
     .reorder-count {
@@ -78,11 +78,27 @@ endif;
     }
 
     .box-header {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
     }
 
     .box-title {
       color: white;
+      text-align: center;
+      display: block !important;
+    }
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
+
+    .form-control {
+      margin-bottom: 15px;
     }
 
     
@@ -106,7 +122,7 @@ endif;
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-refresh text-white"></i> Reorder
-                      <span class="label label-danger">
+                      <span class="label label-success">
                       <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
                       $row=mysqli_fetch_array($query);
@@ -125,7 +141,7 @@ endif;
       ?>
                           <li><!-- start notification -->
                             <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
+                              <i class="glyphicon glyphicon-refresh text-green"></i> <?php echo $rowprod['prod_name'];?>
                             </a>
                           </li><!-- end notification -->
                           <?php }?>
@@ -241,8 +257,8 @@ endif;
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <h1>
-              <a class="btn btn-lg btn-warning" href="home.php">Back</a>
-              <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
+              <a class="btn btn-lg btn-danger" href="home.php">Back</a>
+              <a class="btn btn-lg btn-success" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-white"></i></a>
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -255,7 +271,7 @@ endif;
             <div class="row">     
             
             <div class="col-xs-12">
-              <div class="box box-primary">
+              <div class="box box-danger">
     
                 <div class="box-header">
                   <h3 class="box-title">Product List</h3>
@@ -328,7 +344,7 @@ endif;
 <div id="updateordinance<?php echo $row['prod_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	<div class="modal-dialog">
 	  <div class="modal-content" style="height:auto">
-              <div class="modal-header">
+              <div class="modal-header box-header" style="color:white">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
                 <h4 class="modal-title">Update Product Details</h4>
@@ -397,9 +413,9 @@ endif;
 				</div>
               </div><br><br><br><br><br><br><br>
               <div class="modal-footer">
-        <button class="btn btn-warning deleteButton" value="<?php echo $row['prod_id']?>">Delete</button>
+        <button class="btn btn-danger deleteButton" value="<?php echo $row['prod_id']?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
 			  </form>
             </div>
@@ -440,7 +456,7 @@ endif;
 <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
   <div class="modal-dialog">
     <div class="modal-content" style="height:auto">
-              <div class="modal-header">
+              <div class="modal-header box-header" style="color:white">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
                 <h4 class="modal-title">Add New Product</h4>
@@ -513,7 +529,7 @@ endif;
               </div>
               <div class="modal-footer">
     <button type="submit" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
         </form>
             </div>

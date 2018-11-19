@@ -51,7 +51,10 @@ endif;
       h5,h6{
         text-align:center;
       }
-		
+      
+      body {
+        background-color: #ecf0f5;
+      }
 
       @media print {
           .btn-print {
@@ -78,16 +81,16 @@ endif;
   border-radius: 6px;
 }
 
-     .sidebar{  
-    width:250;
+    .sidebar {  
+    width: 250;
     height:100%;
     display: block;
-    left:-240px;
-    top:0px;
+    left: -240px;
+    top: 0px;
     transition: left 0.3s linear;
-    
     }
-    .sidebar.visible{
+
+    .sidebar.visible {
     left:0px;
     transition: left 0.3s linear;
     }
@@ -97,17 +100,17 @@ endif;
     }
 
     .subnav-txt:hover {
-      color: #59abe3;
+      color: #ff0000;
     }
 
     .nav-txt:hover {
-      background-color: #1f3a93;
+      background-color: #7d0000;
       color: white;
       transition: all .2s;
     }
 
     .main-sidebar {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
       position: fixed;
       z-index: 5;
     }
@@ -117,7 +120,7 @@ endif;
     }
 
     .treeview-menu {
-      background-color: #1f3a93;
+      background-color: #7d0000;
     }
 
     .reorder-count {
@@ -125,11 +128,19 @@ endif;
     }
 
     .box-header {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
     }
 
     .box-title {
       color: white;
+      text-align: center;
+      display: block !important;
     }
 
     </style>
@@ -531,7 +542,7 @@ if(password==pass)
 alert('Correct Password, Click OK to Enter Website.');
 else
 {
-  window.location="http://localhost/sysdevs/pages/home.php"
+  window.location="http://localhost/MEMSol/pages/home.php"
 }
 
 </script>

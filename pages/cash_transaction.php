@@ -39,6 +39,72 @@ javascript:window.history.forward(1);
   border-radius: 6px;
 }
 
+    .sidebar {  
+    width: 250;
+    height:100%;
+    display: block;
+    left: -240px;
+    top: 0px;
+    transition: left 0.3s linear;
+    }
+
+    .sidebar.visible {
+    left:0px;
+    transition: left 0.3s linear;
+    }
+
+    .nav-txt {
+      color: white;
+    }
+
+    .subnav-txt:hover {
+      color: #ff0000;
+    }
+
+    .nav-txt:hover {
+      background-color: #7d0000;
+      color: white;
+      transition: all .2s;
+    }
+
+    .main-sidebar {
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
+      position: fixed;
+      z-index: 5;
+    }
+
+    .main-sidebar * a {
+      color: white;
+    }
+
+    .treeview-menu {
+      background-color: #7d0000;
+    }
+
+    .reorder-count {
+      font-size: 10px !important;
+    }
+
+    .box-header {
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
+    }
+
+    .box-title {
+      color: white;
+      text-align: center;
+      display: block !important;
+    }
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
+
       
       
 </style>
@@ -59,7 +125,7 @@ javascript:window.history.forward(1);
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-refresh text-white"></i> Reorder
-                      <span class="label label-danger">
+                      <span class="label label-success">
                       <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
                       $row=mysqli_fetch_array($query);
@@ -78,7 +144,7 @@ javascript:window.history.forward(1);
       ?>
                           <li><!-- start notification -->
                             <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
+                              <i class="glyphicon glyphicon-refresh text-green"></i> <?php echo $rowprod['prod_name'];?>
                             </a>
                           </li><!-- end notification -->
                           <?php }?>
@@ -194,7 +260,7 @@ javascript:window.history.forward(1);
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <h1>
-              <a class="btn btn-lg btn-warning" href="home.php">Back</a>
+              <a class="btn btn-lg btn-danger" href="home.php">Back</a>
               
             </h1>
             <ol class="breadcrumb">
@@ -207,7 +273,7 @@ javascript:window.history.forward(1);
           <section class="content">
             <div class="row">
 	      <div class="col-md-9">
-              <div class="box box-primary">
+              <div class="box box-danger">
                 <div class="box-header">
                   <h3 class="box-title">Sales Transaction</h3>
                 </div>
@@ -254,7 +320,7 @@ javascript:window.history.forward(1);
 						<div class="form-group">
 							<label for="date"></label>
 							<div class="input-group">
-								<button class="btn btn-lg btn-primary" type="submit" tabindex="3" name="addtocart">+</button>
+								<button class="btn btn-lg btn-success" type="submit" tabindex="3" name="addtocart">+</button>
 							</div>
 						</div>	
 					</form>	
@@ -311,7 +377,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 	
 	<div class="modal-dialog">
 	  <div class="modal-content" style="height:auto">
-              <div class="modal-header">
+              <div class="modal-header box-header" style="color:white;">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
                 <h4 class="modal-title">Update Sales Details</h4>
@@ -343,7 +409,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 <div id="delete<?php echo $row['temp_trans_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
   <div class="modal-dialog">
     <div class="modal-content" style="height:auto">
-              <div class="modal-header">
+              <div class="modal-header box-header" style="color:white;">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
                 <h4 class="modal-title">Delete Item</h4>
@@ -450,8 +516,8 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                       </button>
 
 
-					  <button class="btn btn-lg btn-block" id="daterange-btn" type="reset"  tabindex="8">
-                        <a href="cancel.php">Cancel Sale</a>
+					            <button class="btn btn-lg btn-block btn-danger" id="daterange-btn" type="reset"  tabindex="8">
+                        <a href="cancel.php" style="color:white;">Cancel Sale</a>
                       </button>
               
 				</form>	

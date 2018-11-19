@@ -29,8 +29,7 @@ endif;
     <script scr="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <style>
-    
-    
+   
    .sidebar {  
     width: 250;
     height:100%;
@@ -50,17 +49,17 @@ endif;
     }
 
     .subnav-txt:hover {
-      color: #59abe3;
+      color: #ff0000;
     }
 
     .nav-txt:hover {
-      background-color: #1f3a93;
+      background-color: #7d0000;
       color: white;
       transition: all .2s;
     }
 
     .main-sidebar {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
       position: fixed;
       z-index: 5;
     }
@@ -70,7 +69,7 @@ endif;
     }
 
     .treeview-menu {
-      background-color: #1f3a93;
+      background-color: #7d0000;
     }
 
     .reorder-count {
@@ -78,11 +77,77 @@ endif;
     }
 
     .box-header {
-      background-image: linear-gradient(to left, rgba(52, 152, 219, 1) , rgba(0, 115, 183, 1));
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
     }
 
     .box-title {
       color: white;
+      text-align: center;
+      display: block !important;
+    }
+
+    .transactions-link {
+      display: inline-block;
+    }
+
+    .transactions-box {
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
+      display: flex;
+      height: 150px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .transactions-box:hover .transactions-title-visible {
+      transform: translateX(-100%);
+      transition: all .5s;
+    }
+
+    .transactions-box:hover .transactions-title-invisible {
+      right: 0;
+      transition: all .5s;
+    }
+
+    .transactions-title {
+      color: white;
+      letter-spacing: 2px;
+      display: inline-block;
+      font-size: 17px;
+      margin: 10px 0 0 0;
+      background-image: linear-gradient(to left, RGBA(255,28,22,.1) , rgba(255,13,22,.1));
+      width: 100%;
+      padding: 5px;
+      text-align: center;
+      font-variant: bold;
+    }
+
+    .transactions-title-invisible {
+      position: absolute;
+      width: 100%;
+      top: 85px;
+      right: -100%;
+    }
+
+    .transaction-title-visible {
+      width: 100%;
+    }
+
+    .transactions-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3,300px);
+      grid-gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
     }
 
     </style>
@@ -110,7 +175,7 @@ endif;
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-refresh text-white"></i> Reorder
-                      <span class="label label-danger">
+                      <span class="label label-success">
                       <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
                       $row=mysqli_fetch_array($query);
@@ -129,7 +194,7 @@ endif;
       ?>
                           <li><!-- start notification -->
                             <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
+                              <i class="glyphicon glyphicon-refresh text-green"></i> <?php echo $rowprod['prod_name'];?>
                             </a>
                           </li><!-- end notification -->
                           <?php }?>
@@ -247,133 +312,62 @@ endif;
 
 
 
-        <div class="container" style="padding-top:40px;">
+      
           <!-- Content Header (Page header) -->
          
 
           <!-- Main content -->
-          <section class="content">
-            <div class="row">
-        <div class="col-md-10">
-              <div class="box box-primary">
+          <section>
                 <div class="box-header with-border">
                   <h3 class="box-title">Transactions</h3>
                 </div><!-- /.box-header -->
-                <div class="box-body">
-                  <div class="row">
-                      <div class="col-lg-4 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-blue">
-                          <div class="inner">
-                            <h3>Purchase</h3>
-                            <p>Cash</p>
-                          </div>
-                          <div class="icon" style="margin-top:10px">
-                            <i class="glyphicon glyphicon-user"></i>
-                          </div>
-                          <a href="cust_new.php" class="small-box-footer">
-                            Go <i class="fa fa-arrow-circle-right"></i>
-                          </a>
-                        </div>
-                      </div><!-- ./col -->
-
-
-                      <div class="col-lg-4 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-blue">
-                          <div class="inner">
-                            <h3>Stock i/o</h3>
-                            <p>Products</p>
-                          </div>
-                          <div class="icon" style="margin-top:10px">
-                            <i class="glyphicon glyphicon-share-alt"></i>
-                          </div>
-                          <a href="stockin.php" class="small-box-footer">
-                            Go <i class="fa fa-arrow-circle-right"></i>
-                          </a>
-                        </div>
-                      </div><!-- ./col -->
-                      
-                      <div class="col-lg-4 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-blue">
-                          <div class="inner">
-                            <h3>Payment</h3>
-                            <p>Customer</p>
-                          </div>
-                          <div class="icon" style="margin-top:10px">
-                            <i class="glyphicon glyphicon-usd"></i>
-                          </div>
-                          <a href="customer.php" class="small-box-footer">
-                            Go <i class="fa fa-arrow-circle-right"></i>
-                          </a>
-                        </div>
-                      </div><!-- ./col -->
-                      <div class="col-lg-4 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-blue">
-                          <div class="inner">
-                            <h3>Credit</h3>
-                            <p>Apply</p>
-                          </div>
-                          <div class="icon" style="margin-top:10px">
-                            <i class="glyphicon glyphicon-user"></i>
-                          </div>
-                          <a href="creditor.php" class="small-box-footer">
-                            Go <i class="fa fa-arrow-circle-right"></i>
-                          </a>
-                        </div>
-                      </div><!-- ./col -->
-
-                      <div class="col-lg-4 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-blue">
-                          <div class="inner">
-                            <h3>Products</h3>
-                            <p>View/Add</p>
-                          </div>
-                          <div class="icon" style="margin-top:10px">
-                            <i class="glyphicon glyphicon-shopping-cart"></i>
-                          </div>
-                          <a href="product.php" class="small-box-footer">
-                            Go <i class="fa fa-arrow-circle-right"></i>
-                          </a>
-                        </div>
-                      </div><!-- ./col -->
-            
-            
-                      <div class="col-lg-4 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-blue">
-                          <div class="inner">
-                            <h3>History</h3>
-                            <p>Company/Distributor</p>
-                          </div>
-                          <div class="icon" style="margin-top:10px">
-                            <i class="glyphicon glyphicon-time"></i>
-                          </div>
-                          <a href="product.php" class="small-box-footer">
-                            Go <i class="fa fa-arrow-circle-right"></i>
-                          </a>
-                        </div>
-                      </div><!-- ./col -->
-            
-            
-                  </div><!--row-->
-                  
-      
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div><!-- /.col (right) -->
-            
-
-            </div>   
-      
-      
-          </div><!-- /.row -->
-    
-            
+                  <div class="transactions-wrapper">
+                    <a href="cust_new.php" class="transactions-link">
+                    <div class="transactions-box">
+                      <img src="../dist/img/purchase.png" alt="purchase">
+                      <span class="transactions-title transactions-title-visible">PURCHASE</span>
+                      <span class="transactions-title transactions-title-invisible">VIEW</span>
+                    </div>
+                    </a>
+                    <a href="stockin.php" class="transactions-link">
+                    <div class="transactions-box">
+                      <img src="../dist/img/stockinout.png" alt="purchase">
+                      <span class="transactions-title transactions-title-visible">STOCK IN/OUT</span>
+                      <span class="transactions-title transactions-title-invisible">VIEW</span>
+                    </div>
+                    </a>
+                    <a href="customer.php" class="transactions-link">
+                    <div class="transactions-box">
+                      <img src="../dist/img/payment.png" alt="purchase">
+                      <span class="transactions-title transactions-title-visible">PAYMENT</span>
+                      <span class="transactions-title transactions-title-invisible">VIEW</span>
+                    </div>
+                    </a>
+                    <a href="creditor.php" class="transactions-link">
+                    <div class="transactions-box">
+                      <img src="../dist/img/credit.png" alt="purchase">
+                      <span class="transactions-title transactions-title-visible">CREDIT</span>
+                      <span class="transactions-title transactions-title-invisible">VIEW</span>
+                    </div>
+                    </a>
+                    <a href="product.php" class="transactions-link">
+                    <div class="transactions-box">
+                      <img src="../dist/img/products.png" alt="purchase">
+                      <span class="transactions-title transactions-title-visible">PRODUCTS</span>
+                      <span class="transactions-title transactions-title-invisible">VIEW</span>
+                    </div>
+                    </a>
+                    <a href="product.php" class="transactions-link">
+                    <div class="transactions-box">
+                      <img src="../dist/img/history.png" alt="purchase">
+                      <span class="transactions-title transactions-title-visible">EXPENSES</span>
+                      <span class="transactions-title transactions-title-invisible">VIEW</span>
+                    </div>
+                    </a>
+                  </div>
           </section><!-- /.content -->
+
+
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
       <?php include('../dist/includes/footer.php');?>
