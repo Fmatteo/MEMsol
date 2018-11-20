@@ -32,7 +32,7 @@ endif;
   width: 12px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(darkblue,white);
+  background:linear-gradient(darkred,white);
   border-radius: 6px;
 }
       img.profile_pic {
@@ -51,7 +51,8 @@ endif;
       ?>
       <!-- Full Width Column -->
       <div class="content-wrapper">
-        <aside class="main-sidebar">
+        <!-- Navbar Right Menu -->
+            <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- search form -->
@@ -61,7 +62,7 @@ endif;
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-refresh text-white"></i> Reorder
-                      <span class="label label-danger">
+                      <span class="label label-success">
                       <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
                       $row=mysqli_fetch_array($query);
@@ -69,26 +70,7 @@ endif;
                       ?>  
                       </span>
                     </a>  
-              <ul class="treeview-menu">
-       <li class="header nav-txt reorder-count">You have <?php echo$row['count'];?> products that needs reorder</li>
-                      <li>
-                        <!-- Inner Menu: contains the notifications -->
-                        <ul class="menu">
-                        <?php
-                        $queryprod=mysqli_query($con,"select prod_name from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
-        while($rowprod=mysqli_fetch_array($queryprod)){
-      ?>
-                          <li><!-- start notification -->
-                            <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
-                            </a>
-                          </li><!-- end notification -->
-                          <?php }?>
-                        </ul>
-                      </li>
-                      <li class="footer nav-txt"><a href="inventory.php" class="subnav-txt">View all</a></li>
-                    </ul>
-                  </li>
+              
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-wrench text-white"></i> Maintenance
@@ -124,7 +106,12 @@ endif;
                             </a>
                           </li><!-- end notification -->
                          
-             
+             <li><!-- start notification -->
+                            <a href="expenses.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-user text-white"></i> Expenses
+                            </a>
+                          </li><!-- end notification -->
+
                         </ul>
                       </li>
                      
@@ -159,17 +146,17 @@ endif;
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="receivables.php" class="subnav-txt">
+                         <a href="receivables.php" class="subnav-txt" style="display:none;">
                               <i class="glyphicon glyphicon-th-list text-white"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="income.php" class="subnav-txt">
+                         <a href="income.php" class="subnav-txt" style="display:none;">
                               <i class="glyphicon glyphicon-th-list text-white"></i>Branch Income
                             </a>
                           </li><!-- end notification -->
                           <li><!-- start notification -->
-                         <a href="purchase_request.php" class="subnav-txt">
+                         <a href="purchase_request.php" class="subnav-txt" style="display:none;">
                               <i class="glyphicon glyphicon-usd text-white"></i>Purchase Request
                             </a>
                           </li><!-- end notification -->
@@ -193,6 +180,7 @@ endif;
         </section>
         <!-- /.sidebar -->
       </aside>
+
           <!-- Content Header (Page header) -->
           <?php 
            $cid=$_REQUEST['cid'];

@@ -66,7 +66,7 @@ endif;
   width: 12px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(darkblue,white);
+  background:linear-gradient(darkred,white);
   border-radius: 6px;
 }
 
@@ -144,8 +144,7 @@ endif;
       <?php include('../dist/includes/header.php');?>
       <!-- Full Width Column -->
       <div class="content-wrapper">
-     
-            <!-- Navbar Right Menu -->
+              <!-- Navbar Right Menu -->
             <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
@@ -164,26 +163,7 @@ endif;
                       ?>  
                       </span>
                     </a>  
-              <ul class="treeview-menu">
-       <li class="header nav-txt reorder-count">You have <?php echo$row['count'];?> products that needs reorder</li>
-                      <li>
-                        <!-- Inner Menu: contains the notifications -->
-                        <ul class="menu">
-                        <?php
-                        $queryprod=mysqli_query($con,"select prod_name from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
-        while($rowprod=mysqli_fetch_array($queryprod)){
-      ?>
-                          <li><!-- start notification -->
-                            <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-green"></i> <?php echo $rowprod['prod_name'];?>
-                            </a>
-                          </li><!-- end notification -->
-                          <?php }?>
-                        </ul>
-                      </li>
-                      <li class="footer nav-txt"><a href="inventory.php" class="subnav-txt">View all</a></li>
-                    </ul>
-                  </li>
+              
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-wrench text-white"></i> Maintenance
@@ -219,7 +199,12 @@ endif;
                             </a>
                           </li><!-- end notification -->
                          
-             
+             <li><!-- start notification -->
+                            <a href="category.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-user text-white"></i> Expenses
+                            </a>
+                          </li><!-- end notification -->
+
                         </ul>
                       </li>
                      
@@ -254,17 +239,17 @@ endif;
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="receivables.php" class="subnav-txt">
+                         <a href="receivables.php" class="subnav-txt" style="display:none;">
                               <i class="glyphicon glyphicon-th-list text-white"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="income.php" class="subnav-txt">
+                         <a href="income.php" class="subnav-txt" style="display:none;">
                               <i class="glyphicon glyphicon-th-list text-white"></i>Branch Income
                             </a>
                           </li><!-- end notification -->
                           <li><!-- start notification -->
-                         <a href="purchase_request.php" class="subnav-txt">
+                         <a href="purchase_request.php" class="subnav-txt" style="display:none;">
                               <i class="glyphicon glyphicon-usd text-white"></i>Purchase Request
                             </a>
                           </li><!-- end notification -->
@@ -288,6 +273,8 @@ endif;
         </section>
         <!-- /.sidebar -->
       </aside>
+           
+    
           <!-- Content Header (Page header) -->
           
 
@@ -361,6 +348,7 @@ $branch=$_SESSION['branch'];
                         <th>Product Code</th>
                         <th>Qty</th>
             					  <th>Selling Price</th>
+                        <th>Total Expenses</th>
                         <th>Total Sales</th>
                         <th>Profit</th>
                         <th>Date Paid</th>
@@ -405,7 +393,7 @@ $branch=$_SESSION['branch'];
             <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);?></b></h4></th>
 			    </tr>	
           <tr>
-            <th colspan="8">Total Profit</th>
+            <th colspan="8">Total Profit less Expenses</th>
 	<th style="text-align:right;"><h4><b><?php echo  number_format(($total_profit),2);}?></b></h4></th>
           </tr> 	
           <tr>

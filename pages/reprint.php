@@ -46,7 +46,7 @@ endif;
   width: 12px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(darkblue,white);
+  background:linear-gradient(darkred,white);
   border-radius: 6px;
 }
     </style>
