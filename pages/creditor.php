@@ -31,18 +31,18 @@ endif;
   background:linear-gradient(darkred,white);
   border-radius: 6px;
 }
-.sidebar {  
-    width: 250;
-    height:100%;
-    display: block;
-    left: -240px;
-    top: 0px;
-    transition: left 0.3s linear;
+    .sidebar {  
+      width: 250;
+      height:100%;
+      display: block;
+      left: -240px;
+      top: 0px;
+      transition: left 0.3s linear;
     }
 
     .sidebar.visible {
-    left:0px;
-    transition: left 0.3s linear;
+      left:0px;
+      transition: left 0.3s linear;
     }
 
     .nav-txt {
@@ -102,7 +102,7 @@ endif;
     }
 
     .modal-footer {
-      margin-top: 200px;
+      margin-top: 100px;
     }
 
     </style>
@@ -314,14 +314,14 @@ endif;
                         <td>
 				<a href="<?php if ($row['credit_status']=='Approved') echo "account_summary.php?cid=$cid";?>"><i class="glyphicon glyphicon-share-alt text-green"></i></a>
 				<a href="#updateordinance<?php echo $row['cust_id'];?>" data-target="#updateordinance<?php echo $row['cust_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-orange"></i></a>
-                <a href="view_application.php?cid=<?php echo $row['cust_id'];?>" class="small-box-footer"><i class="glyphicon glyphicon-eye-open text-primary"></i></a>
+                <a href="view_application.php?cid=<?php echo $row['cust_id'];?>" class="small-box-footer" style="display:none;"><i class="glyphicon glyphicon-eye-open text-primary" style="display:none;"></i></a>
 
 				
 						</td>
                       </tr>
 				<div id="updateordinance<?php echo $row['cust_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	<div class="modal-dialog">
-	  <div class="modal-content" style="height:450px">
+	  <div class="modal-content" style="height:350px">
               <div class="modal-header box-header" style="color:white;">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
@@ -330,31 +330,31 @@ endif;
               <div class="modal-body">
 			  <form class="form-horizontal" method="post" action="ci_update.php" enctype='multipart/form-data'>
         <div class="form-group">
-          <label class="control-label col-lg-3" for="name">CI Name</label>
+          <label class="control-label col-lg-3" for="name">Last name</label>
           <div class="col-lg-9">
-            <input type="text" class="form-control" id="id" name="name" value="<?php echo $row['ci_name'];?>" placeholder="Name of CI"> 
+            <input type="text" class="form-control" id="id" name="name" value="<?php echo $row['ci_name'];?>"> 
           </div>
         </div>        
 				<div class="form-group">
-					<label class="control-label col-lg-3" for="name">CI Remarks</label>
+					<label class="control-label col-lg-3" for="name">First name</label>
 					<div class="col-lg-9">
-						<input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['cust_id'];?>" required>  
-						<textarea class="form-control" id="name" name="ci"><?php echo $ci;?></textarea> 
+						<input type="text" class="form-control" id="id" name="id" value="<?php echo $row['cust_id'];?>" required>  
+						<!--<textarea class="form-control" id="name" name="ci"><?php echo $ci;?></textarea>-->
 					</div>
 				</div>
         <div class="form-group">
-          <label class="control-label col-lg-3" for="name">CI Date</label>
+          <label class="control-label col-lg-3" for="name">Address</label>
           <div class="col-lg-9">
-            <input type="date" class="form-control" id="id" name="date" value="<?php echo $row['ci_date'];?>">
+            <input type="text" class="form-control" id="id" name="date" value="<?php echo $row['ci_date'];?>">
           </div>
         </div>        
 				<div class="form-group">
-					<label class="control-label col-lg-3" for="name">Requirements</label>
+					<label class="control-label col-lg-3" for="name">Contact #</label>
 					<div class="col-lg-9">
-						
+          <input type="text" class="form-control" id="id" name="date" value="<?php echo $row['ci_date'];?>">
 					</div>
 				</div>				
-        <div class="form-group">
+        <!--<div class="form-group">
           <label class="control-label col-lg-3" for="name"></label>
           <div class="col-lg-9">
             <input type="checkbox" class="form-check" id="name" name="payslip" value="1" <?php echo $payslip1;?>>  Payslip
@@ -383,7 +383,7 @@ endif;
           <div class="col-lg-9">
             <input type="checkbox" class="form-check" id="name" name="income" value="1" <?php echo $income1;?>>  Proof of Income
           </div>
-        </div>        
+        </div>-->        
 				
 				
               </div><br><br><br><hr>

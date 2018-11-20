@@ -31,17 +31,17 @@ endif;
     <style>
    
    .sidebar {  
-    width: 250;
-    height:100%;
-    display: block;
-    left: -240px;
-    top: 0px;
-    transition: left 0.3s linear;
+      width: 250;
+      height:100%;
+      display: block;
+      left: -240px;
+      top: 0px;
+      transition: left 0.3s linear;
     }
 
     .sidebar.visible {
-    left:0px;
-    transition: left 0.3s linear;
+      left:0px;
+      transition: left 0.3s linear;
     }
 
     .nav-txt {

@@ -41,6 +41,80 @@ endif;
     border: 5px solid #ccc;
 }
 
+    .sidebar {  
+      width: 250;
+      height:100%;
+      display: block;
+      left: -240px;
+      top: 0px;
+      transition: left 0.3s linear;
+    }
+
+    .sidebar.visible {
+      left:0px;
+      transition: left 0.3s linear;
+    }
+
+    .nav-txt {
+      color: white;
+    }
+
+    .subnav-txt:hover {
+      color: #ff0000;
+    }
+
+    .nav-txt:hover {
+      background-color: #7d0000;
+      color: white;
+      transition: all .2s;
+    }
+
+    .main-sidebar {
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
+      position: fixed;
+      z-index: 5;
+    }
+
+    .main-sidebar * a {
+      color: white;
+    }
+
+    .treeview-menu {
+      background-color: #7d0000;
+    }
+
+    .reorder-count {
+      font-size: 10px !important;
+    }
+
+    .box-header {
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
+    }
+
+    .box-title {
+      color: white;
+      text-align: center;
+      display: block !important;
+    }
+
+    .form-group {
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
+
+    .nav-tabs-custom>.nav-tabs>li.active {
+      border-top-color: #dd4b39;
+    }
+
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -189,7 +263,7 @@ endif;
           ?>
           <section class="content-header">
             <h1>
-              <a class="btn btn-lg btn-warning" href="account_summary.php?cid=<?php echo $cid;?>">Back</a>
+              <a class="btn btn-lg btn-danger" href="account_summary.php?cid=<?php echo $cid;?>">Back</a>
               
             </h1>
             <ol class="breadcrumb">
@@ -202,7 +276,7 @@ endif;
           <section class="content">
             <div class="row">
 	      <div class="col-md-4">
-              <div class="box box-primary">
+              <div class="box box-danger">
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="" enctype="multipart/form-data">
@@ -238,7 +312,7 @@ endif;
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                  
-                 <a href="#" data-target="#teacherreg" data-toggle="modal" class="btn btn-block btn-warning"><i class="glyphicon glyphicon-plus-sign text-blue"></i>Add Payment</a>
+                 <a href="#" data-target="#teacherreg" data-toggle="modal" class="btn btn-block btn-success"><i class="glyphicon glyphicon-plus-sign text-white" style="margin-right:5px;"></i>Add Payment</a>
 				</form>	
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
@@ -327,9 +401,9 @@ endif;
 <div id="teacherreg" class="modal fade in primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog">
 		  <div class="modal-content">
-                      <div class="modal-header">
+                      <div class="modal-header box-header" style="color:white;">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title"><i class="glyphicon glyphicon-plus" style="font-size:30px;"></i>Add Payment</h4>
+                        <h4 class="modal-title">Add Payment</h4>
                       </div>
                       <div class="modal-body">
 			  <form class="form-horizontal" method="post" action="payment_add.php" enctype='multipart/form-data'>
@@ -354,7 +428,7 @@ endif;
                       <!--end of modal body-->
                       <div class="modal-footer">
 			<button type="submit" name="save" class="btn btn-primary">Save</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
                       </div>
                </div>
                

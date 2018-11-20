@@ -28,18 +28,93 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
-    ::-webkit-scrollbar{
-  width: 12px;
-}
-::-webkit-scrollbar-thumb{
-  background:linear-gradient(darkred,white);
-  border-radius: 6px;
-}
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+      ::-webkit-scrollbar-thumb {
+      background:linear-gradient(darkred,white);
+      border-radius: 6px;
+    }
+
       img.profile_pic {
-    width: 152px;
-    height: 125px;
-    border: 5px solid #ccc;
-}
+      width: 152px;
+      height: 125px;
+      border: 5px solid #ccc;
+    }
+
+    .sidebar {  
+    width: 250;
+    height:100%;
+    display: block;
+    left: -240px;
+    top: 0px;
+    transition: left 0.3s linear;
+    }
+
+    .sidebar.visible {
+    left:0px;
+    transition: left 0.3s linear;
+    }
+
+    .nav-txt {
+      color: white;
+    }
+
+    .subnav-txt:hover {
+      color: #ff0000;
+    }
+
+    .nav-txt:hover {
+      background-color: #7d0000;
+      color: white;
+      transition: all .2s;
+    }
+
+    .main-sidebar {
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
+      position: fixed;
+      z-index: 5;
+    }
+
+    .main-sidebar * a {
+      color: white;
+    }
+
+    .treeview-menu {
+      background-color: #7d0000;
+    }
+
+    .reorder-count {
+      font-size: 10px !important;
+    }
+
+    .box-header {
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
+    }
+
+    .box-title {
+      color: white;
+      text-align: center;
+      display: block !important;
+    }
+
+    .nav-tabs-custom>.nav-tabs>li.active {
+      border-top-color: #dd4b39 !important;
+    }
+
+    .form-group {
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
 
 
 
@@ -199,7 +274,7 @@ endif;
           }
           ?>
             <h1>
-              <a class="btn btn-lg btn-warning" href="customer.php">Back</a>
+              <a class="btn btn-lg btn-danger" href="customer.php">Back</a>
               
             </h1>
             
@@ -223,7 +298,7 @@ endif;
           <section class="content">
             <div class="row">
 	      <div class="col-md-3">
-              <div class="box box-primary">
+              <div class="box box-danger">
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="" enctype="multipart/form-data">
@@ -258,8 +333,8 @@ endif;
                       <h3><?php echo number_format($total,2);?></h3>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->				  
-                  <a href="<?php if ($row['balance']>=0) echo "transaction.php?cid=$cid";?>" class="btn btn-block btn-primary">
-                  <i class="glyphicon glyphicon-shopping-cart text-blue"></i>Add New Order</a>
+                  <a href="<?php if ($row['balance']>=0) echo "transaction.php?cid=$cid";?>" class="btn btn-block btn-success">
+                  <i class="glyphicon glyphicon-shopping-cart text-white" style="margin-right:5px;"></i>Add New Order</a>
                 
 				</form>	
                 </div><!-- /.box-body -->

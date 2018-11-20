@@ -23,13 +23,14 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
-    ::-webkit-scrollbar{
-  width: 12px;
-}
-::-webkit-scrollbar-thumb{
-  background:linear-gradient(darkred,white);
-  border-radius: 6px;
-}
+
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background:linear-gradient(darkred,white);
+      border-radius: 6px;
+    }
 
     .sidebar {  
     width: 250;
@@ -91,6 +92,14 @@ endif;
       color: white;
       text-align: center;
       display: block !important;
+    }
+    
+    .box {
+      margin-bottom: 0;
+    }
+
+    .btn {
+      margin: 5px;
     }
    
   
@@ -251,11 +260,12 @@ endif;
 		  ?>	
           <!-- Main content -->
           <section class="content">
-          <p>Update Account Details</p>
             <div class="row">
-	      <div class="col-md-12">
+	      <div class="col-sm-12">
               <div class="box box-danger">
-               
+              <div class="box-header">
+                  <h3 class="box-title">Update account details</h3>
+                </div>
                 </div>
                 <div class="box-body">
                   <!-- Date range -->
@@ -296,8 +306,8 @@ endif;
 				  
                   <div class="form-group">
                     <div class="input-group">
-                      <input class = "btn btn-primary" type="submit" value="Submit">
-					  <button class="btn" id="daterange-btn">
+                      <input class = "btn btn-primary submit-btn" type="submit" value="Submit">
+					            <button class="btn btn-danger clear-btn" id="daterange-btn">
                         Clear
                       </button>
                     </div>

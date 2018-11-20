@@ -28,14 +28,85 @@ endif;
     <script language="JavaScript"><!--
 javascript:window.history.forward(1);
 //--></script>
-<style>
-  ::-webkit-scrollbar{
-  width: 12px;
-}
-::-webkit-scrollbar-thumb{
-  background:linear-gradient(darkred,white);
-  border-radius: 6px;
-}
+  <style>
+
+      ::-webkit-scrollbar {
+      width: 12px;
+    }
+      ::-webkit-scrollbar-thumb{
+        background:linear-gradient(darkred,white);
+        border-radius: 6px;
+    }
+
+     .sidebar {  
+      width: 250;
+      height:100%;
+      display: block;
+      left: -240px;
+      top: 0px;
+      transition: left 0.3s linear;
+    }
+
+    .sidebar.visible {
+      left:0px;
+      transition: left 0.3s linear;
+    }
+
+    .nav-txt {
+      color: white;
+    }
+
+    .subnav-txt:hover {
+      color: #ff0000;
+    }
+
+    .nav-txt:hover {
+      background-color: #7d0000;
+      color: white;
+      transition: all .2s;
+    }
+
+    .main-sidebar {
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
+      position: fixed;
+      z-index: 5;
+    }
+
+    .main-sidebar * a {
+      color: white;
+    }
+
+    .treeview-menu {
+      background-color: #7d0000;
+    }
+
+    .reorder-count {
+      font-size: 10px !important;
+    }
+
+    .box-header {
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
+    }
+
+    .box-title {
+      color: white;
+      text-align: center;
+      display: block !important;
+    }
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
+
+    .col-md-12 {
+      background-color: transparent;
+    }
     
     </style>
  </head>
@@ -181,14 +252,14 @@ javascript:window.history.forward(1);
           <section class="content">
             <div class="row">
 	      <div class="col-md-9">
-              <div class="box box-primary">
+              <div class="box box-danger">
                 <div class="box-header">
                   <h3 class="box-title">Credit Information</h3>
                 </div>
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="">
-				  <div class="row" style="min-height:400px">
+				  <div class="row">
 					
 					 
 					<div class="col-md-12">
@@ -245,7 +316,7 @@ javascript:window.history.forward(1);
             </div><!-- /.col (right) -->
             
             <div class="col-md-3">
-              <div class="box box-primary">
+              <div class="box box-danger">
                
                 <div class="box-body">
                   <!-- Date range -->
@@ -320,7 +391,7 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
                   
             
                       
-      <button class="btn btn-lg btn-block btn-success" id="daterange-btn" name="finish" type="submit"  tabindex="7">
+      <button class="btn btn-lg btn-block btn-primary" id="daterange-btn" name="finish" type="submit"  tabindex="7">
                         Finish
                       </button>
 					         
