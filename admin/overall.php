@@ -33,12 +33,11 @@
 .col-md-12{
 	background-color: white;
 	padding: 20px;
-	border:1px solid red;
-  box-shadow: 5px 5px 20px 0px;
-  color:red;
+  box-shadow: 0 5px 5px rgba(193,57,43,.3);
+  color: black;
 }
 th{
-	color:red;
+	color: black;
 }
 
     </style>
@@ -53,8 +52,9 @@ th{
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main"> 
-			<div class = "row">
+				<div class="right_col" style="padding: 40px;" role="main">
+			<div class = "row" style="margin-top: 25px;">
+			<div class="box-header"> Overall Reports </div> 
 				<div class = "col-md-12 col-lg-12 hide-section">
 			<div class = "panel">
 				<div class="panel-heading">
@@ -193,7 +193,7 @@ th{
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Sales and Inventory System <a href="#"></a>
+						<p class="footer-txt">Copyright © 2018 <strong>SYDESO</strong> System Development Solutions. All rights reserved.</p>
           </div>
           <div class="clearfix"></div>
         </footer>

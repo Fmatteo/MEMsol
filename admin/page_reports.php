@@ -8,21 +8,16 @@ $branch_id = $_GET['id'];
 <link rel="stylesheet" href="css/styleV2.css">
 <style>
 
+body {
+	color: black;
+}
 
 .tile_count{
 	background-color: white;
 	border-radius: 20px;
 	padding: 20px;
 }
-.nav-md{
-	color:red;
-}
-h2{
-	color:red;
-}
-th{
-	color:red;
-}
+
 </style>
   <body class="nav-md">
     <div class="container body">
@@ -34,9 +29,10 @@ th{
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div role="main"> 
+        <div role="main">
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">	
+					<div class="box-header" style="padding-left: 240px;">Reports</div> 
 					<div class = "x-panel">
 						<div class="right_col" role="main">
 								<?php					 

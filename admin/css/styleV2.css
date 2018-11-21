@@ -111,3 +111,15 @@ li:hover {
 .navbar-nav .open .dropdown-menu {
   width: 100%;
 }
+
+.box-header {
+  background-color: red !important;
+}
+
+.box-header {
+  background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+  padding: 13px;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+}

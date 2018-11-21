@@ -8,16 +8,14 @@
 .x-panel{
   background-color: white;
 	padding: 20px;
-	border:1px solid red;
-  box-shadow: 5px 5px 20px 0px;
-  color:red;
+  box-shadow: 0 5px 5px rgba(193,57,43,.3);
+  color: black;
 }
 .col-md-4.col-lg-4.col-xs-4{
 	background-color: white;
 	padding: 20px;
-	border:1px solid red;
-  box-shadow: 5px 5px 20px 0px;
-  color:red;
+	box-shadow: 0 5px 5px rgba(193,57,43,.3);
+  color: black;
 }
 
 
@@ -32,7 +30,8 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main"> 
+        <div class="right_col" role="main">
+				<div class="box-header" style="margin-top: 60px">Users List</div>
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class = "col-md-4 col-lg-4 col-xs-4">
@@ -85,7 +84,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Sales and Inventory System <a href="#"></a>
+						<p class="footer-txt">Copyright © 2018 <strong>SYDESO</strong> System Development Solutions. All rights reserved.</p>
           </div>
           <div class="clearfix"></div>
         </footer>

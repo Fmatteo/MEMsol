@@ -9,16 +9,18 @@
 .dataTables_wrapper{
 	background-color: white;
 	padding: 20px;
-	border:1px solid red;
-  box-shadow: 5px 5px 20px 0px;
-  color:red;
+  box-shadow: 0 5px 5px rgba(193,57,43,.3);
+  color:black;
 }
 .col-md-4.col-lg-4.col-xs-4{
 	background-color: white;
 	padding: 20px;
-	border:1px solid red;
-  box-shadow: 5px 5px 20px 0px;
-  color:red;
+  box-shadow: 0 5px 5px rgba(193,57,43,.3);
+  color: black;
+}
+
+.pagination>.active>a {
+	background-color: #3c8dbc !important;
 }
 
 
@@ -34,10 +36,13 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main"> 
-			<div class="row">
+        <div class="right_col" role="main">
+
+				<div class="row">
+			
 				<div class="col-md-12 col-sm-12 col-xs-12">
-					<div class = "col-md-4 col-lg-4 col-xs-4">
+				<div class="box-header"> Branch </div>
+					<div class = "col-md-4 col-lg-4 col-xs-4" style="padding: 0">
 						<?php include 'add_branch_form.php';?>
 					</div>
 					<div class = "col-md-8 col-lg-8 col-xs-8">
@@ -100,7 +105,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Sales and Inventory System <a href="#"></a>
+					<p class="footer-txt">Copyright © 2018 <strong>SYDESO</strong> System Development Solutions. All rights reserved.</p>
           </div>
           <div class="clearfix"></div>
         </footer>
