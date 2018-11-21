@@ -11,6 +11,10 @@
     font-size: 30px;
   }
 
+.panel-body{
+  color:red;
+}
+
 </style>
   <body class="nav-md">
     <div class="container body">

@@ -12,13 +12,14 @@ if(isset($_GET['id'])){
 <style>
 
 .x-panel{
-  background-color: white;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  background-color: white;  
   padding: 20px;
-  border:1px solid black;
-  box-shadow: 0px 0px 20px 0px;
-  color:black;
+  border:1px solid red;
+  box-shadow: 5px 5px 20px 0px;
+  color:red;
+}
+#example1 tr th{
+  color:red;
 }
 
 

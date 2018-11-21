@@ -14,7 +14,15 @@ $branch_id = $_GET['id'];
 	border-radius: 20px;
 	padding: 20px;
 }
-
+.nav-md{
+	color:red;
+}
+h2{
+	color:red;
+}
+th{
+	color:red;
+}
 </style>
   <body class="nav-md">
     <div class="container body">

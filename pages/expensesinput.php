@@ -11,7 +11,7 @@ endif;
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home | <?php include('../dist/includes/title.php');?></title>
+    <title>Product | <?php include('../dist/includes/title.php');?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -23,25 +23,30 @@ endif;
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
+     <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-    <script scr="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <style>
-   
-   .sidebar {  
-      width: 250;
-      height:100%;
-      display: block;
-      left: -240px;
-      top: 0px;
-      transition: left 0.3s linear;
+    ::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(darkred,white);
+  border-radius: 6px;
+}
+
+ .sidebar {  
+    width: 250;
+    height:100%;
+    display: block;
+    left: -240px;
+    top: 0px;
+    transition: left 0.3s linear;
     }
 
     .sidebar.visible {
-      left:0px;
-      transition: left 0.3s linear;
+    left:0px;
+    transition: left 0.3s linear;
     }
 
     .nav-txt {
@@ -92,74 +97,28 @@ endif;
       display: block !important;
     }
 
-    .transactions-link {
-      display: inline-block;
+    .btn:hover {
+      transition: all .2s linear;
     }
 
-    .transactions-box {
-      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
-      display: flex;
-      height: 150px;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      border-radius: 4px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .transactions-box:hover .transactions-title-visible {
-      transform: translateX(-100%);
-      transition: all .5s;
-    }
-
-    .transactions-box:hover .transactions-title-invisible {
-      right: 0;
-      transition: all .5s;
-    }
-
-    .transactions-title {
-      color: white;
-      letter-spacing: 2px;
-      display: inline-block;
-      font-size: 17px;
-      margin: 10px 0 0 0;
-      background-image: linear-gradient(to left, RGBA(255,28,22,.1) , rgba(255,13,22,.1));
-      width: 100%;
-      padding: 5px;
+    .input-group {
       text-align: center;
-      font-variant: bold;
-    }
-
-    .transactions-title-invisible {
-      position: absolute;
-      width: 100%;
-      top: 85px;
-      right: -100%;
-    }
-
-    .transaction-title-visible {
       width: 100%;
     }
 
-    .transactions-wrapper {
-      display: grid;
-      grid-template-columns: repeat(3,300px);
-      grid-gap: 15px;
-      justify-content: center;
-      margin-top: 25px;
+    .save-btn {
+      margin: 5px;
     }
 
+    .stock-btn {
+      margin: 5px;
+    }
+   
     </style>
-    
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <body>
-    
-
-
-
-    <div class="wrapper">
+  <div class="wrapper">
       <?php include('../dist/includes/header.php');?>
       <!-- Full Width Column -->
       <div class="content-wrapper">
@@ -294,115 +253,136 @@ endif;
         <!-- /.sidebar -->
       </aside>
 
-
-
-
-
-      
           <!-- Content Header (Page header) -->
-         
+          <section class="content-header">
+            <h1>
+              <a class="btn btn-lg btn-danger" href="home.php">Back</a>
+              
+            </h1>
+            <ol class="breadcrumb">
+              <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li class="active">Product</li>
+            </ol>
+          </section>
 
           <!-- Main content -->
-          <section>
-                <div class="box-header with-border">
-                  <h3 class="box-title">Transactions</h3>
+          <section class="content">
+            <div class="row">
+	      <div class="col-md-4">
+              <div class="box box-danger">
+                <div class="box-header">
+                  <h3 class="box-title">Expenses</h3>
+                </div>
+                <div class="box-body">
+                  <!-- Date range -->
+                  <form method="post" action="stockin_add.php" enctype="multipart/form-data">
+  
+                  <div class="form-group">
+                    <label for="date">Expenses Name</label>
+                    <div class="input-group col-md-12">
+                      <select class="form-control select2" name="prod_name" id="prod_id" required>
+                      <?php
+			 include('../dist/includes/dbcon.php');
+				$query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
+				  while($row=mysqli_fetch_array($query2)){
+		      ?>
+				    <option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name'];?></option>
+		      <?php }?>
+                    </select>
+                    </div><!-- /.input group -->
+                  </div><!-- /.form group -->
+		  
+                  <div class="form-group">
+                    <label for="date">Amount</label>
+                    <div class="input-group col-md-12">
+                      <input type="text" class="form-control pull-right" id="qty" name="qty" placeholder="Input Quantity" required>
+                    </div><!-- /.input group -->
+                  </div><!-- /.form group -->
+                   <div class="form-group">
+                    <label for="date">Date</label>
+                    <div class="input-group col-md-12">
+                      <input type="text" class="form-control pull-right" id="base_price" name="base_price" placeholder="0" required>
+                    </div><!-- /.input group -->
+                  </div><!-- /.form group -->
+                  
+                  <div class="form-group">
+                    <div class="input-group">
+                      <button type="submit" class="btn btn-primary save-btn" id="daterange-btn" name="">
+                        Save
+                      </button>
+                    </div>
+                  </div><!-- /.form group -->
+				</form>	
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col (right) -->
+            
+            <div class="col-xs-8">
+              <div class="box box-danger">
+    
+                <div class="box-header">
+                  <h3 class="box-title">Expenses List</h3>
                 </div><!-- /.box-header -->
-                  <div class="transactions-wrapper">
-                    <a href="cust_new.php" class="transactions-link">
-                    <div class="transactions-box">
-                      <img src="../dist/img/purchase.png" alt="purchase">
-                      <span class="transactions-title transactions-title-visible">PURCHASE</span>
-                      <span class="transactions-title transactions-title-invisible">VIEW</span>
-                    </div>
-                    </a>
-                    <a href="stockin.php" class="transactions-link">
-                    <div class="transactions-box">
-                      <img src="../dist/img/stockinout.png" alt="purchase">
-                      <span class="transactions-title transactions-title-visible">STOCK IN/OUT</span>
-                      <span class="transactions-title transactions-title-invisible">VIEW</span>
-                    </div>
-                    </a>
-                    <a href="customer.php" class="transactions-link">
-                    <div class="transactions-box">
-                      <img src="../dist/img/payment.png" alt="purchase">
-                      <span class="transactions-title transactions-title-visible">PAYMENT</span>
-                      <span class="transactions-title transactions-title-invisible">VIEW</span>
-                    </div>
-                    </a>
-                    <a href="creditor.php" class="transactions-link">
-                    <div class="transactions-box">
-                      <img src="../dist/img/credit.png" alt="purchase">
-                      <span class="transactions-title transactions-title-visible">CREDIT</span>
-                      <span class="transactions-title transactions-title-invisible">VIEW</span>
-                    </div>
-                    </a>
-                    <a href="product.php" class="transactions-link">
-                    <div class="transactions-box">
-                      <img src="../dist/img/products.png" alt="purchase">
-                      <span class="transactions-title transactions-title-visible">PRODUCTS</span>
-                      <span class="transactions-title transactions-title-invisible">VIEW</span>
-                    </div>
-                    </a>
-                    <a href="expensesinput.php" class="transactions-link">
-                    <div class="transactions-box">
-                      <img src="../dist/img/history.png" alt="purchase">
-                      <span class="transactions-title transactions-title-visible">EXPENSES</span>
-                      <span class="transactions-title transactions-title-invisible">VIEW</span>
-                    </div>
-                    </a>
-                  </div>
+                <div class="box-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Expenses Name</th>
+                        <th>Amount</th>
+				        <th>Date Execute</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+<?php
+		$branch=$_SESSION['branch'];
+			$sql="
+			SELECT * FROM stockin a 
+			LEFT JOIN product b ON a.prod_id = b.prod_id 
+			LEFT JOIN supplier c ON b.supplier_id = c.supplier_id
+			WHERE a.branch_id='$branch'
+			order by date desc
+			";
+		
+		
+		
+		$query=mysqli_query($con,$sql)or die(mysqli_error());
+		while($row=mysqli_fetch_array($query)){
+		
+?>
+                      <tr>
+                        <td><?php echo $row['prod_name'];?></td>
+                        <td><?php echo $row['qty'];?></td>
+            						<td><?php echo $row['date'];?></td>
+                      
+                      </tr>
+                   
+<?php }?>					  
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Expenses Name</th>
+                        <th>Amount</th>
+                        <th>Date Execute</th>
+                        
+                      </tr>					  
+                    </tfoot>
+                  </table>
+                </div><!-- /.box-body -->
+ 
+            </div><!-- /.col -->
+			
+			
+          </div><!-- /.row -->
+	  
+            
           </section><!-- /.content -->
-
-
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
       <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
 
-
-      
-      <script>
-        
-          $(document).ready(function(){
-              $('#sidebar-btn').click(function(){
-                $('.sidebar').toggleClass('visible');
-              });
-          });
-
-
-      </script>
-   
-  <script>
-    $(function() {
-      $(".btn_delete").click(function(){
-      var element = $(this);
-      var id = element.attr("id");
-      var dataString = 'id=' + id;
-      if(confirm("Sure you want to delete this item?"))
-      {
-  $.ajax({
-  type: "GET",
-  url: "temp_trans_del.php",
-  data: dataString,
-  success: function(){
-    
-        }
-    });
-    
-    $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
-    .animate({ opacity: "hide" }, "slow");
-      }
-      return false;
-      });
-
-      });
-    </script>
-  
-  <script type="text/javascript" src="autosum.js"></script>
-  
     <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-  <script src="../dist/js/jquery.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/select2/select2.full.min.js"></script>
@@ -416,7 +396,6 @@ endif;
     <script src="../dist/js/demo.js"></script>
     <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <script scr="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     
     <script>
       $(function () {
@@ -433,64 +412,35 @@ endif;
     </script>
      <script>
       $(function () {
-        //Initialize Select2 Elements
-        $(".select2").select2();
-
-        //Datemask dd/mm/yyyy
-        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-        //Datemask2 mm/dd/yyyy
-        $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-        //Money Euro
-        $("[data-mask]").inputmask();
-
-        //Date range picker
-        $('#reservation').daterangepicker();
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-        //Date range as a button
-        $('#daterange-btn').daterangepicker(
-            {
-              ranges: {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-              },
-              startDate: moment().subtract(29, 'days'),
-              endDate: moment()
-            },
-        function (start, end) {
-          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
-        );
-
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-          checkboxClass: 'icheckbox_minimal-blue',
-          radioClass: 'iradio_minimal-blue'
-        });
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-          checkboxClass: 'icheckbox_minimal-red',
-          radioClass: 'iradio_minimal-red'
-        });
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-          checkboxClass: 'icheckbox_flat-green',
-          radioClass: 'iradio_flat-green'
-        });
-
-        //Colorpicker
-        $(".my-colorpicker1").colorpicker();
-        //color picker with addon
-        $(".my-colorpicker2").colorpicker();
-
-        //Timepicker
-        $(".timepicker").timepicker({
-          showInputs: false
-        });
+	
+		
+			$(".stockoutButton").click(function(e) {
+              e.preventDefault();
+              $.ajax({
+                  type: "POST",
+                  url: "ajax.php",
+                  data: { 
+					  prod_id: $("#prod_id").val(), // < note use of 'this' here
+					  qty: $("#qty").val(), // < note use of 'this' here
+                      process: 'stockout'
+                  },
+                  success: function(result) {
+                      if(result == ""){ 
+                          alert("bad")                        
+                      }else{
+                          alert("success")
+						  location.reload();
+                      }
+                      
+                  },
+                  error: function(result) {
+                      alert('error');
+                  }
+              });
+        }); // ajax 		
+		
+		
+		
       });
     </script>
   </body>
