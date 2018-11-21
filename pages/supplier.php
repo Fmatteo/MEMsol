@@ -172,7 +172,7 @@
                           </li><!-- end notification -->
                          
              <li><!-- start notification -->
-                            <a href="category.php" class="subnav-txt">
+                            <a href="expenses.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-user text-white"></i> Expenses
                             </a>
                           </li><!-- end notification -->
@@ -253,7 +253,7 @@
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-              <li class="active">Supplier</li>
+              <li class="active">Distributor</li>
             </ol>
           </section>
 
