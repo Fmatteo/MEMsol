@@ -17,6 +17,9 @@ body {
 	border-radius: 20px;
 	padding: 20px;
 }
+th{
+	color:black;
+}
 
 </style>
   <body class="nav-md">

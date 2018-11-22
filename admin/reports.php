@@ -12,7 +12,7 @@
   }
 
 .panel-body{
-  color:red;
+  color:black;
 }
 
 </style>
