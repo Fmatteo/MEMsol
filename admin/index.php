@@ -115,7 +115,7 @@
     </div>
     <div class="info">
     <h1><i class="fa fa-paw"></i> Sales and Inventory System </h1>
-    <p>©2018 All Rights Reserved Mmil Company</p>
+    <p>©2018 All Rights Reserved SYDESO</p>
     </div>
     </form>
     </div>
