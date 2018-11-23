@@ -4,14 +4,6 @@
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 <link rel="stylesheet" href="css/styleV2.css">
 <style>
-::-webkit-scrollbar{
-  width: 12px;
-}
-::-webkit-scrollbar-thumb{
-  background:linear-gradient(darkred, white);
-  border-radius: 6px;
-}
-  
 .dataTables_wrapper{
 	background-color: white;  
   padding: 20px;

@@ -1,12 +1,11 @@
-::-webkit-scrollbar {
+::-webkit-scrollbar{
   width: 12px;
 }
-
 ::-webkit-scrollbar-thumb{
-  background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
-  border-radius: 6px;
+  background:linear-gradient(darkred, white);
 }
-
+  
+  
 th {
   color:white;
 }
@@ -88,6 +87,7 @@ footer {
 .panel-success>.panel-heading {
   background-color: #dd4b39;
   border: none;
+  padding: 17px;
 }
 
 .panel-success {

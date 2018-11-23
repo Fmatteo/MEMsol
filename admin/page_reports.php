@@ -32,12 +32,13 @@ th{
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div role="main">
-			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12">	
-					<div class="box-header" style="padding-left: 240px;">Reports</div> 
+        <div class="right_col" style="padding: 40px;" role="main">
+			<div class = "row" style="margin-top: 25px;">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="box-header">Reports</div> 
+
 					<div class = "x-panel">
-						<div class="right_col" role="main">
+						<div role="main">
 								<?php					 
 			$branch=$_GET['id'];
 			$query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die(mysqli_error());  
@@ -252,6 +253,17 @@ th{
           });
       });
     </script>
+     <footer>
+          <div class="pull-right">
+            <p class="footer-txt">Copyright © 2018 <strong>SYDESO</strong> System Development Solutions. All rights reserved.</p>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+	<?php include 'datatable_script.php';?>
 	<?php include 'datatable_script.php';?>
     <!-- /gauge.js -->
   </body>
