@@ -15,17 +15,16 @@
 
     .form-wrapper {
       position: absolute;
-      top: 50%;
+      top: 60%;
       left: 50%;
       transform: translate(-50%,-50%);
       color: #2f3640 !important;
     }
 
     form {
-      height: 550px;
+      height: 500px;
       width: 370px;
       background-color: #f5f6fa;
-
       padding: 50px 35px;
       border-radius: 5px;
       box-shadow: 0 5px 5px rgba(193,57,43,.9);
@@ -41,7 +40,7 @@
       color: #718093 !important;
       text-align: center;
       font-size: 15px;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
     }
 
     input[type="text"], input[type="password"] {
@@ -85,11 +84,33 @@
     .info {
       text-align: center;
       font-size: 11px;
-      margin-top: 80px;
+      margin-top: 50px;
     }
 
     .info h1 {
       font-size: 15px;
+    }
+
+    .logo-box {
+      width: 250px;
+      height: 250px;
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo {
+      width: 100%;
+      height: 100%;
+    }
+
+    form {
+      position: relative;
+    }
+
+    .admin-box {
+      margin-top: 55px;
     }
 
     
@@ -100,8 +121,13 @@
 
   <div class="form-wrapper">
   <form method = "POST" action = "login.php">
-    <h1>WELCOME</h1>
-    <h2>Administrator Login</h2>
+    <div class="logo-box">
+      <img src="../dist/img/sol-logo.png" class="logo" alt="logo">
+    </div>
+    <div class="admin-box">
+      <h1>WELCOME</h1>
+      <h2>Administrator Login</h2>
+    </div>
     <div>
       <label> Username </label>
       <input type="text" name = "username" class="form-control" placeholder="Username" required="true" />
