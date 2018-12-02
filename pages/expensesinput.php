@@ -283,10 +283,10 @@ endif;
                       <select class="form-control select2" name="prod_name" id="prod_id" required>
                       <?php
 			 include('../dist/includes/dbcon.php');
-				$query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
+				$query2=mysqli_query($con,"select * from expenses order by exp_name")or die(mysqli_error());
 				  while($row=mysqli_fetch_array($query2)){
 		      ?>
-				    <option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name'];?></option>
+				    <option value="<?php echo $row['exp_id'];?>"><?php echo $row['exp_name'];?></option>
 		      <?php }?>
                     </select>
                     </div><!-- /.input group -->
@@ -298,12 +298,7 @@ endif;
                       <input type="text" class="form-control pull-right" id="qty" name="qty" placeholder="Input Quantity" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
-                   <div class="form-group">
-                    <label for="date">Date</label>
-                    <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="base_price" name="base_price" placeholder="0" required>
-                    </div><!-- /.input group -->
-                  </div><!-- /.form group -->
+                  
                   
                   <div class="form-group">
                     <div class="input-group">
@@ -334,23 +329,13 @@ endif;
                     </thead>
                     <tbody>
 <?php
-		$branch=$_SESSION['branch'];
-			$sql="
-			SELECT * FROM stockin a 
-			LEFT JOIN product b ON a.prod_id = b.prod_id 
-			LEFT JOIN supplier c ON b.supplier_id = c.supplier_id
-			WHERE a.branch_id='$branch'
-			order by date desc
-			";
-		
-		
-		
-		$query=mysqli_query($con,$sql)or die(mysqli_error());
-		while($row=mysqli_fetch_array($query)){
-		
+    
+    $query=mysqli_query($con,"select * from expensesinput order by qty")or die(mysqli_error());
+    while($row=mysqli_fetch_array($query)){
+    
 ?>
                       <tr>
-                        <td><?php echo $row['prod_name'];?></td>
+                        <td><?php echo $row['exp_name'];?></td>
                         <td><?php echo $row['qty'];?></td>
             						<td><?php echo $row['date'];?></td>
                       

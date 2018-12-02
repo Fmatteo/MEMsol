@@ -68,6 +68,24 @@ if($_POST['process']=='categories'){
 
 }
 
+
+if($_POST['process']=='categories1'){
+	$exp_name = $_POST['exp_name'];
+	if(! $con ) {
+	      die('Could not connect: ' . mysqli_error());
+	   }
+	   echo 'Connected successfully, ';
+	   $sql = " DELETE FROM expenses WHERE exp_name = '$exp_name'";
+	   
+	   if (mysqli_query($con, $sql)) {
+	      	echo "Record deleted successfully ";
+	   } else {
+	   		echo "Not successfully ";
+	   }
+	   mysqli_close($con);
+
+}
+
 if($_POST['process']=='customer'){
 	$cust_id = $_POST['cust_id'];	
 	if(! $con ) {
@@ -263,6 +281,78 @@ if($_POST['process']=='cat_history'){
 	echo "</table>";
 	mysqli_close($con);
 }
+
+
+
+if($_POST['process']=='cat_history1'){
+
+
+	$exp_id = $_POST['exp_id'];
+
+	$sql="
+		SELECT *, a.base_price as base_fprice  FROM stockin a 
+			LEFT JOIN product b ON a.prod_id = b.prod_id 			
+			LEFT JOIN category c ON b.cat_id = c.cat_id
+			WHERE c.cat_id = '".$exp_id."'
+			AND a.branch_id = '$branch'
+			";			
+			
+			echo "<table id='companyTable'style='width:80%;margin-left:auto;margin-right:auto;'>";
+	    	echo "<tr>";
+	    	echo "<td>Product</td>
+	    		  <td>Price</td>
+				  <td>Qty</td>
+				  <td>Subtotal</td>
+	    		  <td>Date</td>";
+			echo "</tr>";	
+			
+	$totalprice = 0;
+	
+	if ($result=mysqli_query($con,$sql)) 
+	  {		
+  		if(mysqli_num_rows($result) == 0){
+			echo "<tr><td colspan='5'><h1 style='text-align:center'>Not found</h1></td></tr>";
+		}
+	  // Fetch one and one row
+	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+	    {
+			
+		if($row['qty']>0){
+		$price = $row['base_fprice'] * $row['qty'];
+		$stockinsql="
+			SELECT date FROM stockin 						
+				WHERE prod_id = '".$row['prod_id']."'
+			ORDER BY date asc;
+				";
+		$query2=mysqli_query($con,$stockinsql)or die(mysqli_error());		
+				while($row2=mysqli_fetch_array($query2)){
+					$stockdate = $row2['date']  ;
+				}
+				if(!isset($stockdate)){
+					$stockdate = "";
+				}
+							if(!isset($stockdate)){
+					$stockdate = "";
+				}
+	    	echo "<tr>";
+	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_fprice'] .  "</td><td>" . $row['qty'] .  "</td><td>" .  number_format($price,2) .  "</td><td>" . $stockdate.  "</td>";
+			echo "</tr>";
+			
+			$totalprice =$totalprice +  $price;			
+		}
+
+	    }
+		echo "<tr>";
+	    echo "<td></td><td></td><td>Total</td><td>P" . number_format($totalprice,2).  "</td><td></td>";
+		echo "</tr>";
+	  // Free result set
+	  mysqli_free_result($result);
+	}
+	echo "</table>";
+	mysqli_close($con);
+}
+
+
 
 
 if($_POST['process']=='supplier_history'){

@@ -40,7 +40,7 @@ endif;
 
       }
       .container{
-        border:1px solid black;
+        
       }
       ::-webkit-scrollbar{
   width: 12px;
@@ -126,7 +126,7 @@ include('../dist/includes/dbcon.php');
                       <tr>
                         <th>Customer's Name</th>
                         <th><?php echo $last.", ".$first;?></th>
-                        <th>Term</th>
+                        <th>Subcidy</th>
                         <th><?php echo $row['term'];?> </th>
                       </tr>
                       <tr>
@@ -141,12 +141,7 @@ include('../dist/includes/dbcon.php');
                         <th>Due Date</th>
                         <th><?php echo $row['due_date'];?></th>
                       </tr>
-                      <tr>
-                        <th>Co-Maker</th>
-                        <th><?php echo $row['comaker'];?></th>
-                        <th>Amount Due</th>
-                        <th>P<?php echo number_format($row['due'],2);?></th>
-                      </tr>
+                      
                     </thead>
                   </table>
                   <table class="table">
@@ -240,7 +235,8 @@ $query2=mysqli_query($con,"select * from user where user_id='$user_id'")or die(m
 
 				</div>	
             <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-                <a class = "btn btn-danger btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
+                <a class = "btn btn-danger btn-print" href = "creditor.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back
+                </a>   
                   
                   
 				</form>	

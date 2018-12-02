@@ -264,7 +264,7 @@ endif;
                     <thead>
                       <tr>
             						<th>Account #</th>
-            						<th>Picture</th>
+            						<th style="display:none;">Picture</th>
                         <th>Customer Last Name</th>
                         <th>Customer First Name</th>
                         <th>Address</th>
@@ -286,7 +286,7 @@ endif;
 ?>
                       <tr>
 					    <td><?php echo $row['cust_id'];?></td>
-						<td><img style="width:80px;height:60px" src="../dist/uploads/<?php echo $row['cust_pic'];?>"></td>
+						<td style="display:none;"></td>
                         <td><?php echo $row['cust_last'];?></td>
                         <td><?php echo $row['cust_first'];?></td>
                         <td><?php echo $row['cust_address'];?></td>
@@ -362,7 +362,7 @@ endif;
                     <tfoot>
                       <tr>
                         <th>#</th>
-						<th>Picture</th>
+						            <th style="display: none;">Picture</th>
                         <th>Customer Last Name</th>
                         <th>Customer First Name</th>
                         <th>Address</th>

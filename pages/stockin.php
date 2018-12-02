@@ -27,6 +27,29 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
+    @media print {
+          .btn-print {
+            display:none !important;
+          }
+      .main-footer  {
+      display:none !important;
+      }
+      div.dataTables_length label {
+        display: none !important;
+      }
+      div.dataTables_filter label{
+        display: none !important;
+      }
+      div.dataTables_paginate ul.pagination{
+        display: none !important;
+      }
+      div.dataTables_info{
+        display: none !important;
+      }
+      .col-md-4{
+        display: none;
+      }
+    }
     ::-webkit-scrollbar{
   width: 12px;
 }
@@ -111,6 +134,11 @@ endif;
 
     .stock-btn {
       margin: 5px;
+    }
+    .box.box-danger{
+      padding-left: 10px;
+      padding-right: 10px;
+      
     }
    
     </style>
@@ -319,12 +347,14 @@ endif;
             
             <div class="col-xs-8">
               <div class="box box-danger">
-    
+    <table id="example1" class="table table-bordered table-striped">
                 <div class="box-header">
                   <h3 class="box-title">Product Stockin List</h3>
                 </div><!-- /.box-header -->
+                <br/>
+                <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
                 <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
+                  
                     <thead>
                       <tr>
                         <th>Product Name</th>

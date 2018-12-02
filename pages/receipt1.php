@@ -31,6 +31,10 @@ javascript:window.history.forward(1);
           .btn-print {
             display:none !important;
           }
+          .btn-danger
+          {
+            display: none !important;
+          }
       }
 
        .btn:hover {
@@ -228,7 +232,7 @@ $query2=mysqli_query($con,"select * from user where user_id='$user_id'")or die(m
 
 				</div>	
             <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-                <a class = "btn btn-primary btn-danger" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
+                <a class = "btn btn-primary btn-danger" href = "creditor.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
                   
                   
 				</form>	

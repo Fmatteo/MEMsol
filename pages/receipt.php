@@ -42,7 +42,7 @@ date_default_timezone_set('Asia/Manila');
   background:linear-gradient(darkred,white);
 }
 .container{
-  border:1px solid black;
+ 
 
 }
     </style>

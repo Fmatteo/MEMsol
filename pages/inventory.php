@@ -18,6 +18,7 @@ endif;
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
@@ -35,10 +36,22 @@ endif;
           .btn-print {
             display:none !important;
           }
-      }
       .main-footer  {
       display:none !important;
       }
+      div.dataTables_length label {
+        display: none !important;
+      }
+      div.dataTables_filter label{
+        display: none !important;
+      }
+      div.dataTables_paginate ul.pagination{
+        display: none !important;
+      }
+      div.dataTables_info{
+        display: none !important;
+      }
+    }
       
       ::-webkit-scrollbar{
   width: 12px;
@@ -264,6 +277,7 @@ endif;
           
               
                 <div class="box-body">
+
         <?php
 include('../dist/includes/dbcon.php');
 
@@ -281,13 +295,13 @@ $branch=$_SESSION['branch'];
           <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
               <a class = "btn btn-danger btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
             
-                  <table class="table table-bordered table-striped">
+                  <table id="example1" class="table table-bordered table-striped" style="padding:20px;">
                     <thead>
           
                       <tr>
                         <th>Product Code</th> 
                         <th>Product Name</th>
-                        <th>Supplier</th>                        
+                        <th>Distributor</th>                        
                         <th>Qty Left</th>
             
                         <th>Price</th>
@@ -365,10 +379,11 @@ $branch=$_SESSION['branch'];
       <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
 
-    <!-- jQuery 2.1.4 -->
+   <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../plugins/select2/select2.full.min.js"></script>
     <!-- SlimScroll -->
     <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
@@ -379,7 +394,16 @@ $branch=$_SESSION['branch'];
     <script src="../dist/js/demo.js"></script>
     <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <style>
+  table tr td{
+    border:1px solid #ddd;
+    padding:8px;
     
+  }
+  table{
+    margin-bottom:40px;
+  }
+  </style>
     <script>
       $(function () {
         $("#example1").DataTable();
@@ -393,5 +417,6 @@ $branch=$_SESSION['branch'];
         });
       });
     </script>
+     
   </body>
 </html>

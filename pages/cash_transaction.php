@@ -402,7 +402,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                 <h4 class="modal-title">Delete Item</h4>
               </div>
               <div class="modal-body">
-        <form class="form-horizontal" method="post" action="transaction_del.php" enctype='multipart/form-data'>
+        <form class="form-horizontal" method="post" action="transaction_del1.php" enctype='multipart/form-data'>
           <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
           <input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
         <p>Are you sure you want to remove <?php echo $row['prod_name'];?>?</p>
@@ -464,7 +464,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 						<?php $total_profit = $grand - $base_total;
 							
 						?>
-						  <div class="form-group">
+						  <div class="form-group" style="display: none;">
 							<label for="date">Total Profit</label>
 							
 								<input type="text" class="form-control text-right" id="profit" name="profit" value="<?php echo $total_profit;?>" tabindex="6"  onFocus="" onBlur="" readonly>
@@ -485,11 +485,11 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 						  </div><!-- /.form group -->
               
 						 
-              <div class="form-group" id="tendered">
+              <div class="form-group" id="tendered" style="display:none;">
                 <label for="date">Cash Tendered</label><br>
-                <input type="text" style="text-align:right" class="form-control" onFocus="startCalc();" onBlur="stopCalc();"  id="cash" name="tendered" placeholder="Cash Tendered" required>
+                <input type="text" style="text-align:right" class="form-control" onFocus="startCalc();" onBlur="stopCalc();"  id="cash" name="tendered" placeholder="Cash Tendered">
               </div><!-- /.form group -->
-              <div class="form-group" id="change">
+              <div class="form-group" id="change" style="display: none;">
                 <label for="date">Change</label><br>
                 <input type="text" style="text-align:right" class="form-control" id="changed" name="change" placeholder="Change">
               </div><!-- /.form group -->

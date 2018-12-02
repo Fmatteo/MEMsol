@@ -23,6 +23,26 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
+    @media print {
+          .btn-print {
+            display:none !important;
+          }
+      .main-footer  {
+      display:none !important;
+      }
+      div.dataTables_length label {
+        display: none !important;
+      }
+      div.dataTables_filter label{
+        display: none !important;
+      }
+      div.dataTables_paginate ul.pagination{
+        display: none !important;
+      }
+      div.dataTables_info{
+        display: none !important;
+      }
+    }
   ::-webkit-scrollbar{
   width: 12px;
 }
@@ -98,6 +118,10 @@ endif;
 
     .form-control {
       margin-bottom: 15px;
+    }
+    .btn.btn-success.btn-print{
+      padding-top: 10px;
+      font-size: 19px;
     }
 
     
@@ -245,6 +269,7 @@ endif;
             <h1>
               <a class="btn btn-lg btn-danger" href="home.php">Back</a>
               <a class="btn btn-lg btn-success" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-white"></i></a>
+              <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -266,7 +291,7 @@ endif;
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                      	<th>Picture</th>
+                      	
                         <th>Product Code</th>
                         <th>Product Name</th>
                         <th>Description</th>
@@ -310,7 +335,7 @@ endif;
 
 ?>
                       <tr>
-                      	<td><img style="width:80px;height:60px" src="../dist/uploads/<?php echo $row['prod_pic'];?>"></td>
+                      	
                         <td><?php echo $row['serial'];?></td>
                         <td><?php echo $row['prod_name'];?></td>
                         <td><?php echo $row['prod_desc'];?></td>
@@ -390,13 +415,7 @@ endif;
 					  <input type="number" class="form-control" id="price" name="reorder" value="<?php echo $row['reorder'];?>" required>  
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-lg-3" for="price">Picture</label>
-					<div class="col-lg-9"> 
-					  <input type="hidden" class="form-control" id="price" name="image1" value="<?php echo $row['prod_pic'];?>"> 
-					  <input type="file" class="form-control" id="price" name="image">  
-					</div>
-				</div>
+			
               </div><br><br><br><br><br><br><br>
               <div class="modal-footer">
         <button class="btn btn-danger deleteButton" value="<?php echo $row['prod_id']?>">Delete</button>
@@ -413,7 +432,7 @@ endif;
                     </tbody>
                     <tfoot>
                       <tr>
-                      	<th>Picture</th>
+                      	
                         <th>Serial #</th>
                         <th>Product Name</th>
                         <th>Description</th>
@@ -506,13 +525,8 @@ endif;
             <input type="number" class="form-control" id="price" name="reorder" placeholder="Reorder Point"  required>  
           </div>
         </div>
-        <div class="form-group">
-          <label class="control-label col-lg-3" for="price">Picture</label>
-          <div class="col-lg-9">
-            <input type="file" class="form-control" id="price" name="image">  
-          </div>
-        </div>
-              </div>
+        
+              
               <div class="modal-footer">
     <button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -541,7 +555,7 @@ endif;
     <script>
       $(function () {
         $("#example1").DataTable();
-        $('#example2').DataTable({
+        $('#example2').DataTable({  
           "paging": true,
           "lengthChange": false,
           "searching": false,
@@ -549,6 +563,7 @@ endif;
           "info": true,
           "autoWidth": false
         });
+
 
 
 

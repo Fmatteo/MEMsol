@@ -307,7 +307,7 @@ endif;
 		      $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
 			       $row=mysqli_fetch_array($query);
 		  ?>	
-		    <img class = "profile_pic" src = "../dist/uploads/<?php echo $row['cust_pic'];?>">
+		    
                   <div class="form-group">
                     <label for="date">Customer Name</label>
                     <div class="input-group col-md-12">
@@ -333,7 +333,7 @@ endif;
                       <h3><?php echo number_format($total,2);?></h3>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->				  
-                  <a href="<?php if ($row['balance']>=0) echo "transaction.php?cid=$cid";?>" class="btn btn-block btn-success">
+                  <a href="<?php echo "transaction.php?cid=$cid";?>" class="btn btn-block btn-success">
                   <i class="glyphicon glyphicon-shopping-cart text-white" style="margin-right:5px;"></i>Add New Order</a>
                 
 				</form>	
@@ -359,7 +359,7 @@ endif;
                         <th>Qty</th>
                         <th>Product</th>
                         <th>Price</th>
-                        <th>Term</th>
+                        <th>Subcidy</th>
                         <th>Payable for</th>
                         <th>Amount Due</th>
                         <th>Order Date</th>
@@ -409,7 +409,6 @@ endif;
                       <td>
                         <a href="payment.php?cid=<?php echo $row['cust_id'];?>&sid=<?php echo $row1['sales_id'];?>&balance=<?php echo $total;?>"><i class="glyphicon glyphicon-share-alt"></i></a>
                         <a href="reprint.php?sid=<?php echo $row1['sales_id'];?>"><i class="glyphicon glyphicon-print"></i></a>
-                        <a href="print.php?sid=<?php echo $row1['sales_id'];?>&cid=<?php echo $row['cust_id'];?>"><i class="glyphicon glyphicon-list"></i></a>
                       </td>  
                       </tr>
 
@@ -428,8 +427,8 @@ endif;
                       <tr>
                         <th>Transaction #</th>                      
                         <th>Product</th>
-                        <th>Product Code</th>
-                        <th>Price</th>
+                        <th style="display:none;">Product Code</th>
+                        <th style="display:none;">Price</th>
                         <th>Qty</th>
                         <th>Amount</th>
                         <th>Date Paid</th>
@@ -446,8 +445,8 @@ endif;
                       <tr>
                         <td><?php echo $row1['sales_id'];?></td>
                         <td><?php echo $row1['prod_name'];?></td>
-                        <td><?php echo $row1['serial'];?> month/s</td>
-                        <td><?php echo $row1['prod_price'];?></td>
+                        <td style="display:none;"><?php echo $row1['serial'];?> month/s</td>
+                        <td style="display:none;"><?php echo $row1['prod_price'];?></td>
                         <td><?php echo $row1['qty'];?></td>
                         <td><?php echo number_format($row1['total'],2);?></td>
                         <td><?php echo date("M d, Y",strtotime($row1['date_added']));?></td>

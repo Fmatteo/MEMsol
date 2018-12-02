@@ -35,14 +35,31 @@ endif;
             display:none !important;
           }
       }
+      body{
+        background-color: white;
+
+      }
+      .container{
+        
+      }
+      ::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(darkred,white);
+}
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-  <body class="hold-transition skin-blue layout-top-nav">
+  <body>
     <div class="wrapper">
       
       <!-- Full Width Column -->
-      <div class="content-wrapper">
+      
         <div class="container">
 
           <section class="content">

@@ -285,7 +285,7 @@ endif;
 		      $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
 			       $row=mysqli_fetch_array($query);
 		  ?>	
-		    <img class = "profile_pic" src = "../dist/uploads/<?php echo $row['cust_pic'];?>">
+		    
                   <div class="form-group">
                     <label for="date">Customer Name</label>
                     <div class="input-group col-md-12">

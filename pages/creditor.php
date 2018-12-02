@@ -103,7 +103,9 @@ endif;
     .modal-footer {
       margin-top: 100px;
     }
-
+    .text-orange {
+    display: none;
+  }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

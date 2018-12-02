@@ -357,13 +357,13 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
 								<input type="text" class="form-control" id="down" name="down" tabindex="6" placeholder="Downpayment" value="<?php $down=($grand+$interest)*.2;echo $down;?>" required>
 						  </div><!-- /.form group -->
 						 
-             <div class="form-group" style="display:none">
-              <label for="date">Terms</label>
-                <select class="form-control select2" name="terms" tabindex="1" required>
+             <div class="form-group">
+              <label for="date">SUBCIDY</label>
+                <select class="form-control select2" name="terms" tabindex="1">
                     
-                    <option>monthly</option>
-                    <option>weekly</option>
-                    <option>daily</option>
+                    <option>Starter allotment</option>
+                    <option>Grower allotment</option>
+                    <option>Finisher allotment</option>
                 </select>
             
               </div><!-- /.form group -->

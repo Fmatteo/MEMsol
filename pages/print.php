@@ -44,7 +44,7 @@ endif;
         background-color: white;
       }
       .container{
-        border:1px solid black;
+       
       }
 
       .btn:hover {
@@ -175,7 +175,7 @@ $branch=$_SESSION['branch'];
 				</form>	
                 </div><!-- /.box-body -->
                 <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-                <a class = "btn btn-danger btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>
+                <a class = "btn btn-danger btn-print" href = "creditor.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
            

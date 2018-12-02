@@ -270,12 +270,12 @@ endif;
                 </div>
                 <div class="box-body">
                   <!-- Date range -->
-                  <form method="post" action="cat_add.php" enctype="multipart/form-data">
+                  <form method="post" action="exp_add.php" enctype="multipart/form-data">
   
                   <div class="form-group">
                     <label for="date">Expenses Name</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="date" name="category" placeholder="Expenses Name" required>
+                      <input type="text" class="form-control pull-right" id="date" name="expenses" placeholder="Expenses Name" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
 		  
@@ -311,18 +311,18 @@ endif;
                     <tbody>
 <?php
 		
-		$query=mysqli_query($con,"select * from category order by cat_name")or die(mysqli_error());
+		$query=mysqli_query($con,"select * from expenses order by exp_name")or die(mysqli_error());
 		while($row=mysqli_fetch_array($query)){
 		
 ?>
                       <tr>
-                        <td><?php echo $row['cat_name'];?></td>
+                        <td><?php echo $row['exp_name'];?></td>
                         <td>
-				<a href="#updateordinance<?php echo $row['cat_id'];?>" data-target="#updateordinance<?php echo $row['cat_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
+				<a href="#updateordinance<?php echo $row['exp_id'];?>" data-target="#updateordinance<?php echo $row['exp_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
 				
 						</td>
                       </tr>
-<div id="updateordinance<?php echo $row['cat_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="updateordinance<?php echo $row['exp_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	<div class="modal-dialog">
 	  <div class="modal-content" style="height:auto">
               <div class="modal-header box-header" style="color:white">
@@ -331,12 +331,12 @@ endif;
                 <h4 class="modal-title">Update Expenses Name Details</h4>
               </div>
               <div class="modal-body">
-			  <form class="form-horizontal" method="post" action="cat_update.php" enctype='multipart/form-data'>
+			  <form class="form-horizontal" method="post" action="exp_update.php" enctype='multipart/form-data'>
                 
 				<div class="form-group">
 					<label class="control-label col-lg-3" for="name">Expenses Name</label>
-					<div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['cat_id'];?>" required>  
-					  <input type="text" class="form-control" id="name" name="category" value="<?php echo $row['cat_name'];?>" required>  
+					<div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['exp_id'];?>" required>  
+					  <input type="text" class="form-control" id="name" name="expenses" value="<?php echo $row['exp_name'];?>" required>  
 					</div>
 				</div> 
 				
@@ -346,8 +346,8 @@ endif;
 			  				  <div class="history">
           </div>
               <div class="modal-footer">
-              	<button class="btn btn-success historyButton" value="<?php echo $row['cat_id'];?>">History</button>
-                <button class="btn btn-danger deleteButton" value="<?php echo $row['cat_name'];?>">Delete</button>
+              	<button class="btn btn-success historyButton" value="<?php echo $row['exp_id'];?>">History</button>
+                <button class="btn btn-danger deleteButton" value="<?php echo $row['exp_name'];?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
@@ -426,8 +426,8 @@ endif;
                   type: "POST",
                   url: "ajax.php",
                   data: { 
-                      cat_name: $(this).val(), // < note use of 'this' here
-                      process: 'categories'
+                      exp_name: $(this).val(), // < note use of 'this' here
+                      process: 'categories1'
                   },
                   success: function(result) {
                       if(result == ""){ 
@@ -454,8 +454,8 @@ endif;
                   type: "POST",
                   url: "ajax.php",
                   data: { 
-                      cat_id: $(this).val(), // < note use of 'this' here
-                      process: 'cat_history'
+                      exp_id: $(this).val(), // < note use of 'this' here
+                      process: 'cat_history1'
                   },
                   success: function(result) {
                       if(result == ""){ 

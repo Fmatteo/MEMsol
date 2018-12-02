@@ -36,19 +36,32 @@ endif;
           }
       }
 
-      .btn:hover {
-        transition: all .2s linear;
-    }
+      body{
+        background-color: white;
 
+      }
+      .container{
+        
+      }
+      ::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(darkred,white);
+}
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
     </style>
     
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-  <body class="hold-transition skin-blue layout-top-nav">
+  <body>
     <div class="wrapper">
       
       <!-- Full Width Column -->
-      <div class="content-wrapper" style="width: 1200px; margin: 0 auto;">
+      
         <div class="container">
 
           <section class="content">
@@ -252,7 +265,7 @@ $query2=mysqli_query($con,"select * from user where user_id='$user_id'")or die(m
 
 				</div>	
             <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-                <a class = "btn btn-danger btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
+                <a class = "btn btn-danger btn-print" href = "creditor.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back</a>   
                   
                   
 				</form>	

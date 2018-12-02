@@ -57,10 +57,13 @@ endif;
           .btn-print {
             display:none !important;
           }
-		  }
 		  .main-footer	{
 			display:none !important;
 		  }
+      .box.box-danger{
+        display: none !important;
+      }
+    }
 		  
       ::-webkit-scrollbar{
   width: 12px;
@@ -334,11 +337,11 @@ $branch=$_SESSION['branch'];
                   
 				  <h5><b>Cash Sales Report as of <?php echo date("M d, Y",strtotime($start))." to ".date("M d, Y",strtotime($end));?></b></h5>
                   
-				  <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
+				  <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print" ></i> Print</a>
 							<a class = "btn btn-danger btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
 						
 		
-			<table id="example1" class="table table-bordered table-striped">
+			<table id="example1" class="table table-bordered table-striped" style="text-align:center;">
                     <thead>
                       <tr>
                         <th>Transaction #</th>
@@ -347,7 +350,6 @@ $branch=$_SESSION['branch'];
                         <th>Product Code</th>
                         <th>Qty</th>
             					  <th>Selling Price</th>
-                        <th>Total Expenses</th>
                         <th>Total Sales</th>
                         <th>Profit</th>
                         <th>Date Paid</th>
@@ -371,7 +373,7 @@ $branch=$_SESSION['branch'];
             <td><?php echo $row['serial'];?></td>
             <td><?php echo $row['qty'];?></td>
 			<td><?php echo $row['price'];?></td>
-            <td style="text-align:right"><?php echo number_format($total,2);
+            <td><?php echo number_format($total,2);
 								?></td>
             <td><?php echo $profit;?></td>
             <td><?php echo date("M d, Y h:i a",strtotime($row['date_added']));?></td>    
@@ -391,6 +393,10 @@ $branch=$_SESSION['branch'];
             <th colspan="8">Total Cash Sales</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);?></b></h4></th>
 			    </tr>	
+          <tr>
+            <th colspan="8">Total Expenses</th>
+            <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);?></b></h4></th>
+          </tr>
           <tr>
             <th colspan="8">Total Profit less Expenses</th>
 	<th style="text-align:right;"><h4><b><?php echo  number_format(($total_profit),2);}?></b></h4></th>

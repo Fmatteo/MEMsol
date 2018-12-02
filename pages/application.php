@@ -300,10 +300,10 @@ endif;
                       </div><!-- /.input group -->
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="display:none;">
                       <label for="date">Nick Name</label>
                       <div class="input-group col-md-12">
-                          <input type="text" class="form-control pull-right" id="date" name="nickname" placeholder="Nickname" required>
+                          <input type="text" class="form-control pull-right" id="date" name="nickname" placeholder="Nickname">
                       </div>
                     </div>
 
