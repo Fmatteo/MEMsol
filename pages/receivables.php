@@ -130,26 +130,7 @@ endif;
                       ?>  
                       </span>
                     </a>  
-              <ul class="treeview-menu">
-       <li class="header nav-txt reorder-count">You have <?php echo$row['count'];?> products that needs reorder</li>
-                      <li>
-                        <!-- Inner Menu: contains the notifications -->
-                        <ul class="menu">
-                        <?php
-                        $queryprod=mysqli_query($con,"select prod_name from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
-        while($rowprod=mysqli_fetch_array($queryprod)){
-      ?>
-                          <li><!-- start notification -->
-                            <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-green"></i> <?php echo $rowprod['prod_name'];?>
-                            </a>
-                          </li><!-- end notification -->
-                          <?php }?>
-                        </ul>
-                      </li>
-                      <li class="footer nav-txt"><a href="inventory.php" class="subnav-txt">View all</a></li>
-                    </ul>
-                  </li>
+             
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-wrench text-white"></i> Maintenance
@@ -225,12 +206,12 @@ endif;
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="income.php" class="subnav-txt">
+                         <a href="income.php" class="subnav-txt" style="display:none;">
                               <i class="glyphicon glyphicon-th-list text-white"></i>Branch Income
                             </a>
                           </li><!-- end notification -->
                           <li><!-- start notification -->
-                         <a href="purchase_request.php" class="subnav-txt">
+                         <a href="purchase_request.php" class="subnav-txt" style="display:none;">
                               <i class="glyphicon glyphicon-usd text-white"></i>Purchase Request
                             </a>
                           </li><!-- end notification -->
@@ -258,15 +239,12 @@ endif;
          
 
           <!-- Main content -->
-          <section class="content">
+         <section class="content">
             <div class="row">
-	      
-            <div class="col-xs-12">
+      <div class="col-xs-12">
               <div class="box box-danger">
-    
-                <div class="box-header">
-                 
-                </div><!-- /.box-header -->
+          
+              
                 <div class="box-body">
 				<?php
 include('../dist/includes/dbcon.php');

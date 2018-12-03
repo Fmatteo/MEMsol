@@ -201,7 +201,7 @@ endif;
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="receivables.php" class="subnav-txt" style="display:none;">
+                         <a href="receivables.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-th-list text-white"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
@@ -269,7 +269,7 @@ endif;
                         <th>Customer First Name</th>
                         <th>Address</th>
             						<th>Contact #</th>
-            						<th>Balance</th>
+            						<th style="display:none;">Balance</th>
                         <th>Credit Status</th>
             						<th>Status</th>
                         <th>Action</th>
@@ -291,7 +291,7 @@ endif;
                         <td><?php echo $row['cust_first'];?></td>
                         <td><?php echo $row['cust_address'];?></td>
 						<td><?php echo $row['cust_contact'];?></td>
-						<td><?php echo number_format($row['balance'],2);?></td>
+						<td style="display:none;"><?php echo number_format($row['balance'],2);?></td>
             <td><?php echo $row['credit_status'];?></td>
 						<td><?php if ($row['balance']==0) 
 								echo "<span class='label label-danger'>inactive</span>";
@@ -367,7 +367,7 @@ endif;
                         <th>Customer First Name</th>
                         <th>Address</th>
               						<th>Contact #</th>
-              						<th>Balance</th>
+              						<th style="display:none;">Balance</th>
                           <th>Credit Status</th>
               						<th>Status</th>
                         <th>Action</th>

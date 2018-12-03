@@ -52,7 +52,16 @@ endif;
         display: none !important;
       }
     }
-      
+       @media print{
+table tr td:nth-child(5){
+    visibility:hidden;
+}
+}
+@media print{
+table tr td:nth-child(6){
+    visibility:hidden;
+  }
+}
       ::-webkit-scrollbar{
   width: 12px;
 }
@@ -60,6 +69,7 @@ endif;
   background:linear-gradient(darkred,white);
  
 }
+
 
     .sidebar {  
     width: 250;
@@ -232,7 +242,7 @@ endif;
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="receivables.php" class="subnav-txt" style="display:none;">
+                         <a href="receivables.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-th-list text-white"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->

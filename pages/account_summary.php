@@ -224,7 +224,7 @@ endif;
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="receivables.php" class="subnav-txt" style="display:none;">
+                         <a href="receivables.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-th-list text-white"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
@@ -360,7 +360,7 @@ endif;
                         <th>Product</th>
                         <th>Price</th>
                         <th>Subcidy</th>
-                        <th>Payable for</th>
+                        <th style="display:none;">Payable for</th>
                         <th>Amount Due</th>
                         <th>Order Date</th>
                         <th>Months Unpaid</th>
@@ -374,7 +374,7 @@ endif;
 
     $date=date("Y-m-d");
 
-    $query1=mysqli_query($con,"select * from sales left join sales_details on sales.sales_id = sales_details.sales_id left join payment on sales.sales_id = payment.sales_id left join term on sales.sales_id = term.sales_id left join product on sales_details.prod_id = product.prod_id left join customer on sales.cust_id = customer.cust_id where sales.cust_id='$cid' order by date_added desc")or die(mysqli_error($con));
+    $query1=mysqli_query($con,"select * from sales left join sales_details on sales.sales_id = sales_details.sales_id left join payment on sales.sales_id = payment.sales_id left join term on sales.sales_id = term.sales_id left join product on sales_details.prod_id = product.prod_id left join customer on sales.cust_id = customer.cust_id where sales.cust_id='$cid' and modeofpayment='credit' order by date_added desc")or die(mysqli_error($con));
 
 
     while($row1=mysqli_fetch_array($query1)){
@@ -394,7 +394,7 @@ endif;
                         <td><?php echo $row1['prod_name'];?></td>
                         <td><?php echo $row1['price'];?></td>
                         <td><?php echo $row1['term'];?></td>
-                        <td><?php echo $row1['payable_for'];?> month/s</td>
+                        <td style="display:none;"><?php echo $row1['payable_for'];?> month/s</td>
                         <td><?php echo $row1['remaining'];?></td>
                         <td><?php echo date("M d, Y",strtotime($row1['date_added']));?></td>
                         <td class="border_marker"><input class="warning_month" type="hidden" name="notimportant" value=" <?php echo $date_warning ?>  ">

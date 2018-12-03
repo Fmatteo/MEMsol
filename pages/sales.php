@@ -241,7 +241,7 @@ endif;
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="receivables.php" class="subnav-txt" style="display:none;">
+                         <a href="receivables.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-th-list text-white"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
@@ -282,12 +282,12 @@ endif;
 
           <!-- Main content -->
           <section class="content">
-            <div class="col-md-12">
-			  <div class="box box-danger angel">
-				<div class="box-header">
-				  <h3 class="box-title">Select Date</h3>
-				</div>
-				<div class="box-body">
+            <div class="row">
+      <div class="col-xs-12">
+              <div class="box box-danger">
+          
+              
+                <div class="box-body">
 				
 				  <!-- /.form group -->
 				  <form method="post">

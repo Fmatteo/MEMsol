@@ -220,7 +220,7 @@ endif;
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="receivables.php" class="subnav-txt" style="display:none;">
+                         <a href="receivables.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-th-list text-white"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
@@ -417,7 +417,7 @@ endif;
                                      <input type="text" class="form-control" id="tlast" name="amount" placeholder="Amount" required>  
 				                           </div>
                              </div> 
-                             <div class="form-group">
+                             <div class="form-group" style="display:none;">
                                   <label class="control-label col-lg-3" for="tlast">Rebate</label>
                                   <div class="col-lg-8">
                                      <input type="text" class="form-control" id="tlast" name="rebate" placeholder="Rebate per month">  
