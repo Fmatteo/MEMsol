@@ -12,11 +12,12 @@ include('../dist/includes/dbcon.php');
 	$date = date("Y-m-d H:i:s");
 	$id=$_SESSION['id'];
 	
-	$query=mysqli_query($con,"select prod_name from product where prod_id='$name'")or die(mysqli_error());
+	$query=mysqli_query($con,"select * from product where prod_id='$name'")or die(mysqli_error());
   
         $row=mysqli_fetch_array($query);
-		$product=$row['prod_name'];
-		$remarks="added $qty of $product";  
+		$product =$row['prod_name'];
+		$prod_qty =$row['prod_qty'];
+		$remarks ="added $qty of $product";  
 	
 		mysqli_query($con,"INSERT INTO history_log(user_id,action,date) VALUES('$id','$remarks','$date')")or die(mysqli_error($con));
 		
@@ -36,7 +37,8 @@ include('../dist/includes/dbcon.php');
 		$total_base_price = 0;
 		$total_qty = 0;
 		$average_base_price	= 0;
-			   $average_base_price_query= mysqli_query($con,"select * from stockin where prod_id='$name'")or die(mysqli_error());
+		$average_base_price_query= mysqli_query($con,"select * from stockin where prod_id='$name'")or die(mysqli_error());
+
                     while($base_price_row =mysqli_fetch_array($average_base_price_query)){
                           $qty = $base_price_row['qty'];
 						  $base_price = $base_price_row['base_price'];
@@ -44,7 +46,8 @@ include('../dist/includes/dbcon.php');
 						  $product_base_price = $base_price * $qty;
 						  $total_base_price = $total_base_price + $product_base_price;						  
                     }				
-						$average_base_price = $total_base_price /  $total_qty;		
+						$average_base_price = $total_base_price /  $total_qty;
+						$total_qty = $prod_qty + $qty;
 
 			mysqli_query($con,"UPDATE product SET prod_qty='$total_qty', base_price = '$average_base_price', prod_price = '0' where prod_id='$name' and branch_id='$branch'") or die(mysqli_error($con)); 
 			
