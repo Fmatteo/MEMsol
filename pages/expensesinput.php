@@ -280,25 +280,23 @@ endif;
                   <div class="form-group">
                     <label for="date">Expenses Name</label>
                     <div class="input-group col-md-12">
-                      <select class="form-control select2" name="prod_name" id="prod_id" required>
-                      <?php
-			 include('../dist/includes/dbcon.php');
-				$query2=mysqli_query($con,"select * from expenses order by exp_name")or die(mysqli_error());
-				  while($row=mysqli_fetch_array($query2)){
-		      ?>
-				    <option value="<?php echo $row['exp_id'];?>"><?php echo $row['exp_name'];?></option>
-		      <?php }?>
-                    </select>
+                        <input type="text" class="form-control" name="exp_name" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
 		  
                   <div class="form-group">
-                    <label for="date">Amount</label>
+                    <label for="date">Quantity</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="qty" name="qty" placeholder="Input Quantity" required>
+                      <input type="number" class="form-control pull-right" id="qty" name="qty" placeholder="Input Quantity" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                   
+                  <div class="form-group">
+                    <label for="date">Amount</label>
+                    <div class="input-group col-md-12">
+                      <input type="number" class="form-control pull-right" id="amount" name="amount" placeholder="Input Quantity" min="0.00" max="10000.00" step="0.01" required>
+                    </div><!-- /.input group -->
+                  </div><!-- /.form group -->
                   
                   <div class="form-group">
                     <div class="input-group">
@@ -323,6 +321,7 @@ endif;
                     <thead>
                       <tr>
                         <th>Expenses Name</th>
+                        <th>Qty</th>
                         <th>Amount</th>
 				        <th>Date Execute</th>
                       </tr>
@@ -330,12 +329,13 @@ endif;
                     <tbody>
 <?php
     
-    $query=mysqli_query($con,"select * from expenses order by exp_name")or die(mysqli_error());
+    $query=mysqli_query($con,"select * from expensesinput order by exp_name")or die(mysqli_error());
     while($row=mysqli_fetch_array($query)){
     
 ?>
                       <tr>
                         <td><?php echo $row['exp_name'];?></td>
+                        <td><?php echo $row['qty'];?></td>
                         <td><?php echo $row['qty'];?></td>
             						<td><?php echo $row['date'];?></td>
                       
