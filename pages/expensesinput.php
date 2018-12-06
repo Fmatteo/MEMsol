@@ -336,7 +336,7 @@ endif;
                       <tr>
                         <td><?php echo $row['exp_name'];?></td>
                         <td><?php echo $row['qty'];?></td>
-                        <td><?php echo $row['qty'];?></td>
+                        <td><?php echo $row['amount'];?></td>
             						<td><?php echo $row['date'];?></td>
                       
                       </tr>
