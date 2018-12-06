@@ -275,7 +275,7 @@ endif;
                 </div>
                 <div class="box-body">
                   <!-- Date range -->
-                  <form method="post" action="stockin_add.php" enctype="multipart/form-data">
+                  <form method="post" action="expensesinput_add.php" enctype="multipart/form-data">
   
                   <div class="form-group">
                     <label for="date">Expenses Name</label>
@@ -330,7 +330,7 @@ endif;
                     <tbody>
 <?php
     
-    $query=mysqli_query($con,"select * from expensesinput order by qty")or die(mysqli_error());
+    $query=mysqli_query($con,"select * from expenses order by exp_name")or die(mysqli_error());
     while($row=mysqli_fetch_array($query)){
     
 ?>
@@ -398,35 +398,4 @@ endif;
      <script>
       $(function () {
 	
-		
-			$(".stockoutButton").click(function(e) {
-              e.preventDefault();
-              $.ajax({
-                  type: "POST",
-                  url: "ajax.php",
-                  data: { 
-					  prod_id: $("#prod_id").val(), // < note use of 'this' here
-					  qty: $("#qty").val(), // < note use of 'this' here
-                      process: 'stockout'
-                  },
-                  success: function(result) {
-                      if(result == ""){ 
-                          alert("bad")                        
-                      }else{
-                          alert("success")
-						  location.reload();
-                      }
-                      
-                  },
-                  error: function(result) {
-                      alert('error');
-                  }
-              });
-        }); // ajax 		
-		
-		
-		
-      });
-    </script>
-  </body>
-</html>
+	
