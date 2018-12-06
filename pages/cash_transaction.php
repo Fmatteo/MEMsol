@@ -29,7 +29,7 @@ endif;
     <script src="../dist/js/jquery.min.js"></script>
     <script language="JavaScript"><!--
 javascript:window.history.forward(1);
-//--></script>
+//--></script> 
 <style>
 ::-webkit-scrollbar{
   width: 12px;

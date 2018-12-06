@@ -34,7 +34,7 @@ endif;
       .main-footer  {
       display:none !important;
       }
-      div.dataTables_length label {
+      div.dataTables_length label { 
         display: none !important;
       }
       div.dataTables_filter label{

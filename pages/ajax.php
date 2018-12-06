@@ -33,7 +33,7 @@ if($_POST['process']=='addproduct'){
 
 	
 	$query2=mysqli_query($con,"select * from product where prod_name='$name' and branch_id='$branch'")or die(mysqli_error($con));
-		$count=mysqli_num_rows($query2);
+		$count=mysqli_num_rows($query2); 
 
 		if ($count>0)
 		{
