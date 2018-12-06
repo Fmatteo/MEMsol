@@ -175,7 +175,7 @@ endif;
                           </li><!-- end notification -->
                          
              <li><!-- start notification -->
-                            <a href="expenses.php" class="subnav-txt">
+                            <a href="expensesinput.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-user text-white"></i> Expenses
                             </a>
                           </li><!-- end notification -->
