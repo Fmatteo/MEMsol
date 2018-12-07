@@ -11,7 +11,7 @@ include('../dist/includes/dbcon.php');
 	
 	mysqli_query($con,"update supplier set supplier_name='$name',supplier_address='$address',supplier_contact='$contact' where supplier_id='$id'")or die(mysqli_error());
 	
-	echo "<script type='text/javascript'>alert('Successfully updated supplier details!');</script>";
+	echo "<script type='text/javascript'>alert('Successfully updated Distributor details!');</script>";
 	echo "<script>document.location='supplier.php'</script>";  
 
 	

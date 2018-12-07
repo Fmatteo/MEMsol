@@ -183,7 +183,11 @@ endif;
                               <i class="glyphicon glyphicon-send text-white"></i> Distributor
                             </a>
                           </li><!-- end notification -->
-                         
+              <li class="nav-txt"><!-- start notification -->
+                            <a href="drawing.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-send text-white"></i> Drawing / Cashout
+                            </a>
+                          </li><!-- end notification -->
              <li><!-- start notification -->
                             <a href="expensesinput.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-user text-white"></i> Expenses
@@ -467,7 +471,7 @@ endif;
                         <th>Product Name</th>
                         <th>Amount Paid</th>
                         <th>Due Date</th>
-                        <th>Date of Payment</th>
+                        <th style="display:none;">Date of Payment</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -482,7 +486,7 @@ endif;
                         <td><?php echo $row3['prod_name'];?></td>
                         <td><?php echo $row3['payment'];?></td>
                         <td><?php echo date("M d, Y",strtotime($row3['payment_for']));?></td>
-                        <td><?php echo date("M d, Y",strtotime($row3['payment_date']));?></td>
+                        <td style="display:none;"><?php echo date("M d, Y",strtotime($row3['payment_date']));?></td>
     
                         
                       </tr>

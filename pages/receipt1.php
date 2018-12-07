@@ -118,7 +118,7 @@ $branch=$_SESSION['branch'];
                       <tr>
                         <th>Customer's Name</th>
                         <th><?php echo $last.", ".$first;?></th>
-                        <th>Term</th>
+                        <th style="display:none;">Term</th>
                         <th><?php echo $row['term'];?> </th>
                       </tr>
                       <tr>

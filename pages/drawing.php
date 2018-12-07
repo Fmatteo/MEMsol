@@ -2,13 +2,16 @@
 if(empty($_SESSION['id'])):
 header('Location:../index.php');
 endif;
+if(empty($_SESSION['branch'])):
+header('Location:../index.php');
+endif;
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Customer | <?php include('../dist/includes/title.php');?></title>
+    <title>Product | <?php include('../dist/includes/title.php');?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -20,15 +23,16 @@ endif;
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
+     <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
-::-webkit-scrollbar{
+    ::-webkit-scrollbar{
   width: 12px;
 }
 ::-webkit-scrollbar-thumb{
   background:linear-gradient(darkred,white);
+  
 }
 
  .sidebar {  
@@ -96,8 +100,21 @@ endif;
     .btn:hover {
       transition: all .2s linear;
     }
-    
-          </style>
+
+    .input-group {
+      text-align: center;
+      width: 100%;
+    }
+
+    .save-btn {
+      margin: 5px;
+    }
+
+    .stock-btn {
+      margin: 5px;
+    }
+   
+    </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <body>
@@ -248,133 +265,94 @@ endif;
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-              <li class="active">Customer</li>
+              <li class="active">Drawing / Expenses</li>
             </ol>
           </section>
 
           <!-- Main content -->
           <section class="content">
             <div class="row">
-	          
-			
-            <div class="col-xs-12">
+	      <div class="col-md-4">
+              <div class="box box-danger">
+                <div class="box-header">
+                  <h3 class="box-title">Drawing / Cashout</h3>
+                </div>
+                <div class="box-body">
+                  <!-- Date range -->
+                  <form method="post" action="drawing_add.php" enctype="multipart/form-data">
+  
+                  <div class="form-group">
+                    <label for="date">Drawing / Cashout</label>
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control" name="dra_name" required>
+                    </div><!-- /.input group -->
+                  </div><!-- /.form group -->
+		  
+                  <div class="form-group">
+                    <label for="date">Quantity</label>
+                    <div class="input-group col-md-12">
+                      <input type="number" class="form-control pull-right" id="qty" name="qty" placeholder="Input Quantity" required>
+                    </div><!-- /.input group -->
+                  </div><!-- /.form group -->
+                  
+                  <div class="form-group">
+                    <label for="date">Amount</label>
+                    <div class="input-group col-md-12">
+                      <input type="number" class="form-control pull-right" id="amount" name="amount" placeholder="Input Quantity" min="0.00" max="10000.00" step="0.01" required>
+                    </div><!-- /.input group -->
+                  </div><!-- /.form group -->
+                  
+                  <div class="form-group">
+                    <div class="input-group">
+                      <button type="submit" class="btn btn-primary save-btn" id="daterange-btn" name="">
+                        Save
+                      </button>
+                    </div>
+                  </div><!-- /.form group -->
+				</form>	
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col (right) -->
+            
+            <div class="col-xs-8">
               <div class="box box-danger">
     
                 <div class="box-header">
-                  <h3 class="box-title">Customer List</h3>
+                  <h3 class="box-title">Drawing / Cashout List</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-            						<th>Account #</th>
-            						<th style="display:none;">Picture</th>
-                        <th>Customer Last Name</th>
-                        <th>Customer First Name</th>
-                        <th>Address</th>
-            						<th>Contact #</th>
-            						<th style="display:none;">Balance</th>
-                        <th>Credit Status</th>
-            						<th>Status</th>
-                        <th>Action</th>
-						
+                        <th>Drawing / Cashout</th>
+                        <th>Qty</th>
+                        <th>Amount</th>
+				        <th>Date Execute</th>
                       </tr>
                     </thead>
                     <tbody>
 <?php
-		$branch=$_SESSION['branch'];
-		$query=mysqli_query($con,"select * from customer where branch_id='$branch'")or die(mysqli_error());
-		$i=1;
-		while($row=mysqli_fetch_array($query)){
-		$cid=$row['cust_id'];
+    
+    $query=mysqli_query($con,"select * from drawing order by dra_name")or die(mysqli_error());
+    while($row=mysqli_fetch_array($query)){
+    
 ?>
                       <tr>
-					    <td><?php echo $row['cust_id'];?></td>
-						<td style="display:none;"></td>
-                        <td><?php echo $row['cust_last'];?></td>
-                        <td><?php echo $row['cust_first'];?></td>
-                        <td><?php echo $row['cust_address'];?></td>
-						<td><?php echo $row['cust_contact'];?></td>
-						<td style="display:none;"><?php echo number_format($row['balance'],2);?></td>
-            <td><?php echo $row['credit_status'];?></td>
-						<td><?php if ($row['balance']==0) 
-								echo "<span class='label label-danger'>inactive</span>";
-								else echo "<span class='label label-info'>active</span>";
-							?></td>
-                        <td>
-				<a href="<?php if ($row['credit_status']=='Approved') echo "account_summary.php?cid=$cid";?>"><i class="glyphicon glyphicon-share-alt text-green"></i></a>
-				<a href="#updateordinance<?php echo $row['cust_id'];?>" data-target="#updateordinance<?php echo $row['cust_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
-				
-						</td>
+                        <td><?php echo $row['dra_name'];?></td>
+                        <td><?php echo $row['qty'];?></td>
+                        <td><?php echo $row['amount'];?></td>
+            						<td><?php echo $row['date'];?></td>
+                      
                       </tr>
-				<div id="updateordinance<?php echo $row['cust_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-	<div class="modal-dialog">
-	  <div class="modal-content" style="height:auto">
-              <div class="modal-header box-header" style="color:white">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Update Customer Details</h4>
-              </div>
-              <div class="modal-body">
-			  <form class="form-horizontal" method="post" action="customer_update.php" enctype='multipart/form-data'>
-                
-				<div class="form-group">
-					<label class="control-label col-lg-3" for="name">Last Name</label>
-					<div class="col-lg-9">
-						<input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['cust_id'];?>" required>  
-						<input type="text" class="form-control" id="name" name="last" value="<?php echo $row['cust_last'];?>" required>  
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-lg-3" for="name">First Name</label>
-					<div class="col-lg-9">
-						<input type="text" class="form-control" id="name" name="first" value="<?php echo $row['cust_first'];?>" required>  
-					</div>
-				</div>				
-				<div class="form-group">
-					<label class="control-label col-lg-3" for="file">Address</label>
-					<div class="col-lg-9">
-					    <textarea class="form-control" id="name" name="address" required><?php echo $row['cust_address'];?></textarea>  
-					</div>
-				</div> 
-				<div class="form-group">
-					<label class="control-label col-lg-3" for="price">Contact Number</label>
-					<div class="col-lg-9">
-					  <input type="text" class="form-control" id="price" name="contact" value="<?php echo $row['cust_contact'];?>" required>  
-					</div>
-				</div>
-        <br>
-		<div class="clearfix"></div>
-				  <div class="history" style="margin-top:50px">
-          </div>
-              </div><br><br><br><hr>
-              <div class="modal-footer">
-              <button class="btn btn-danger deleteButton" value="<?php echo $row['cust_id'];?>">Delete</button>
-              <button class="btn btn-success historyButton" value="<?php echo $row['cust_id'];?>">History</button>
-		<button type="submit" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              </div>
-			  </form>
-            </div>
-			
-        </div><!--end of modal-dialog-->
- </div>
- <!--end of modal-->   	  
-                 
-<?php $i++;}?>					  
+                   
+<?php }?>					  
                     </tbody>
                     <tfoot>
                       <tr>
-                        <th>#</th>
-						            <th style="display: none;">Picture</th>
-                        <th>Customer Last Name</th>
-                        <th>Customer First Name</th>
-                        <th>Address</th>
-              						<th>Contact #</th>
-              						<th style="display:none;">Balance</th>
-                          <th>Credit Status</th>
-              						<th>Status</th>
-                        <th>Action</th>
+                        <th>Drawing / Cashout</th>
+                        <th>Amount</th>
+                        <th>Date Execute</th>
+                        
                       </tr>					  
                     </tfoot>
                   </table>
@@ -384,7 +362,7 @@ endif;
 			
 			
           </div><!-- /.row -->
-	 
+	  
             
           </section><!-- /.content -->
         </div><!-- /.container -->
@@ -407,16 +385,7 @@ endif;
     <script src="../dist/js/demo.js"></script>
     <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-           <style>
-	table tr td{
-		border:1px solid #ddd;
-		padding:8px;
-		
-	}
-	table{
-		margin-bottom:40px;
-	}
-	</style> 
+    
     <script>
       $(function () {
         $("#example1").DataTable();
@@ -431,131 +400,6 @@ endif;
       });
     </script>
      <script>
-      /* $(function () {
-        //Initialize Select2 Elements
-        $(".select2").select2();
-
-        //Datemask dd/mm/yyyy
-        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-        //Datemask2 mm/dd/yyyy
-        $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-        //Money Euro
-        $("[data-mask]").inputmask();
-
-        //Date range picker
-        $('#reservation').daterangepicker();
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-        //Date range as a button
-        $('#daterange-btn').daterangepicker(
-            {
-              ranges: {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-              },
-              startDate: moment().subtract(29, 'days'),
-              endDate: moment()
-            },
-        function (start, end) {
-          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
-        );
-
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-          checkboxClass: 'icheckbox_minimal-blue',
-          radioClass: 'iradio_minimal-blue'
-        });
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-          checkboxClass: 'icheckbox_minimal-red',
-          radioClass: 'iradio_minimal-red'
-        });
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-          checkboxClass: 'icheckbox_flat-green',
-          radioClass: 'iradio_flat-green'
-        });
-
-        //Colorpicker
-        $(".my-colorpicker1").colorpicker();
-        //color picker with addon
-        $(".my-colorpicker2").colorpicker();
-
-        //Timepicker
-        $(".timepicker").timepicker({
-          showInputs: false
-        });
-      });
-      */
-
-      $(document).ready(function(){
-              $(".deleteButton").click(function(e) {
-              e.preventDefault();
-			var confirmation = confirm("are you sure you want to remove the item?");
-
-			if (confirmation) {
-              $.ajax({
-                  type: "POST",
-                  url: "ajax.php",
-                  data: { 
-                      cust_id: $(this).val(), // < note use of 'this' here
-                      process: 'customer'
-                  },
-                  success: function(result) {
-                      if(result == ""){ 
-                        if(alert(result)){}
-                            else    window.location.reload(); 
-                        
-                      }else{
-                        if(alert(result)){}
-                            else    window.location.reload(); 
-                      }                    
-                      
-                  },
-                  error: function(result) {
-                      alert('error');
-                  }
-              });
-			}
-        }); // ajax 
-
-              $(".glyphicon-edit").click(function(){
-                  $(".history").html("")
-              })
-
-
-              $(".historyButton").click(function(e) {
-              e.preventDefault();
-              $.ajax({
-                  type: "POST",
-                  url: "ajax.php",
-                  data: { 
-                      cust_id: $(this).val(), // < note use of 'this' here
-                      process: 'cust_history'
-                  },
-                  success: function(result) {
-                      if(result == ""){ 
-                          alert("bad")                        
-                      }else{
-                          $(".history").html(result);
-                      }
-                      
-                  },
-                  error: function(result) {
-                      alert('error');
-                  }
-              });
-        }); // ajax 
-		
-				  $(".glyphicon-edit").click(function(){
-			  $(".history").html("");
-		  })
-      })
-    </script>
-  </body>
-</html>
+      $(function () {
+	
+	

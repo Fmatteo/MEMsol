@@ -133,7 +133,7 @@ include('../dist/includes/dbcon.php');
                         <th>Contact #</th>
                         <th><?php echo $contact;?></th>
                         <th>Payable for</th>
-                        <th><?php echo $row['payable_for'];?> month/s</th>
+                        <th>__________</th>
                       </tr>
                       <tr>
                         <th>Complete Address</th>

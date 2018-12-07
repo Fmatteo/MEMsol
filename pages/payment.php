@@ -179,7 +179,11 @@ endif;
                               <i class="glyphicon glyphicon-send text-white"></i> Distributor
                             </a>
                           </li><!-- end notification -->
-                         
+              <li class="nav-txt"><!-- start notification -->
+                            <a href="drawing.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-send text-white"></i> Drawing / Cashout
+                            </a>
+                          </li><!-- end notification -->           
              <li><!-- start notification -->
                             <a href="expensesinput.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-user text-white"></i> Expenses

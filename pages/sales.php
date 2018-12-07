@@ -200,7 +200,11 @@ endif;
                               <i class="glyphicon glyphicon-send text-white"></i> Distributor
                             </a>
                           </li><!-- end notification -->
-                         
+              <li class="nav-txt"><!-- start notification -->
+                            <a href="drawing.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-send text-white"></i> Drawing / Cashout
+                            </a>
+                          </li><!-- end notification -->          
              <li><!-- start notification -->
                             <a href="expensesinput.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-user text-white"></i> Expenses
@@ -392,13 +396,9 @@ $branch=$_SESSION['branch'];
           <tr>
             <th colspan="8">Total Cash Sales</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);?></b></h4></th>
-			    </tr>	
+			    </tr>
           <tr>
-            <th colspan="8">Total Expenses</th>
-            <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);?></b></h4></th>
-          </tr>
-          <tr>
-            <th colspan="8">Total Profit less Expenses</th>
+            <th colspan="8">Total Profit</th>
 	<th style="text-align:right;"><h4><b><?php echo  number_format(($total_profit),2);}?></b></h4></th>
           </tr> 	
           <tr>
@@ -421,7 +421,6 @@ $branch=$_SESSION['branch'];
 ?>                      
                       <tr>
                         <th><?php echo $row['name'];?></th>
-                        <th></th>
                         <th></th>
                         <th></th>
                       </tr>  			  

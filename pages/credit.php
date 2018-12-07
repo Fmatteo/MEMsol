@@ -170,7 +170,11 @@ javascript:window.history.forward(1);
                               <i class="glyphicon glyphicon-send text-white"></i> Distributor
                             </a>
                           </li><!-- end notification -->
-                         
+              <li class="nav-txt"><!-- start notification -->
+                            <a href="drawing.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-send text-white"></i> Drawing / Cashout
+                            </a>
+                          </li><!-- end notification -->           
              <li><!-- start notification -->
                             <a href="expensesinput.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-user text-white"></i> Expenses
@@ -358,16 +362,16 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
 						  </div><!-- /.form group -->
 						 
              <div class="form-group">
-              <label for="date">SUBCIDY</label>
+              <label for="date">SUBSIDY</label>
                 <select class="form-control select2" name="terms" tabindex="1">
-                    
+                    <option>Non-Subsidy</option>
                     <option>Starter allotment</option>
                     <option>Grower allotment</option>
                     <option>Finisher allotment</option>
                 </select>
             
               </div><!-- /.form group -->
-              <div class="form-group"  style="display:none">>
+              <div class="form-group">
               <label for="date">Payable for</label>
                 <select class="form-control select2" name="span" tabindex="1" required>
                    

@@ -16,7 +16,7 @@ include('../dist/includes/dbcon.php');
 		{			
 			mysqli_query($con,"INSERT INTO category(cat_name) VALUES('$cat')")or die(mysqli_error($con));
 
-			echo "<script type='text/javascript'>alert('Successfully added new category!');</script>";
+			echo "<script type='text/javascript'>alert('Successfully added new Comapny Name!');</script>";
 					  echo "<script>document.location='category.php'</script>";  
 		}
 ?>

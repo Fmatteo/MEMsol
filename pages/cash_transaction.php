@@ -168,7 +168,11 @@ javascript:window.history.forward(1);
                               <i class="glyphicon glyphicon-send text-white"></i> Distributor
                             </a>
                           </li><!-- end notification -->
-                         
+              <li class="nav-txt"><!-- start notification -->
+                            <a href="drawing.php" class="subnav-txt">
+                              <i class="glyphicon glyphicon-send text-white"></i> Drawing / Cashout
+                            </a>
+                          </li><!-- end notification -->           
              <li><!-- start notification -->
                             <a href="expensesinput.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-user text-white"></i> Expenses
@@ -464,17 +468,17 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 						<?php $total_profit = $grand - $base_total;
 							
 						?>
-						  <div class="form-group" style="display: none;">
+						  <div class="form-group" style="display:none;">
 							<label for="date">Total Profit</label>
 							
 								<input type="text" class="form-control text-right" id="profit" name="profit" value="<?php echo $total_profit;?>" tabindex="6"  onFocus="" onBlur="" readonly>
 						  </div><!-- /.form group -->
 						  
 						  
-						  <div class="form-group" style="display: none">
+						  <div class="form-group" style="display:none;">
 							<label for="date">Discount</label>
 							
-								<input type="text" class="form-control text-right" id="discount" name="discount" value="0" tabindex="6" placeholder="Discount (Php)" onFocus="startCalc();" onBlur="stopCalc();" readonly>
+								<input type="text" class="form-control text-right" id="discount" name="discount" value="0" tabindex="6" placeholder="Discount (Php)" onFocus="startCalc();" onBlur="stopCalc();">
 							<input type="hidden" class="form-control text-right" id="cid" name="cid" value="<?php echo $cid;?>">
 						  </div><!-- /.form group -->
 						  <div class="form-group">
@@ -485,11 +489,11 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 						  </div><!-- /.form group -->
               
 						 
-              <div class="form-group" id="tendered" style="display:none;">
+              <div class="form-group" id="tendered">
                 <label for="date">Cash Tendered</label><br>
-                <input type="text" style="text-align:right" class="form-control" onFocus="startCalc();" onBlur="stopCalc();"  id="cash" name="tendered" placeholder="Cash Tendered">
+                <input type="text" style="text-align:right" class="form-control" onFocus="startCalc();" onBlur="stopCalc();"  id="cash" name="tendered" placeholder="Cash Tendered" required>
               </div><!-- /.form group -->
-              <div class="form-group" id="change" style="display: none;">
+              <div class="form-group" id="change">
                 <label for="date">Change</label><br>
                 <input type="text" style="text-align:right" class="form-control" id="changed" name="change" placeholder="Change">
               </div><!-- /.form group -->
