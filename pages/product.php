@@ -129,11 +129,6 @@ table tr td:nth-child(6){
     .form-control {
       margin-bottom: 15px;
     }
-    .btn.btn-success.btn-print{
-      padding-top: 10px;
-      font-size: 19px;
-    }
-
     
     </style>
  </head>
@@ -283,7 +278,7 @@ table tr td:nth-child(6){
             <h1>
               <a class="btn btn-lg btn-danger" href="home.php">Back</a>
               <a class="btn btn-lg btn-success" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-white"></i></a>
-              <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
+        
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -302,6 +297,7 @@ table tr td:nth-child(6){
                   <h3 class="box-title">Product List</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
+                   <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
@@ -366,7 +362,7 @@ table tr td:nth-child(6){
 			 
 						</td>
                       </tr>
-<div id="updateordinance<?php echo $row['prod_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="updateordinance<?php echo $row['prod_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	  <div class="modal-content" style="height:auto">
               <div class="modal-header box-header" style="color:white">
