@@ -363,6 +363,13 @@ $branch=$_SESSION['branch'];
 
 
 <?php
+$qty = 0;
+$amount = 0;
+$ex_subtotal = 0;
+$ex_total = 0;
+$dra_total = 0;
+$dra_subtotal = 0;
+
 $expenses_query=mysqli_query($con,"select * from expensesinput where date(date)>='$start' and date(date)<='$end' and branch_id='$branch'")or die(mysqli_error($con));
     while($ex_row=mysqli_fetch_array($expenses_query)){
         $qty = $ex_row['qty'];
