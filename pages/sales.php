@@ -360,7 +360,17 @@ $branch=$_SESSION['branch'];
                       </tr>
                     </thead>
                     <tbody>
+
+
 <?php
+$expenses_query=mysqli_query($con,"select * from expensesinput where date(date)>='$start' and date(date)<='$end' and branch_id='$branch'")or die(mysqli_error($con));
+    while($ex_row=mysqli_fetch_array($expenses_query)){
+        $qty = $ex_row['qty'];
+        $amount = $ex_row['amount'];
+        $ex_subtotal = $qty * $amount;
+        $ex_total = $ex_total + $ex_subtotal;
+    }
+
 	$query=mysqli_query($con,"select * from sales natural join sales_details natural join product natural join customer where date(date_added)>='$start' and date(date_added)<='$end' and branch_id='$branch' and modeofpayment='cash'")or die(mysqli_error($con));
 		$qty=0;$grand=0;$discount=0;$total_profit=0;
 								while($row=mysqli_fetch_array($query)){
@@ -385,7 +395,7 @@ $branch=$_SESSION['branch'];
 		
  <?php }?>                       
                       </tr>
-		
+
                     </tbody>
                     <tfoot>
           <tr>
@@ -401,6 +411,10 @@ $branch=$_SESSION['branch'];
             <th colspan="8">Total Profit</th>
 	<th style="text-align:right;"><h4><b><?php echo  number_format(($total_profit),2);}?></b></h4></th>
           </tr> 	
+          <tr>
+            <th colspan="8">Total Expenses</th>
+            <th style="text-align:right;"><h4><b><?php echo number_format(($ex_total),2); ?></b></h4></th>            
+          </tr>
           <tr>
                         <th></th>
                         <th></th>
