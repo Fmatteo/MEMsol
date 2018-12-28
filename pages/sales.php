@@ -370,6 +370,13 @@ $expenses_query=mysqli_query($con,"select * from expensesinput where date(date)>
         $ex_subtotal = $qty * $amount;
         $ex_total = $ex_total + $ex_subtotal;
     }
+$drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$start' and date(date)<='$end' and branch_id='$branch'")or die(mysqli_error($con));
+    while($dra_row=mysqli_fetch_array($drawing_query)){
+        $qty = $dra_row['qty'];
+        $amount = $dra_row['amount'];
+        $dra_subtotal = $qty * $amount;
+        $dra_total = $dra_total + $dra_subtotal;
+    }
 
 	$query=mysqli_query($con,"select * from sales natural join sales_details natural join product natural join customer where date(date_added)>='$start' and date(date_added)<='$end' and branch_id='$branch' and modeofpayment='cash'")or die(mysqli_error($con));
 		$qty=0;$grand=0;$discount=0;$total_profit=0;
@@ -416,6 +423,10 @@ $expenses_query=mysqli_query($con,"select * from expensesinput where date(date)>
             <th style="text-align:right;"><h4><b><?php echo number_format(($ex_total),2); ?></b></h4></th>            
           </tr>
           <tr>
+            <th colspan="8">Total Drawing / Cashout </th>
+            <th style="text-align:right;"><h4><b><?php echo number_format(($dra_total),2); ?></b></h4></th>            
+          </tr>
+          <tr>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -423,6 +434,7 @@ $expenses_query=mysqli_query($con,"select * from expensesinput where date(date)>
                       </tr> 
                       <tr>
                         <th>Prepared by:</th>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
