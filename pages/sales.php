@@ -420,11 +420,11 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
           </tr> 	
           <tr>
             <th colspan="8">Total Expenses</th>
-            <th style="text-align:right;"><h4><b><?php echo number_format(($ex_total),2); ?></b></h4></th>            
+            <th style="text-align:right;"><h4><b><?php if(isset($ex_total)) echo number_format(($ex_total),2); ?></b></h4></th>            
           </tr>
           <tr>
             <th colspan="8">Total Drawing / Cashout </th>
-            <th style="text-align:right;"><h4><b><?php echo number_format(($dra_total),2); ?></b></h4></th>            
+            <th style="text-align:right;"><h4><b><?php if(isset($dra_total)) echo number_format(($dra_total),2); ?></b></h4></th>            
           </tr>
           <tr>
                         <th></th>
