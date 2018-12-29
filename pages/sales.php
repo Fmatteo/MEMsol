@@ -434,6 +434,10 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
             <th style="text-align:right;"><h4><b><?php if(isset($dra_total)) echo number_format(($dra_total),2); ?></b></h4></th>            
           </tr>
           <tr>
+            <th colspan="8">Total Remaining Balance </th>
+            <th style="text-align:right;"><h4><b><?php if(isset($dra_total)) echo number_format(($grand-$dra_total-$ex_total),2); ?></b></h4></th>            
+          </tr>
+          <tr>
                         <th></th>
                         <th></th>
                         <th></th>

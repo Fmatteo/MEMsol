@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2018 at 09:00 AM
+-- Generation Time: Dec 29, 2018 at 04:30 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -54,6 +54,13 @@ CREATE TABLE `category` (
   `cat_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
+(15, 'Sample1');
+
 -- --------------------------------------------------------
 
 --
@@ -103,7 +110,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cust_id`, `cust_first`, `cust_last`, `cust_address`, `cust_contact`, `balance`, `cust_pic`, `bday`, `nickname`, `house_status`, `years`, `rent`, `emp_name`, `emp_no`, `emp_address`, `emp_year`, `occupation`, `salary`, `spouse`, `spouse_no`, `spouse_emp`, `spouse_details`, `spouse_income`, `comaker`, `comaker_details`, `branch_id`, `credit_status`, `ci_remarks`, `ci_name`, `ci_date`, `payslip`, `valid_id`, `cert`, `cedula`, `income`) VALUES
-(11, '', 'WALK IN', '', '', '0.00', 'default.gif', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 6, '', '', '', '0000-00-00', 0, 0, 0, 0, 0);
+(11, '', 'WALK IN', '', '', '0.00', 'default.gif', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 6, '', '', '', '0000-00-00', 0, 0, 0, 0, 0),
+(12, 'mark', 'Blando', 'bb1', '000', '0.00', 'default.gif', '0000-00-00', '', 'owned', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 6, 'Approved', '', '', '0000-00-00', 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -119,6 +127,14 @@ CREATE TABLE `drawing` (
   `date` datetime NOT NULL,
   `branch_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `drawing`
+--
+
+INSERT INTO `drawing` (`drawing_id`, `dra_name`, `qty`, `amount`, `date`, `branch_id`) VALUES
+(1, 'Gas', 1, '200.00', '2018-12-29 22:43:00', 6),
+(2, 'sss', 1, '600.00', '2018-12-29 22:43:30', 6);
 
 -- --------------------------------------------------------
 
@@ -146,6 +162,13 @@ CREATE TABLE `expensesinput` (
   `branch_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `expensesinput`
+--
+
+INSERT INTO `expensesinput` (`expensesinput_id`, `exp_name`, `qty`, `amount`, `date`, `branch_id`) VALUES
+(6, 'Allowance', 1, '200.00', '2018-12-29 23:23:40', 6);
+
 -- --------------------------------------------------------
 
 --
@@ -158,6 +181,22 @@ CREATE TABLE `history_log` (
   `action` varchar(100) NOT NULL,
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history_log`
+--
+
+INSERT INTO `history_log` (`log_id`, `user_id`, `action`, `date`) VALUES
+(215, 10, 'has logged in the system at ', '2018-12-29 22:40:22'),
+(216, 10, 'added 1 of Gas', '2018-12-29 22:43:00'),
+(217, 10, 'added 1 of sss', '2018-12-29 22:43:11'),
+(218, 10, 'added 1 of sss', '2018-12-29 22:43:30'),
+(219, 10, 'added 20 of apple', '2018-12-29 22:47:00'),
+(220, 10, 'added  of Allowance', '2018-12-29 23:10:26'),
+(221, 10, 'added 2 of Allowance', '2018-12-29 23:11:33'),
+(222, 10, 'added 10 of apple1', '2018-12-29 23:14:37'),
+(223, 10, 'added 1 of Allowance', '2018-12-29 23:23:40'),
+(224, 6, 'has logged out the system at ', '2018-12-29 23:29:28');
 
 -- --------------------------------------------------------
 
@@ -182,6 +221,13 @@ CREATE TABLE `payment` (
   `or_no` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`payment_id`, `cust_id`, `sales_id`, `payment`, `payment_date`, `user_id`, `branch_id`, `payment_for`, `due`, `interest`, `remaining`, `status`, `rebate`, `or_no`) VALUES
+(3283, 11, 141, '1000.00', '2018-12-29 23:12:46', 10, 6, '2018-12-29', '1000.00', '0.00', '0.00', 'paid', '0.00', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -202,6 +248,13 @@ CREATE TABLE `product` (
   `serial` varchar(50) NOT NULL,
   `base_price` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`prod_id`, `prod_name`, `prod_desc`, `prod_price`, `prod_pic`, `cat_id`, `prod_qty`, `branch_id`, `reorder`, `supplier_id`, `serial`, `base_price`) VALUES
+(48, 'apple1', 'wew', '0.00', '', 15, 20, 6, 10, 10, '1', '50.00');
 
 -- --------------------------------------------------------
 
@@ -238,6 +291,13 @@ CREATE TABLE `sales` (
   `total` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`sales_id`, `cust_id`, `user_id`, `cash_tendered`, `discount`, `amount_due`, `cash_change`, `date_added`, `modeofpayment`, `branch_id`, `total`) VALUES
+(141, 11, 10, '1000.00', '0.00', '1000.00', '0.00', '2018-12-29 23:12:46', 'cash', 6, '1000.00');
+
 -- --------------------------------------------------------
 
 --
@@ -251,6 +311,13 @@ CREATE TABLE `sales_details` (
   `price` decimal(10,2) NOT NULL,
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sales_details`
+--
+
+INSERT INTO `sales_details` (`sales_details_id`, `sales_id`, `prod_id`, `price`, `qty`) VALUES
+(141, 141, 48, '100.00', 10);
 
 -- --------------------------------------------------------
 
@@ -267,6 +334,14 @@ CREATE TABLE `stockin` (
   `base_price` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `stockin`
+--
+
+INSERT INTO `stockin` (`stockin_id`, `prod_id`, `qty`, `date`, `branch_id`, `base_price`) VALUES
+(60, 48, 20, '2018-12-29 22:47:00', 6, '50.00'),
+(61, 48, 10, '2018-12-29 23:14:37', 6, '50.00');
+
 -- --------------------------------------------------------
 
 --
@@ -279,6 +354,13 @@ CREATE TABLE `supplier` (
   `supplier_address` varchar(300) NOT NULL,
   `supplier_contact` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `supplier_address`, `supplier_contact`) VALUES
+(10, 'Sample3', 'Bongabong', '000');
 
 -- --------------------------------------------------------
 
@@ -458,37 +540,43 @@ ALTER TABLE `branch`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `drawing`
+--
+ALTER TABLE `drawing`
+  MODIFY `drawing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `expensesinput`
 --
 ALTER TABLE `expensesinput`
-  MODIFY `expensesinput_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `expensesinput_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `history_log`
 --
 ALTER TABLE `history_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=215;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3283;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3284;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `purchase_request`
@@ -500,31 +588,31 @@ ALTER TABLE `purchase_request`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `sales_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+  MODIFY `sales_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
 -- AUTO_INCREMENT for table `stockin`
 --
 ALTER TABLE `stockin`
-  MODIFY `stockin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `stockin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `temp_trans`
 --
 ALTER TABLE `temp_trans`
-  MODIFY `temp_trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `temp_trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `term`
