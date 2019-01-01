@@ -358,7 +358,7 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
 
 						  <div class="form-group">
 							<label for="date">Downpayment</label>
-								<input type="text" class="form-control" id="down" name="down" tabindex="6" placeholder="Downpayment" value="<?php $down=($grand+$interest)*.2;echo $down;?>" required>
+								<input type="text" class="form-control" id="down" name="down" tabindex="6" placeholder="Downpayment" required>
 						  </div><!-- /.form group -->
 						 
              <div class="form-group">
