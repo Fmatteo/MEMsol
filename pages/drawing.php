@@ -332,8 +332,14 @@ endif;
                     </thead>
                     <tbody>
 <?php
+    $branch=$_SESSION['branch'];
+      $sql="
+      SELECT * FROM drawing 
+      WHERE branch_id='$branch'
+      order by dra_name
+      ";
     
-    $query=mysqli_query($con,"select * from drawing order by dra_name")or die(mysqli_error());
+    $query=mysqli_query($con,$sql)or die(mysqli_error());
     while($row=mysqli_fetch_array($query)){
     
 ?>
