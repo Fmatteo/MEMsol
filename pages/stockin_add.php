@@ -6,6 +6,9 @@ include('../dist/includes/dbcon.php');
     $qty = $_POST['qty'];
     $price = 0;
     $base_price = $_POST['base_price'];
+ 
+    $_base_price = $_POST['base_price'];
+    $_qty = $_POST['qty'];
    
     date_default_timezone_set('Asia/Manila');
  
@@ -45,7 +48,7 @@ include('../dist/includes/dbcon.php');
                           $base_price = $base_price_row['base_price'];
                           $total_qty = $total_qty + $qty;
                           $product_base_price = $base_price * $qty;
-                          $total_base_price = $total_base_price + $product_base_price;         
+                          $total_base_price = $total_base_price + $product_base_price;        
                     }  
  
          $get_qty = mysqli_query($con, "select * from product where prod_id='$name'")or die(mysqli_error());
@@ -55,9 +58,12 @@ include('../dist/includes/dbcon.php');
              $new_price = $get_qty_row['base_price'];        
  
          }          
+ 
+        $total_qty = $prod_qty + $qty;
+ 
                 if ($new_qty > 0)
                 {    
-                    $average_base_price = ($base_price + $new_price) / 2;
+                    $average_base_price = (($_base_price * $_qty) + ($new_price * $new_qty)) / ($total_qty);
            /* echo "<script type='text/javascript'>alert('> 0 qty');</script>";
                 */
                 }
@@ -67,7 +73,6 @@ include('../dist/includes/dbcon.php');
            /* echo "<script type='text/javascript'>alert('0 qty');</script>";
                 */
                 }
-                    $total_qty = $prod_qty + $qty;
                    
  
             mysqli_query($con,"UPDATE product SET prod_qty='$total_qty', base_price = '$average_base_price', prod_price = '0' where prod_id='$name' and branch_id='$branch'") or die(mysqli_error($con));
