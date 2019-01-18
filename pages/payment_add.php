@@ -16,6 +16,11 @@ date_default_timezone_set('Asia/Manila');
 	$branch = $_SESSION['branch'];
 	$date1 = date("Y-m-d H:i:s");
 	
+
+	if ($amount <= $balance)
+	{
+
+	mysqli_query($con, "INSERT INTO payment_history(cust_id, amount, date)VALUES('$cid', '$amount', '$date')")or die(mysqli_error());
 	mysqli_query($con,"UPDATE customer SET balance='$rem' where cust_id='$cid'") or die(mysqli_error($con)); 
 
 	$query3=mysqli_query($con,"select * from payment natural join customer where cust_id='$cid' and remaining<>'0' order by payment_for")or die(mysqli_error($con));
@@ -44,6 +49,7 @@ date_default_timezone_set('Asia/Manila');
     					}
 
     				mysqli_query($con,"UPDATE payment SET payment='$total',user_id='$id',payment_date='$date1',status='paid',remaining='0',rebate='$rebate' where sales_id='$sid'") or die(mysqli_error($con));
+    				mysqli_query($con,"UPDATE sales SET status='' WHERE sales_id = '$sid'")or die(mysqli_error());
 
 					
     			}
@@ -84,7 +90,12 @@ date_default_timezone_set('Asia/Manila');
 
 	
 	
-		
+		}
+		else
+		{
+			echo "<script>alert('Please enter amount no more than ".$balance."');</script>";
+		echo "<script>document.location='payment.php?cid=$cid&sid=$sid&balance=$balance'</script>"; 
+		}
    
 	
 ?>

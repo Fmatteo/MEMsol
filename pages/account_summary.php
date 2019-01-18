@@ -301,24 +301,24 @@ endif;
           <!-- Main content -->
           <section class="content">
             <div class="row">
-	      <div class="col-md-3">
+        <div class="col-md-3">
               <div class="box box-danger">
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="" enctype="multipart/form-data">
-		  <?php
-		    
-		      $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
-			       $row=mysqli_fetch_array($query);
-		  ?>	
-		    
+      <?php
+        
+          $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
+             $row=mysqli_fetch_array($query);
+      ?>  
+        
                   <div class="form-group">
                     <label for="date">Customer Name</label>
                     <div class="input-group col-md-12">
                       <h3><?php echo $row['cust_last'].", ".$row['cust_first'];?></h3>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
-		  
+      
                   <div class="form-group">
                     <label for="date">Address</label>
                     <div class="input-group col-md-12">
@@ -336,11 +336,11 @@ endif;
                     <div class="input-group col-md-12">
                       <h3><?php echo number_format($total,2);?></h3>
                     </div><!-- /.input group -->
-                  </div><!-- /.form group -->				  
+                  </div><!-- /.form group -->         
                   <a href="<?php echo "transaction.php?cid=$cid";?>" class="btn btn-block btn-success">
                   <i class="glyphicon glyphicon-shopping-cart text-white" style="margin-right:5px;"></i>Add New Order</a>
                 
-				</form>	
+        </form> 
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
@@ -467,26 +467,20 @@ endif;
                     <table id="" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>Product Code</th>
-                        <th>Product Name</th>
                         <th>Amount Paid</th>
-                        <th>Due Date</th>
-                        <th style="display:none;">Date of Payment</th>
+                        <th>Date Paid</th>
                       </tr>
                     </thead>
                     <tbody>
 <?php
     $cid=$_REQUEST['cid'];
-    $query3=mysqli_query($con,"select * from payment natural join sales_details natural join product where cust_id='$cid' order by payment_date desc")or die(mysqli_error());
+    $query3=mysqli_query($con,"select * from payment_history where cust_id='$cid' order by date desc")or die(mysqli_error());
     while($row3=mysqli_fetch_array($query3)){
     
 ?>
                       <tr>
-                        <td><?php echo $row3['serial'];?></td>
-                        <td><?php echo $row3['prod_name'];?></td>
-                        <td><?php echo $row3['payment'];?></td>
-                        <td><?php echo date("M d, Y",strtotime($row3['payment_for']));?></td>
-                        <td style="display:none;"><?php echo date("M d, Y",strtotime($row3['payment_date']));?></td>
+                        <td><?php echo $row3['amount'];?></td>
+                        <td><?php echo date("M d, Y",strtotime($row3['date']));?></td>
     
                         
                       </tr>
@@ -500,7 +494,7 @@ endif;
               </div><!-- /.nav-tabs-custom -->
             </div>
           </div><!-- /.row -->
-	  
+    
             
           </section><!-- /.content -->
         </div><!-- /.container -->
@@ -513,14 +507,14 @@ endif;
       $row1=mysqli_fetch_array($query4);    
 ?>    
 <div id="teacherreg" class="modal fade in primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-		<div class="modal-dialog">
-		  <div class="modal-content">
+    <div class="modal-dialog">
+      <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="modal-title"><i class="glyphicon glyphicon-plus" style="font-size:30px;"></i>Add Payment</h4>
                       </div>
                       <div class="modal-body">
-			  <form class="form-horizontal" method="post" action="payment_add.php" enctype='multipart/form-data'>
+        <form class="form-horizontal" method="post" action="payment_add.php" enctype='multipart/form-data'>
                              <input type="hidden" class="form-control" id="tlast" name="cid" value="<?php echo $cid;?>">  
                              <input type="hidden" class="form-control" id="tlast" name="term" value="<?php echo $row1['term'];?>">   
                              <div class="form-group">
@@ -538,17 +532,17 @@ endif;
              </div> 
                             
                              <div class="form-group">
-				  <label class="control-label col-lg-3" for="tlast">Amount</label>
-				  <div class="col-lg-8">
+          <label class="control-label col-lg-3" for="tlast">Amount</label>
+          <div class="col-lg-8">
             <input type="hidden" class="form-control" id="tlast" name="balance" value="<?php echo $total;?>">  
                                      <input type="text" class="form-control" id="tlast" name="amount" placeholder="Amount" required>  
-				  </div>
+          </div>
                              </div> 
                             
                       </div>       
                       <!--end of modal body-->
                       <div class="modal-footer">
-			<button type="submit" name="save" class="btn btn-primary">Save</button>
+      <button type="submit" name="save" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
                       </div>
                </div>

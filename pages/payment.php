@@ -279,24 +279,24 @@ endif;
           <!-- Main content -->
           <section class="content">
             <div class="row">
-	      <div class="col-md-4">
+        <div class="col-md-4">
               <div class="box box-danger">
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="" enctype="multipart/form-data">
-		  <?php
+      <?php
         
-		      $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
-			       $row=mysqli_fetch_array($query);
-		  ?>	
-		    
+          $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
+             $row=mysqli_fetch_array($query);
+      ?>  
+        
                   <div class="form-group">
                     <label for="date">Customer Name</label>
                     <div class="input-group col-md-12">
                       <h3><?php echo $row['cust_last'].", ".$row['cust_first'];?></h3>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
-		  
+      
                   <div class="form-group">
                     <label for="date">Address</label>
                     <div class="input-group col-md-12">
@@ -317,7 +317,7 @@ endif;
                   </div><!-- /.form group -->
                  
                  <a href="#" data-target="#teacherreg" data-toggle="modal" class="btn btn-block btn-success"><i class="glyphicon glyphicon-plus-sign text-white" style="margin-right:5px;"></i>Add Payment</a>
-				</form>	
+        </form> 
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
@@ -390,7 +390,7 @@ endif;
               </div><!-- /.nav-tabs-custom -->
             </div>
           </div><!-- /.row -->
-	  
+    
             
           </section><!-- /.content -->
         </div><!-- /.container -->
@@ -403,23 +403,23 @@ endif;
       $row1=mysqli_fetch_array($query4);    
 ?>    
 <div id="teacherreg" class="modal fade in primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-		<div class="modal-dialog">
-		  <div class="modal-content">
+    <div class="modal-dialog">
+      <div class="modal-content">
                       <div class="modal-header box-header" style="color:white;">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="modal-title">Add Payment</h4>
                       </div>
                       <div class="modal-body">
-			  <form class="form-horizontal" method="post" action="payment_add.php" enctype='multipart/form-data'>
+        <form class="form-horizontal" method="post" action="payment_add.php" enctype='multipart/form-data'>
                              <input type="hidden" class="form-control" id="tlast" name="cid" value="<?php echo $cid;?>">  
                                <input type="hidden" class="form-control" id="tlast" name="sid" value="<?php echo $sid;?>">  
                             
                              <div class="form-group">
-                        				  <label class="control-label col-lg-3" for="tlast">Amount</label>
-                        				  <div class="col-lg-8">
+                                  <label class="control-label col-lg-3" for="tlast">Amount</label>
+                                  <div class="col-lg-8">
                                     <input type="hidden" class="form-control" id="tlast" name="balance" value="<?php echo $remainder;?>">  
                                      <input type="text" class="form-control" id="tlast" name="amount" placeholder="Amount" required>  
-				                           </div>
+                                   </div>
                              </div> 
                              <div class="form-group" style="display:none;">
                                   <label class="control-label col-lg-3" for="tlast">Rebate</label>
@@ -431,7 +431,7 @@ endif;
                       </div>       
                       <!--end of modal body-->
                       <div class="modal-footer">
-			<button type="submit" name="save" class="btn btn-primary">Save</button>
+      <button type="submit" name="save" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
                       </div>
                </div>

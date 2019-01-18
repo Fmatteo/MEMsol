@@ -51,27 +51,27 @@ endif;
       h5,h6{
         text-align:center;
       }
-       
- 
+    
+
       @media print {
           .btn-print {
             display:none !important;
           }
-          .main-footer  {
-            display:none !important;
-          }
+      .main-footer  {
+      display:none !important;
+      }
       .box.box-danger{
         display: none !important;
       }
     }
-         
+      
       ::-webkit-scrollbar{
   width: 12px;
 }
 ::-webkit-scrollbar-thumb{
   background:linear-gradient(darkred,white);
 }
- 
+
     .sidebar {  
     width: 250;
     height:100%;
@@ -80,64 +80,64 @@ endif;
     top: 0px;
     transition: left 0.3s linear;
     }
- 
+
     .sidebar.visible {
     left:0px;
     transition: left 0.3s linear;
     }
- 
+
     .nav-txt {
       color: white;
     }
- 
+
     .subnav-txt:hover {
       color: #ff0000;
     }
- 
+
     .nav-txt:hover {
       background-color: #7d0000;
       color: white;
       transition: all .2s;
     }
- 
+
     .main-sidebar {
       background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
       position: fixed;
       z-index: 5;
     }
- 
+
     .main-sidebar * a {
       color: white;
     }
- 
+
     .treeview-menu {
       background-color: #7d0000;
     }
- 
+
     .reorder-count {
       font-size: 10px !important;
     }
- 
+
     .box-header {
       background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
     }
- 
+
     .menu {
       list-style-type: none;
       margin: 0;
       padding: 10px 15px;
     }
- 
+
     .box-title {
       color: white;
       text-align: center;
       display: block !important;
     }
- 
+
     body{
       background-color: white;
     }
- 
+
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -158,22 +158,22 @@ endif;
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-refresh text-white"></i> Reorder
                       <span class="label label-success">
-                      <?php
+                      <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
                       $row=mysqli_fetch_array($query);
                       echo $row['count'];
                       ?>  
                       </span>
                     </a>  
-             
+              
             <li class="treeview">
               <a href="#" class="dropdown-toggle nav-txt" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-wrench text-white"></i> Maintenance
-                     
+                      
                     </a>
               <ul class="treeview-menu">
        <li>
-                       
+                        
               <li><!-- start notification -->
                             <a href="category.php" class="subnav-txt">
                               <i class="glyphicon glyphicon-user text-white"></i> Company Name
@@ -210,16 +210,16 @@ endif;
                               <i class="glyphicon glyphicon-user text-white"></i> Expenses
                             </a>
                           </li><!-- end notification -->
- 
+
                         </ul>
                       </li>
                      
-                   
+                    
                   </li>
     <li class="treeview">
       <a href="stockin.php" class="dropdown-toggle nav-txt">
                       <i class="glyphicon glyphicon-list text-white"></i> Stock in/out
-                     
+                      
                     </a>
                     <ul class="dropdown-menu">
                       <li>
@@ -261,91 +261,91 @@ endif;
                           </li><!-- end notification -->
                         </ul>
                       </li>
-                   
+                    
     <li class="treeview">
       <a href="profile.php" class="dropdown-toggle nav-txt">
                       <i class="glyphicon glyphicon-cog text-white"></i>
                       <?php echo $_SESSION['name'];?>
                     </a>
                   </li>
- 
+
     <li class="treeview">
        <a href="logout.php" class="dropdown-toggle nav-txt">
-                      <i class="glyphicon glyphicon-off text-white"></i> Logout
-                     
+                      <i class="glyphicon glyphicon-off text-white"></i> Logout 
+                      
                     </a>
-                  </li>      
+                  </li>       
           </ul>
         </section>
         <!-- /.sidebar -->
       </aside>
            
-   
+    
           <!-- Content Header (Page header) -->
-         
- 
+          
+
           <!-- Main content -->
           <section class="content">
             <div class="row">
       <div class="col-xs-12">
               <div class="box box-danger">
-         
-             
+          
+              
                 <div class="box-body">
-               
-                  <!-- /.form group -->
-                  <form method="post">
-                    <div class="form-group col-md-6">
-                        <label>Date range:</label>
- 
-                        <div class="input-group">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                        <input type="text" name="date" class="form-control pull-right active" id="reservation" required>
-                    </div>
+        
+          <!-- /.form group -->
+          <form method="post">
+          <div class="form-group col-md-6">
+            <label>Date range:</label>
+
+            <div class="input-group">
+              <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+              </div>
+            <input type="text" name="date" class="form-control pull-right active" id="reservation" required>
+          </div>
                 <!-- /.input group -->
-                    </div>
+          </div>
               <!-- /.form group --><br>
-                    <button type="submit" class="btn btn-primary" name="display">Display</button>
-                </form>
-               
+          <button type="submit" class="btn btn-primary" name="display">Display</button>
+        </form>
+        
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->      
+          <!-- /.box -->       
         </div>
-        <?php
-        if (isset($_POST['display']))
-    {
-        $date=$_POST['date'];
-        $date=explode('-',$date);
-        $branch=$_SESSION['branch'];       
-            $start=date("Y/m/d",strtotime($date[0]));
-            $end=date("Y/m/d",strtotime($date[1]));
-       
-        ?>
-        <div class="col-md-12">
-        <?php
+    <?php
+    if (isset($_POST['display']))
+  {
+    $date=$_POST['date'];
+    $date=explode('-',$date);
+    $branch=$_SESSION['branch'];    
+      $start=date("Y/m/d",strtotime($date[0]));
+      $end=date("Y/m/d",strtotime($date[1]));
+    
+    ?>
+    <div class="col-md-12">
+    <?php
 include('../dist/includes/dbcon.php');
- 
+
 $branch=$_SESSION['branch'];
     $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die(mysqli_error());
- 
+  
         $row=mysqli_fetch_array($query);
-       
+        
 ?>      
                   <h5><b><?php echo $row['branch_name'];?></b> </h5>  
                   <h6>Address: <?php echo $row['branch_address'];?></h6>
                   <h6>Contact #: <?php echo $row['branch_contact'];?></h6>
-                 
-                  <h5><b>Cash Sales Report as of <?php echo date("M d, Y",strtotime($start))." to ".date("M d, Y",strtotime($end));?></b></h5>
-                 
-                  <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print" ></i> Print</a>
-                            <a class = "btn btn-danger btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>  
-                       
-       
-            <table id="example1" class="table table-bordered table-striped" style="text-align:center;">
+                  
+          <h5><b>Cash Sales Report as of <?php echo date("M d, Y",strtotime($start))." to ".date("M d, Y",strtotime($end));?></b></h5>
+                  
+          <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print" ></i> Print</a>
+              <a class = "btn btn-danger btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
+            
+    
+      <table id="example1" class="table table-bordered table-striped" style="text-align:center;">
                     <thead>
                       <tr>
                         <th>Transaction #</th>
@@ -353,15 +353,15 @@ $branch=$_SESSION['branch'];
                         <th>Product</th>
                         <th>Product Code</th>
                         <th>Qty</th>
-                                  <th>Selling Price</th>
+                        <th>Selling Price</th>
                         <th>Total Sales</th>
                         <th>Profit</th>
                         <th>Date Paid</th>
                       </tr>
                     </thead>
                     <tbody>
- 
- 
+
+
 <?php
 $qty = 0;
 $amount = 0;
@@ -369,7 +369,7 @@ $ex_subtotal = 0;
 $ex_total = 0;
 $dra_total = 0;
 $dra_subtotal = 0;
- 
+
 $expenses_query=mysqli_query($con,"select * from expensesinput where date(date)>='$start' and date(date)<='$end' and branch_id='$branch'")or die(mysqli_error($con));
     while($ex_row=mysqli_fetch_array($expenses_query)){
         $qty = $ex_row['qty'];
@@ -384,16 +384,15 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
         $dra_subtotal = $qty * $amount;
         $dra_total = $dra_total + $dra_subtotal;
     }
- 
-    $query=mysqli_query($con,"select * from sales natural join sales_details natural join product natural join customer where date(date_added)>='$start' and date(date_added)<='$end' and branch_id='$branch' and modeofpayment='cash'")or die(mysqli_error($con));
-        $qty=0;$grand=0;$discount=0;$total_profit=0;
-                                while($row=mysqli_fetch_array($query)){
+
+  $query=mysqli_query($con,"select * from sales natural join sales_details natural join product natural join customer where date(date_added)>='$start' and date(date_added)<='$end' and branch_id='$branch' and status=''")or die(mysqli_error($con));
+    $qty=0;$grand=0;$discount=0;$total_profit=0;
+                while($row=mysqli_fetch_array($query)){
                 $total=$row['qty']*$row['price'];
-                                $grand=$grand+$total-$row['discount'];
-               
-        $profit = $row['profit'];
-        $total_profit += $profit;
-               
+                $grand=$grand+$total-$row['discount'];
+        $profit = ($row['price'] * $row['qty']) - ($row['base_price'] * $row['qty']);
+        $total_profit = $total_profit + $profit;
+        
 ?>
             <tr>
             <td><?php echo $row['sales_id'];;?></td>
@@ -401,31 +400,31 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
             <td><?php echo $row['prod_name'];?></td>
             <td><?php echo $row['serial'];?></td>
             <td><?php echo $row['qty'];?></td>
-            <td><?php echo $row['price'];?></td>
+      <td><?php echo $row['price'];?></td>
             <td><?php echo number_format($total,2);
-                                ?></td>
+                ?></td>
             <td><?php echo $profit;?></td>
             <td><?php echo date("M d, Y h:i a",strtotime($row['date_added']));?></td>    
-           
-       
- <?php }?>                      
+      
+    
+ <?php }?>                       
                       </tr>
- 
+
                     </tbody>
                     <tfoot>
           <tr>
             <th colspan="8">Total</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format($grand,2);?></b></h4></th>
           </tr>                
-         
+          
           <tr>
             <th colspan="8">Total Cash Sales</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);?></b></h4></th>
-                </tr>
+          </tr>
           <tr>
             <th colspan="8">Total Profit</th>
-    <th style="text-align:right;"><h4><b><?php echo  number_format(($total_profit),2);}?></b></h4></th>
-          </tr>    
+  <th style="text-align:right;"><h4><b><?php echo  number_format(($total_profit),2);}?></b></h4></th>
+          </tr>   
           <tr>
             <th colspan="8">Total Expenses</th>
             <th style="text-align:right;"><h4><b><?php if(isset($ex_total)) echo number_format(($ex_total),2); ?></b></h4></th>            
@@ -443,14 +442,14 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
                         <th></th>
                         <th></th>
                         <th></th>
-                      </tr>
+                      </tr> 
                       <tr>
                         <th>Prepared by:</th>
                         <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
-                      </tr>
+                      </tr> 
 <?php
     $id=$_SESSION['id'];
     $query=mysqli_query($con,"select * from user where user_id='$id'")or die(mysqli_error($con));
@@ -461,57 +460,57 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
                         <th><?php echo $row['name'];?></th>
                         <th></th>
                         <th></th>
-                      </tr>              
+                      </tr>         
         </tfoot>
        </table>
-        </div>
-           
+    </div>
+            
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
       <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
- 
+
     <script src="../plugins/jQuery/jQuery-2.2.0.min.js"></script>
-    <!-- Bootstrap 3.3.6 -->
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <!-- Select2 -->
-    <script src="../plugins/select2/select2.full.min.js"></script>
-    <!-- InputMask -->
-    <script src="../plugins/input-mask/jquery.inputmask.js"></script>
-    <script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-    <!-- date-range-picker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-    <script src="../plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- bootstrap datepicker -->
-    <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-    <!-- bootstrap color picker -->
-    <script src="../plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-    <!-- bootstrap time picker -->
-    <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
-    <!-- SlimScroll 1.3.0 -->
-    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- iCheck 1.0.1 -->
-    <script src="../plugins/iCheck/icheck.min.js"></script>
-    <!-- FastClick -->
-    <script src="../plugins/fastclick/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
+  <!-- Bootstrap 3.3.6 -->
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <!-- Select2 -->
+  <script src="../plugins/select2/select2.full.min.js"></script>
+  <!-- InputMask -->
+  <script src="../plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+  <script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+  <!-- date-range-picker -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+  <script src="../plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- bootstrap datepicker -->
+  <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+  <!-- bootstrap color picker -->
+  <script src="../plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+  <!-- bootstrap time picker -->
+  <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+  <!-- SlimScroll 1.3.0 -->
+  <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <!-- iCheck 1.0.1 -->
+  <script src="../plugins/iCheck/icheck.min.js"></script>
+  <!-- FastClick -->
+  <script src="../plugins/fastclick/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../dist/js/app.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../dist/js/demo.js"></script>
     <script>
   $(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
- 
+
     //Datemask dd/mm/yyyy
     $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
     //Datemask2 mm/dd/yyyy
     $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
     //Money Euro
     $("[data-mask]").inputmask();
- 
+
     //Date range picker
     $('#reservation').daterangepicker();
     //Date range picker with time picker
@@ -534,12 +533,12 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
           $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         }
     );
- 
+
     //Date picker
     $('#datepicker').datepicker({
       autoclose: true
     });
- 
+
     //iCheck for checkbox and radio inputs
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
       checkboxClass: 'icheckbox_minimal-blue',
@@ -555,34 +554,34 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
       checkboxClass: 'icheckbox_flat-green',
       radioClass: 'iradio_flat-green'
     });
- 
+
     //Colorpicker
     $(".my-colorpicker1").colorpicker();
     //color picker with addon
     $(".my-colorpicker2").colorpicker();
- 
+
     //Timepicker
     $(".timepicker").timepicker({
       showInputs: false
     });
   });
 </script>
- 
+
 <script language="javascript">
- 
- 
+  
+
 var password;
 var pass="1234";
 password=prompt('Enter Password to View Webpage','');
- 
+
 if(password==pass)
 alert('Correct Password, Click OK to Enter Website.');
 else
 {
   window.location="http://localhost/MEMsol/pages/home.php"
 }
- 
+
 </script>
- 
+
   </body>
 </html>

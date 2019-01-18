@@ -264,7 +264,7 @@ javascript:window.history.forward(1);
           <!-- Main content -->
           <section class="content">
             <div class="row">
-	      <div class="col-md-9">
+        <div class="col-md-9">
               <div class="box box-danger">
                 <div class="box-header">
                   <h3 class="box-title">Sales Transaction</h3>
@@ -272,56 +272,56 @@ javascript:window.history.forward(1);
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="credit_transaction_add.php">
-				  <div class="row" style="min-height:400px">
-					
-					 <div class="col-md-6">
-					 
-						  <div class="form-group">
-							<label for="date">Product Name</label>
-							 
-								<select class="form-control select2" name="prod_name" tabindex="1" autofocus required>
-								<?php
+          <div class="row" style="min-height:400px">
+          
+           <div class="col-md-6">
+           
+              <div class="form-group">
+              <label for="date">Product Name</label>
+               
+                <select class="form-control select2" name="prod_name" tabindex="1" autofocus required>
+                <?php
                   $branch=$_SESSION['branch'];
                   $cid=$_REQUEST['cid'];
-								  include('../dist/includes/dbcon.php');
-									 $query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
-									    while($row=mysqli_fetch_array($query2)){
-											
-								?>
-										<option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name']." Available(".$row['prod_qty'].")";?></option>
-								  <?php }?>
-								</select>
-						    <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
-						  </div><!-- /.form group -->
-					</div>
-					<div class=" col-md-2">
-						<div class="form-group">
-							<label for="date">Quantity</label>
-							<div class="input-group">
-							  <input type="number" class="form-control pull-right" id="date" name="qty" placeholder="Quantity" tabindex="2" value="1"  required>
-							</div><!-- /.input group -->
-						</div><!-- /.form group -->
-					 </div>
+                  include('../dist/includes/dbcon.php');
+                   $query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
+                      while($row=mysqli_fetch_array($query2)){
+                      
+                ?>
+                    <option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name']." Available(".$row['prod_qty'].")";?></option>
+                  <?php }?>
+                </select>
+                <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
+              </div><!-- /.form group -->
+          </div>
+          <div class=" col-md-2">
+            <div class="form-group">
+              <label for="date">Quantity</label>
+              <div class="input-group">
+                <input type="number" class="form-control pull-right" id="date" name="qty" placeholder="Quantity" tabindex="2" value="1"  required>
+              </div><!-- /.input group -->
+            </div><!-- /.form group -->
+           </div>
            <div class=" col-md-2">
             <div class="form-group">
               <label for="date">Selling Price</label>
               <div class="input-group">
-                <input type="decimal" class="form-control pull-right" id="price" name="price" placeholder="Selling Price" required>
+                <input type="number" class="form-control pull-right" id="price" name="price" placeholder="Selling Price" required>
               </div><!-- /.input group -->
             </div><!-- /.form group -->
            </div>
-					<div class="col-md-2">
-						<div class="form-group">
-							<label for="date"></label>
-							<div class="input-group">
-								<button class="btn btn-lg btn-success" type="submit" tabindex="3" name="addtocart">+</button>
-							</div>
-						</div>	
-					</form>	
-					</div>
-					
-					
-					<div class="col-md-12">
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="date"></label>
+              <div class="input-group">
+                <button class="btn btn-lg btn-success" type="submit" tabindex="3" name="addtocart">+</button>
+              </div>
+            </div>  
+          </form> 
+          </div>
+          
+          
+          <div class="col-md-12">
 <?php 
 $base_total = 0;
 $total_profit = 0;
@@ -435,11 +435,11 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                   </table>
                 </div><!-- /.box-body -->
 
-				</div>	
+        </div>  
                
                   
                   
-				</form>	
+        </form> 
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
@@ -450,48 +450,48 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                 <div class="box-body">
                   <!-- Date range -->
           <form method="post" name="autoSumForm" action="credit_add.php">
-				  <div class="row">
-					 <div class="col-md-12">
-						  
-						  <div class="form-group">
-							<label for="date">Total</label>
-							  <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>    
-								<input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total" 
-								value="<?php echo number_format($grand,2);?>" tabindex="5" readonly>
-							
-						  </div><!-- /.form group -->
-						 
-						  
+          <div class="row">
+           <div class="col-md-12">
               
-					</div>
-					
-					
+              <div class="form-group">
+              <label for="date">Total</label>
+                <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>    
+                <input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total" 
+                value="<?php echo number_format($grand,2);?>" tabindex="5" readonly>
+              
+              </div><!-- /.form group -->
+             
+              
+              
+          </div>
+          
+          
 
-				</div>	
+        </div>  
                
                   
                     <button class="btn btn-lg btn-block btn-primary" id="daterange-btn" name="credit" type="submit"  tabindex="7">
                         Complete Credit
                       </button>
-					  <button class="btn btn-lg btn-block btn-danger" id="daterange-btn" type="reset"  tabindex="8">
+            <button class="btn btn-lg btn-block btn-danger" id="daterange-btn" type="reset"  tabindex="8">
                         <a href="cancel.php" style="color:white;">Cancel Sale</a>
                       </button>
               
-				</form>	
+        </form> 
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
-			
-			
+      
+      
           </div><!-- /.row -->
-	  
+    
             
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
       <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
-	<script>
+  <script>
   
     $("#credit").click(function(){
         $("#tendered").hide('slow');
@@ -511,28 +511,28 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
       var dataString = 'id=' + id;
       if(confirm("Sure you want to delete this item?"))
       {
-	$.ajax({
-	type: "GET",
-	url: "temp_trans_del.php",
-	data: dataString,
-	success: function(){
-		
-	      }
-	  });
-	  
-	  $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
-	  .animate({ opacity: "hide" }, "slow");
+  $.ajax({
+  type: "GET",
+  url: "temp_trans_del.php",
+  data: dataString,
+  success: function(){
+    
+        }
+    });
+    
+    $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
+    .animate({ opacity: "hide" }, "slow");
       }
       return false;
       });
 
       });
     </script>
-	
-	<script type="text/javascript" src="autosum.js"></script>
+  
+  <script type="text/javascript" src="autosum.js"></script>
     <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<script src="../dist/js/jquery.min.js"></script>
+  <script src="../dist/js/jquery.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/select2/select2.full.min.js"></script>
