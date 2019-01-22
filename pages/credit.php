@@ -333,7 +333,7 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
 
     $row=mysqli_fetch_array($query);
         $down=$row['down'];
-        $terms=$row['payment_mode'];
+       
         $span=$row['term'];
         $due=$row['due'];
         $date=$row['payment_start'];

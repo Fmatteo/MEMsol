@@ -390,7 +390,7 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
                 while($row=mysqli_fetch_array($query)){
                 $total=$row['qty']*$row['price'];
                 $grand=$grand+$total-$row['discount'];
-        $profit = ($row['price'] * $row['qty']) - ($row['base_price'] * $row['qty']);
+        $profit = $row['profit'];
         $total_profit = $total_profit + $profit;
         
 ?>

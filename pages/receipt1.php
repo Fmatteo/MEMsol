@@ -88,8 +88,8 @@ $branch=$_SESSION['branch'];
       
         $row1=mysqli_fetch_array($query1);
 
-        $query2 =mysqli_query($con, "SELECT MAX(sales_id) as or_no FROM sales")or die(mysqli_error());
-        $row2=mysqli_fetch_array($query2);
+        $sql = mysqli_query($con, "SELECT MAX(sales_id) as sales_id FROM sales")or die(mysqli_error());
+        $row2 = mysqli_fetch_array($sql);
       
 ?>          
            <table class="table">
@@ -101,13 +101,13 @@ $branch=$_SESSION['branch'];
                       <tr>
                         <th colspan="3"><h6><?php echo $rowb['branch_address'];?></h6></th>
                         <th><span style="font-size: 16px;color: red"><?php 
-              if ((intval($row2['or_no']) >= 0) && (intval($row2['or_no']) < 9)) {
+              if ((intval($row2['sales_id']) >= 0) && (intval($row2['sales_id']) < 9)) {
                           ?>              
-                          No. 000<?php echo $row2['or_no'];?></span></th>  
-                          <?php } elseif((intval($row1['or_no']) >= 10) && (intval($row2['or_no']) < 99)){ ?>
-                          No. 00<?php echo $row2['or_no'];?></span></th>
-              <?php } elseif((intval($row2['or_no']) >= 100) && (intval($row2['or_no']) < 999)){ ?>
-                          No. 0<?php echo $row2['or_no'];?></span></th>
+                          No. 000<?php echo $row2['sales_id'];?></span></th>  
+                          <?php } elseif((intval($row2['sales_id']) >= 10) && (intval($row2['sales_id']) < 99)){ ?>
+                          No. 00<?php echo $row2['sales_id'];?></span></th>
+              <?php } elseif((intval($row2['sales_id']) >= 100) && (intval($row2['sales_id']) < 999)){ ?>
+                          No. 0<?php echo $row2['sales_id'];?></span></th>
                           <?php }?></span></th>
                       </tr>
                       <tr>

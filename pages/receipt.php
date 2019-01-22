@@ -57,7 +57,7 @@ date_default_timezone_set('Asia/Manila');
 
           <section class="content">
             <div class="row">
-	      <div class="col-md-12">
+        <div class="col-md-12">
               <div class="col-md-12">
 
               </div>
@@ -74,7 +74,7 @@ $branch=$_SESSION['branch'];
   
         $rowb=mysqli_fetch_array($queryb);
         
-?>			
+?>      
                  
 <?php
 
@@ -99,9 +99,12 @@ $branch=$_SESSION['branch'];
       
         $row1=mysqli_fetch_array($query1);
 
+        $sql = mysqli_query($con, "SELECT MAX(sales_id) as sales_id FROM sales")or die(mysqli_error());
+        $row2 = mysqli_fetch_array($sql);
+
 ?>    
          
-					
+          
                    <table class="table">
                     <thead>
                       <tr>
@@ -112,13 +115,13 @@ $branch=$_SESSION['branch'];
                         <th colspan="3"><h6><?php echo $rowb['branch_address'];?></h6></th>
                         <th><span style="font-size: 16px;color: red">
                           <?php 
-						  if ((intval($row1['or_no']) >= 0) && (intval($row1['or_no']) < 9)) {
-                          ?>						  
-                          No. 000<?php echo $row1['or_no'];?></span></th>  
-                          <?php } elseif((intval($row1['or_no']) >= 10) && (intval($row1['or_no']) < 99)){ ?>
-                          No. 00<?php echo $row1['or_no'];?></span></th>
-						  <?php } elseif((intval($row1['or_no']) >= 100) && (intval($row1['or_no']) < 999)){ ?>
-                          No. 0<?php echo $row1['or_no'];?></span></th>
+              if ((intval($row2['sales_id']) >= 0) && (intval($row2['sales_id']) < 9)) {
+                          ?>              
+                          No. 000<?php echo $row2['sales_id'];?></span></th>  
+                          <?php } elseif((intval($row2['sales_id']) >= 10) && (intval($row2['sales_id']) < 99)){ ?>
+                          No. 00<?php echo $row2['sales_id'];?></span></th>
+              <?php } elseif((intval($row2['sales_id']) >= 100) && (intval($row2['sales_id']) < 999)){ ?>
+                          No. 0<?php echo $row2['sales_id'];?></span></th>
                           <?php }?>
                       </tr>
                       <tr>
@@ -157,31 +160,31 @@ $branch=$_SESSION['branch'];
                         <th>QTY</th>
                         <th>UNIT</th>
                         <th>ARTICLES</th>
-            						<th>Unit Price</th>
-            						<th class="text-right">AMOUNT</th>
+                        <th>Unit Price</th>
+                        <th class="text-right">AMOUNT</th>
                       </tr>
                     </thead>
                     <tbody>
 <?php
-		$query=mysqli_query($con,"select * from sales_details natural join product where sales_id='$sid'")or die(mysqli_error($con));
-			$grand=0;
-		while($row=mysqli_fetch_array($query)){
-				//$id=$row['temp_trans_id'];
-				$total= $row['qty']*$row['price'];
-				$grand=$grand+$total;
+    $query=mysqli_query($con,"select * from sales_details natural join product where sales_id='$sid'")or die(mysqli_error($con));
+      $grand=0;
+    while($row=mysqli_fetch_array($query)){
+        //$id=$row['temp_trans_id'];
+        $total= $row['qty']*$row['price'];
+        $grand=$grand+$total;
         
 ?>
                       <tr>
-            						<td><?php echo $row['qty'];?></td>
+                        <td><?php echo $row['qty'];?></td>
                         <td>pc/s</td>
                         <td class="record"><?php echo $row['prod_name'];?></td>
-            						<td><?php echo number_format($row['price'],2);?></td>
-            						<td style="text-align:right"><?php echo number_format($total,2);?></td>
+                        <td><?php echo number_format($row['price'],2);?></td>
+                        <td style="text-align:right"><?php echo number_format($total,2);?></td>
                                     
                       </tr>
-					  
+            
 
-<?php }?>					
+<?php }?>         
                       <tr>
                         <td></td>
                         <td></td>
@@ -232,8 +235,8 @@ $branch=$_SESSION['branch'];
                     
                   </table>
                 </div><!-- /.box-body -->
-				</div>  
-				</form>	
+        </div>  
+        </form> 
                 </div><!-- /.box-body -->
                 <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
                 <a class = "btn btn-danger btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>
@@ -241,19 +244,19 @@ $branch=$_SESSION['branch'];
             </div><!-- /.col (right) -->
            
           </div><!-- /.row -->
-	  
+    
              
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
      
     </div><!-- ./wrapper -->
-	
-	
-	<script type="text/javascript" src="autosum.js"></script>
+  
+  
+  <script type="text/javascript" src="autosum.js"></script>
     <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<script src="../dist/js/jquery.min.js"></script>
+  <script src="../dist/js/jquery.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/select2/select2.full.min.js"></script>
