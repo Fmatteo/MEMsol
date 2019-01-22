@@ -7,6 +7,7 @@ date_default_timezone_set('Asia/Manila');
 	$cid = $_POST['cid'];	
 	$sid = $_POST['sid'];
 	$amount = $_POST['amount'];
+	$remarks = $_POST['remarks'];
 	$balance = $_POST['balance'];    
     $rem = $balance - $amount;
 	//$interest = $_POST['interest'];
@@ -20,7 +21,7 @@ date_default_timezone_set('Asia/Manila');
 	if ($amount <= $balance)
 	{
 
-	mysqli_query($con, "INSERT INTO payment_history(cust_id, amount, date)VALUES('$cid', '$amount', '$date')")or die(mysqli_error());
+	mysqli_query($con, "INSERT INTO payment_history(cust_id, amount, date, remarks)VALUES('$cid', '$amount', '$date', '$remarks')")or die(mysqli_error());
 	mysqli_query($con,"UPDATE customer SET balance='$rem' where cust_id='$cid'") or die(mysqli_error($con)); 
 
 	$query3=mysqli_query($con,"select * from payment natural join customer where cust_id='$cid' and remaining<>'0' order by payment_for")or die(mysqli_error($con));

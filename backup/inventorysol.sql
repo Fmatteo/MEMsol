@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2019 at 04:04 PM
+-- Generation Time: Jan 22, 2019 at 05:02 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -111,8 +111,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cust_id`, `cust_first`, `cust_last`, `cust_address`, `cust_contact`, `balance`, `cust_pic`, `bday`, `nickname`, `house_status`, `years`, `rent`, `emp_name`, `emp_no`, `emp_address`, `emp_year`, `occupation`, `salary`, `spouse`, `spouse_no`, `spouse_emp`, `spouse_details`, `spouse_income`, `comaker`, `comaker_details`, `branch_id`, `credit_status`, `ci_remarks`, `ci_name`, `ci_date`, `payslip`, `valid_id`, `cert`, `cedula`, `income`) VALUES
-(1, '', 'walk in', '', '', '0.00', 'default.gif', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 6, '', '', '', '0000-00-00', 0, 0, 0, 0, 0),
-(2, 'mark', 'Blando', 'bb1', '000', '1300.00', 'default.gif', '0000-00-00', '', 'owned', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 6, 'Approved', '', '', '0000-00-00', 0, 0, 0, 0, 0);
+(1, 'mark', 'Blando', 'bb1', '000', '0.00', 'default.gif', '0000-00-00', '', 'owned', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 6, 'Approved', '', '', '0000-00-00', 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -128,13 +127,6 @@ CREATE TABLE `drawing` (
   `date` datetime NOT NULL,
   `branch_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `drawing`
---
-
-INSERT INTO `drawing` (`drawing_id`, `dra_name`, `qty`, `amount`, `date`, `branch_id`) VALUES
-(1, 'Gas', 1, '200.00', '2019-01-19 10:06:41', 6);
 
 -- --------------------------------------------------------
 
@@ -162,13 +154,6 @@ CREATE TABLE `expensesinput` (
   `branch_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `expensesinput`
---
-
-INSERT INTO `expensesinput` (`expensesinput_id`, `exp_name`, `qty`, `amount`, `date`, `branch_id`) VALUES
-(1, 'bir', 1, '500.00', '2019-01-19 10:07:30', 6);
-
 -- --------------------------------------------------------
 
 --
@@ -187,18 +172,17 @@ CREATE TABLE `history_log` (
 --
 
 INSERT INTO `history_log` (`log_id`, `user_id`, `action`, `date`) VALUES
-(1, 10, 'added 100 of banana', '2019-01-22 22:03:19'),
-(2, 10, 'added 100 of apple', '2019-01-22 22:03:26'),
-(3, 10, 'has logged out the system at ', '2019-01-22 22:04:38'),
-(4, 10, 'has logged in the system at ', '2019-01-22 22:15:39'),
-(5, 10, 'added 100 of grapes', '2019-01-22 22:16:45'),
-(6, 10, 'added 100 of grapes', '2019-01-22 22:17:20'),
-(7, 10, 'has logged out the system at ', '2019-01-22 22:29:24'),
-(8, 10, 'has logged in the system at ', '2019-01-22 22:39:15'),
-(9, 10, 'added 100 of apple', '2019-01-22 22:59:31'),
-(10, 10, 'added 100 of apple', '2019-01-22 22:59:38'),
-(11, 10, 'added 100 of apple', '2019-01-22 23:01:03'),
-(12, 10, 'added 100 of apple', '2019-01-22 23:01:09');
+(1, 10, 'added 100 of banana', '2019-01-22 23:45:17'),
+(2, 6, 'added a payment of 10000 for , ', '2019-01-22 00:00:00'),
+(3, 6, 'added a payment of 5000 for , ', '2019-01-22 00:00:00'),
+(4, 6, 'added a payment of 300000 for , ', '2019-01-22 00:00:00'),
+(5, 6, 'added a payment of 300000 for , ', '2019-01-22 00:00:00'),
+(6, 6, 'added a payment of 15000 for , ', '2019-01-22 00:00:00'),
+(7, 6, 'added 100 of banana', '2019-01-22 23:58:36'),
+(8, 6, 'added 100 of banana', '2019-01-22 23:58:44'),
+(9, 6, 'has logged out the system at ', '2019-01-22 23:59:13'),
+(10, 10, 'has logged in the system at ', '2019-01-22 23:59:40'),
+(11, 10, 'has logged out the system at ', '2019-01-23 00:02:07');
 
 -- --------------------------------------------------------
 
@@ -228,20 +212,11 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `cust_id`, `sales_id`, `payment`, `payment_date`, `user_id`, `branch_id`, `payment_for`, `due`, `interest`, `remaining`, `status`, `rebate`, `or_no`) VALUES
-(1, 2, 1, '13000.00', '2019-01-22 22:01:37', 10, 6, '2019-01-22', '13000.00', '0.00', '0.00', 'paid', '0.00', 1),
-(2, 2, 2, '1300.00', '2019-01-22 22:02:02', 10, 6, '2019-01-22', '1300.00', '0.00', '0.00', 'paid', '0.00', 1),
-(3, 2, 3, '141700.00', '2019-01-22 22:02:45', 10, 6, '2019-01-22', '141700.00', '0.00', '0.00', 'paid', '0.00', 1),
-(4, 2, 4, '13000.00', '2019-01-22 22:16:02', 10, 6, '2019-01-22', '13000.00', '0.00', '0.00', 'paid', '0.00', 1),
-(5, 2, 5, '247000.00', '2019-01-22 22:16:20', 10, 6, '2019-01-22', '247000.00', '0.00', '0.00', 'paid', '0.00', 1),
-(6, 2, 6, '1300.00', '2019-01-22 22:39:26', 10, 6, '2019-01-22', '1300.00', '0.00', '0.00', 'paid', '0.00', 1),
-(7, 2, 7, '1300.00', '2019-01-22 22:39:39', 10, 6, '2019-01-22', '1300.00', '0.00', '0.00', 'paid', '0.00', 1),
-(8, 2, 8, '1300.00', '2019-01-22 22:45:02', 10, 6, '2019-01-22', '1300.00', '0.00', '0.00', 'paid', '0.00', 1),
-(9, 2, 9, '0.00', '0000-00-00 00:00:00', 10, 6, '2019-02-22', '13000.00', '0.00', '13000.00', '', '0.00', 1),
-(10, 2, 10, '0.00', '0000-00-00 00:00:00', 10, 6, '2019-02-22', '1300.00', '0.00', '1300.00', '', '0.00', 1),
-(11, 2, 11, '0.00', '0000-00-00 00:00:00', 10, 6, '2019-02-22', '1500.00', '0.00', '1500.00', '', '0.00', 1),
-(12, 2, 12, '0.00', '0000-00-00 00:00:00', 10, 6, '2019-02-22', '1300.00', '0.00', '1300.00', '', '0.00', 1),
-(13, 2, 13, '139500.00', '2019-01-22 22:58:41', 10, 6, '2019-01-22', '139500.00', '0.00', '0.00', 'paid', '0.00', 1),
-(14, 2, 14, '300000.00', '2019-01-22 23:00:35', 10, 6, '2019-01-22', '300000.00', '0.00', '0.00', 'paid', '0.00', 1);
+(1, 1, 1, '15000.00', '2019-01-22 23:46:57', 6, 6, '2019-02-22', '15000.00', '0.00', '0.00', 'paid', '0.00', 1),
+(2, 1, 2, '600000.00', '2019-01-22 23:50:02', 6, 6, '2019-02-22', '600000.00', '0.00', '0.00', 'paid', '0.00', 1),
+(3, 1, 3, '15000.00', '2019-01-22 23:55:48', 6, 6, '2019-02-22', '15000.00', '0.00', '0.00', 'paid', '0.00', 1),
+(4, 1, 4, '15000.00', '2019-01-22 23:56:19', 6, 6, '2019-01-22', '15000.00', '0.00', '0.00', 'paid', '0.00', 1),
+(5, 1, 5, '45000.00', '2019-01-22 23:57:01', 6, 6, '2019-01-22', '45000.00', '0.00', '0.00', 'paid', '0.00', 1);
 
 -- --------------------------------------------------------
 
@@ -253,8 +228,20 @@ CREATE TABLE `payment_history` (
   `id` int(11) NOT NULL,
   `cust_id` int(11) NOT NULL,
   `amount` double(10,2) NOT NULL,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  `remarks` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payment_history`
+--
+
+INSERT INTO `payment_history` (`id`, `cust_id`, `amount`, `date`, `remarks`) VALUES
+(0, 1, 10000.00, '2019-01-22', 'may butas tapos ganere'),
+(0, 1, 5000.00, '2019-01-22', 'may butas tapos ganere'),
+(0, 1, 300000.00, '2019-01-22', 'sablay'),
+(0, 1, 300000.00, '2019-01-22', 'wew'),
+(0, 1, 15000.00, '2019-01-22', 'may butas tapos ganere');
 
 -- --------------------------------------------------------
 
@@ -282,9 +269,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`prod_id`, `prod_name`, `prod_desc`, `prod_price`, `prod_pic`, `cat_id`, `prod_qty`, `branch_id`, `reorder`, `supplier_id`, `serial`, `base_price`) VALUES
-(1, 'banana', 'fruit', '0.00', '', 1, 100, 6, 10, 1, '1', '1000.00'),
-(2, 'apple', 'afafa', '0.00', '', 2, 200, 6, 10, 2, '1', '1250.00'),
-(3, 'grapes', 'sdgsdg', '0.00', '', 1, 200, 6, 10, 1, '1', '1250.00');
+(1, 'banana', 'uu', '0.00', '', 1, 200, 6, 10, 1, '1', '1250.00');
 
 -- --------------------------------------------------------
 
@@ -327,20 +312,11 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`sales_id`, `cust_id`, `user_id`, `cash_tendered`, `discount`, `amount_due`, `cash_change`, `date_added`, `modeofpayment`, `branch_id`, `total`, `status`) VALUES
-(1, 2, 10, '13000.00', '0.00', '13000.00', '0.00', '2019-01-22 22:01:37', 'cash', 6, '13000.00', ''),
-(2, 2, 10, '1300.00', '0.00', '1300.00', '0.00', '2019-01-22 22:02:02', 'cash', 6, '1300.00', ''),
-(3, 2, 10, '141700.00', '0.00', '141700.00', '0.00', '2019-01-22 22:02:45', 'cash', 6, '141700.00', ''),
-(4, 2, 10, '13000.00', '0.00', '13000.00', '0.00', '2019-01-22 22:16:02', 'cash', 6, '13000.00', ''),
-(5, 2, 10, '247000.00', '0.00', '247000.00', '0.00', '2019-01-22 22:16:20', 'cash', 6, '247000.00', ''),
-(6, 2, 10, '1300.00', '0.00', '1300.00', '0.00', '2019-01-22 22:39:26', 'cash', 6, '1300.00', ''),
-(7, 2, 10, '1300.00', '0.00', '1300.00', '0.00', '2019-01-22 22:39:39', 'cash', 6, '1300.00', ''),
-(8, 2, 10, '1300.00', '0.00', '1300.00', '0.00', '2019-01-22 22:45:02', 'cash', 6, '1300.00', ''),
-(9, 2, 10, NULL, NULL, '0.00', NULL, '2019-01-22 22:45:19', 'credit', 6, '13.00', 'notpaid'),
-(10, 2, 10, NULL, NULL, '0.00', NULL, '2019-01-22 22:49:32', 'credit', 6, '1.00', 'notpaid'),
-(11, 2, 10, NULL, NULL, '0.00', NULL, '2019-01-22 22:50:14', 'credit', 6, '1.00', 'notpaid'),
-(12, 2, 10, NULL, NULL, '0.00', NULL, '2019-01-22 22:52:43', 'credit', 6, '1.00', 'notpaid'),
-(13, 2, 10, '139500.00', '0.00', '139500.00', '0.00', '2019-01-22 22:58:41', 'cash', 6, '139500.00', ''),
-(14, 2, 10, '300000.00', '0.00', '300000.00', '0.00', '2019-01-22 23:00:35', 'cash', 6, '300000.00', '');
+(1, 1, 6, NULL, NULL, '0.00', NULL, '2019-01-22 23:46:02', 'credit', 6, '15.00', ''),
+(2, 1, 6, NULL, NULL, '0.00', NULL, '2019-01-22 23:48:55', 'credit', 6, '600.00', ''),
+(3, 1, 6, NULL, NULL, '0.00', NULL, '2019-01-22 23:55:20', 'credit', 6, '15.00', ''),
+(4, 1, 6, '15000.00', '0.00', '15000.00', '0.00', '2019-01-22 23:56:19', 'cash', 6, '15000.00', ''),
+(5, 1, 6, '45000.00', '0.00', '45000.00', '0.00', '2019-01-22 23:57:01', 'cash', 6, '45000.00', '');
 
 -- --------------------------------------------------------
 
@@ -362,20 +338,11 @@ CREATE TABLE `sales_details` (
 --
 
 INSERT INTO `sales_details` (`sales_details_id`, `sales_id`, `prod_id`, `price`, `qty`, `profit`) VALUES
-(1, 1, 1, '1300.00', 10, 1750.00),
-(2, 2, 1, '1300.00', 1, 175.00),
-(3, 3, 1, '1300.00', 109, 19075.00),
-(4, 4, 3, '1300.00', 10, 750.00),
-(5, 5, 3, '1300.00', 190, 14250.00),
-(6, 6, 2, '1300.00', 1, 100.00),
-(7, 7, 2, '1300.00', 1, 100.00),
-(8, 8, 2, '1300.00', 1, 100.00),
-(9, 9, 2, '13000.00', 1, 0.00),
-(10, 10, 2, '1300.00', 1, 0.00),
-(11, 11, 2, '1500.00', 1, 0.00),
-(12, 12, 2, '1300.00', 1, 0.00),
-(13, 13, 2, '1500.00', 93, 27900.00),
-(14, 14, 2, '1500.00', 200, 50000.00);
+(1, 1, 1, '1500.00', 10, 0.00),
+(2, 2, 1, '15000.00', 40, 0.00),
+(3, 3, 1, '1500.00', 10, 5000.00),
+(4, 4, 1, '1500.00', 10, 5000.00),
+(5, 5, 1, '1500.00', 30, 15000.00);
 
 -- --------------------------------------------------------
 
@@ -397,14 +364,9 @@ CREATE TABLE `stockin` (
 --
 
 INSERT INTO `stockin` (`stockin_id`, `prod_id`, `qty`, `date`, `branch_id`, `base_price`) VALUES
-(1, 1, 100, '2019-01-22 22:03:19', 6, '1000.00'),
-(2, 2, 100, '2019-01-22 22:03:26', 6, '1200.00'),
-(3, 3, 100, '2019-01-22 22:16:45', 6, '1000.00'),
-(4, 3, 100, '2019-01-22 22:17:20', 6, '1500.00'),
-(5, 2, 100, '2019-01-22 22:59:31', 6, '1000.00'),
-(6, 2, 100, '2019-01-22 22:59:38', 6, '1500.00'),
-(7, 2, 100, '2019-01-22 23:01:03', 6, '1000.00'),
-(8, 2, 100, '2019-01-22 23:01:09', 6, '1500.00');
+(1, 1, 100, '2019-01-22 23:45:17', 6, '1000.00'),
+(2, 1, 100, '2019-01-22 23:58:36', 6, '1000.00'),
+(3, 1, 100, '2019-01-22 23:58:44', 6, '1500.00');
 
 -- --------------------------------------------------------
 
@@ -465,15 +427,9 @@ CREATE TABLE `term` (
 --
 
 INSERT INTO `term` (`term_id`, `sales_id`, `payable_for`, `term`, `due`, `payment_start`, `down`, `due_date`, `interest`, `status`) VALUES
-(5, 8, '3', 'Non-Subsidy', '13000.00', '2019-01-19', '0.00', '2019-04-19', '0.00', 'paid'),
-(6, 11, '1', 'Non-Subsidy', '13000.00', '2019-01-21', '0.00', '2019-02-21', '0.00', ''),
-(7, 15, '1', 'Non-Subsidy', '1000.00', '2019-01-21', '0.00', '2019-02-21', '0.00', ''),
-(8, 17, '1', 'Non-Subsidy', '1300.00', '2019-01-22', '0.00', '2019-02-22', '0.00', ''),
-(9, 19, '1', 'Non-Subsidy', '1300.00', '2019-01-22', '0.00', '2019-02-22', '0.00', ''),
-(10, 9, '1', 'Non-Subsidy', '13000.00', '2019-01-22', '0.00', '2019-02-22', '0.00', ''),
-(11, 10, '1', 'Non-Subsidy', '1300.00', '2019-01-22', '0.00', '2019-02-22', '0.00', ''),
-(12, 11, '1', 'Non-Subsidy', '1500.00', '2019-01-22', '0.00', '2019-02-22', '0.00', ''),
-(13, 12, '1', 'Non-Subsidy', '1300.00', '2019-01-22', '0.00', '2019-02-22', '0.00', '');
+(1, 1, '1', 'Starter all', '15000.00', '2019-01-22', '0.00', '2019-02-22', '0.00', 'paid'),
+(2, 2, '2', 'Finisher al', '600000.00', '2019-01-22', '0.00', '2019-03-22', '0.00', 'paid'),
+(3, 3, '1', 'Starter all', '15000.00', '2019-01-22', '0.00', '2019-02-22', '0.00', 'paid');
 
 -- --------------------------------------------------------
 
@@ -626,37 +582,37 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `drawing`
 --
 ALTER TABLE `drawing`
-  MODIFY `drawing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `drawing_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `expensesinput`
 --
 ALTER TABLE `expensesinput`
-  MODIFY `expensesinput_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `expensesinput_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `history_log`
 --
 ALTER TABLE `history_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `purchase_request`
@@ -668,19 +624,19 @@ ALTER TABLE `purchase_request`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `sales_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sales_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `stockin`
 --
 ALTER TABLE `stockin`
-  MODIFY `stockin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `stockin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -692,13 +648,13 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `temp_trans`
 --
 ALTER TABLE `temp_trans`
-  MODIFY `temp_trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `temp_trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `term`
 --
 ALTER TABLE `term`
-  MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`

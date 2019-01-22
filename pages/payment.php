@@ -421,6 +421,12 @@ endif;
                                      <input type="text" class="form-control" id="tlast" name="amount" placeholder="Amount" required>  
                                    </div>
                              </div> 
+                             <div class="form-group">
+                                  <label class="control-label col-lg-3" for="tlast">Remarks</label>
+                                  <div class="col-lg-8">  
+                                     <input type="text" class="form-control" id="tlast" name="remarks" placeholder="Remarks" required>  
+                                   </div>
+                             </div> 
                              <div class="form-group" style="display:none;">
                                   <label class="control-label col-lg-3" for="tlast">Rebate</label>
                                   <div class="col-lg-8">

@@ -468,6 +468,7 @@ endif;
                     <thead>
                       <tr>
                         <th>Amount Paid</th>
+                        <th>Remarks </th>
                         <th>Date Paid</th>
                       </tr>
                     </thead>
@@ -480,6 +481,7 @@ endif;
 ?>
                       <tr>
                         <td><?php echo $row3['amount'];?></td>
+                        <td><?php echo $row3['remarks'];?></td>
                         <td><?php echo date("M d, Y",strtotime($row3['date']));?></td>
     
                         
