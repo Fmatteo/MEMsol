@@ -355,6 +355,7 @@ $branch=$_SESSION['branch'];
                         <th>Qty</th>
                         <th>Selling Price</th>
                         <th>Total Sales</th>
+                        <th>Discount</th>
                         <th>Profit</th>
                         <th>Date Paid</th>
                       </tr>
@@ -401,8 +402,9 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
             <td><?php echo $row['serial'];?></td>
             <td><?php echo $row['qty'];?></td>
       <td><?php echo $row['price'];?></td>
-            <td><?php echo number_format($total,2);
+            <td><?php echo number_format($total - $row['discount'],2);
                 ?></td>
+            <td> <?php echo number_format($row['discount'], 2); ?> </td>
             <td><?php echo $profit;?></td>
             <td><?php echo date("M d, Y h:i a",strtotime($row['date_added']));?></td>    
       
@@ -413,28 +415,28 @@ $drawing_query=mysqli_query($con,"select * from drawing where date(date)>='$star
                     </tbody>
                     <tfoot>
           <tr>
-            <th colspan="8">Total</th>
+            <th colspan="9">Total</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format($grand,2);?></b></h4></th>
           </tr>                
           
           <tr>
-            <th colspan="8">Total Cash Sales</th>
+            <th colspan="9">Total Cash Sales</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);?></b></h4></th>
           </tr>
           <tr>
-            <th colspan="8">Total Profit</th>
+            <th colspan="9">Total Profit</th>
   <th style="text-align:right;"><h4><b><?php echo  number_format(($total_profit),2);}?></b></h4></th>
           </tr>   
           <tr>
-            <th colspan="8">Total Expenses</th>
+            <th colspan="9">Total Expenses</th>
             <th style="text-align:right;"><h4><b><?php if(isset($ex_total)) echo number_format(($ex_total),2); ?></b></h4></th>            
           </tr>
           <tr>
-            <th colspan="8">Total Drawing / Cashout </th>
+            <th colspan="9">Total Drawing / Cashout </th>
             <th style="text-align:right;"><h4><b><?php if(isset($dra_total)) echo number_format(($dra_total),2); ?></b></h4></th>            
           </tr>
           <tr>
-            <th colspan="8">Total Remaining Balance </th>
+            <th colspan="9">Total Remaining Balance </th>
             <th style="text-align:right;"><h4><b><?php if(isset($dra_total)) echo number_format(($grand-$dra_total-$ex_total),2); ?></b></h4></th>            
           </tr>
           <tr>
