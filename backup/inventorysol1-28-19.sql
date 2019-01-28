@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2019 at 05:02 PM
+-- Generation Time: Jan 28, 2019 at 02:53 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -54,14 +54,6 @@ CREATE TABLE `category` (
   `cat_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
-(1, 'bayer'),
-(2, 'concepcion');
-
 -- --------------------------------------------------------
 
 --
@@ -105,13 +97,6 @@ CREATE TABLE `customer` (
   `cedula` int(11) NOT NULL,
   `income` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`cust_id`, `cust_first`, `cust_last`, `cust_address`, `cust_contact`, `balance`, `cust_pic`, `bday`, `nickname`, `house_status`, `years`, `rent`, `emp_name`, `emp_no`, `emp_address`, `emp_year`, `occupation`, `salary`, `spouse`, `spouse_no`, `spouse_emp`, `spouse_details`, `spouse_income`, `comaker`, `comaker_details`, `branch_id`, `credit_status`, `ci_remarks`, `ci_name`, `ci_date`, `payslip`, `valid_id`, `cert`, `cedula`, `income`) VALUES
-(1, 'mark', 'Blando', 'bb1', '000', '0.00', 'default.gif', '0000-00-00', '', 'owned', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 6, 'Approved', '', '', '0000-00-00', 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -167,23 +152,6 @@ CREATE TABLE `history_log` (
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `history_log`
---
-
-INSERT INTO `history_log` (`log_id`, `user_id`, `action`, `date`) VALUES
-(1, 10, 'added 100 of banana', '2019-01-22 23:45:17'),
-(2, 6, 'added a payment of 10000 for , ', '2019-01-22 00:00:00'),
-(3, 6, 'added a payment of 5000 for , ', '2019-01-22 00:00:00'),
-(4, 6, 'added a payment of 300000 for , ', '2019-01-22 00:00:00'),
-(5, 6, 'added a payment of 300000 for , ', '2019-01-22 00:00:00'),
-(6, 6, 'added a payment of 15000 for , ', '2019-01-22 00:00:00'),
-(7, 6, 'added 100 of banana', '2019-01-22 23:58:36'),
-(8, 6, 'added 100 of banana', '2019-01-22 23:58:44'),
-(9, 6, 'has logged out the system at ', '2019-01-22 23:59:13'),
-(10, 10, 'has logged in the system at ', '2019-01-22 23:59:40'),
-(11, 10, 'has logged out the system at ', '2019-01-23 00:02:07');
-
 -- --------------------------------------------------------
 
 --
@@ -207,17 +175,6 @@ CREATE TABLE `payment` (
   `or_no` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`payment_id`, `cust_id`, `sales_id`, `payment`, `payment_date`, `user_id`, `branch_id`, `payment_for`, `due`, `interest`, `remaining`, `status`, `rebate`, `or_no`) VALUES
-(1, 1, 1, '15000.00', '2019-01-22 23:46:57', 6, 6, '2019-02-22', '15000.00', '0.00', '0.00', 'paid', '0.00', 1),
-(2, 1, 2, '600000.00', '2019-01-22 23:50:02', 6, 6, '2019-02-22', '600000.00', '0.00', '0.00', 'paid', '0.00', 1),
-(3, 1, 3, '15000.00', '2019-01-22 23:55:48', 6, 6, '2019-02-22', '15000.00', '0.00', '0.00', 'paid', '0.00', 1),
-(4, 1, 4, '15000.00', '2019-01-22 23:56:19', 6, 6, '2019-01-22', '15000.00', '0.00', '0.00', 'paid', '0.00', 1),
-(5, 1, 5, '45000.00', '2019-01-22 23:57:01', 6, 6, '2019-01-22', '45000.00', '0.00', '0.00', 'paid', '0.00', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -231,17 +188,6 @@ CREATE TABLE `payment_history` (
   `date` date NOT NULL,
   `remarks` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `payment_history`
---
-
-INSERT INTO `payment_history` (`id`, `cust_id`, `amount`, `date`, `remarks`) VALUES
-(0, 1, 10000.00, '2019-01-22', 'may butas tapos ganere'),
-(0, 1, 5000.00, '2019-01-22', 'may butas tapos ganere'),
-(0, 1, 300000.00, '2019-01-22', 'sablay'),
-(0, 1, 300000.00, '2019-01-22', 'wew'),
-(0, 1, 15000.00, '2019-01-22', 'may butas tapos ganere');
 
 -- --------------------------------------------------------
 
@@ -263,13 +209,6 @@ CREATE TABLE `product` (
   `serial` varchar(50) NOT NULL,
   `base_price` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`prod_id`, `prod_name`, `prod_desc`, `prod_price`, `prod_pic`, `cat_id`, `prod_qty`, `branch_id`, `reorder`, `supplier_id`, `serial`, `base_price`) VALUES
-(1, 'banana', 'uu', '0.00', '', 1, 200, 6, 10, 1, '1', '1250.00');
 
 -- --------------------------------------------------------
 
@@ -307,17 +246,6 @@ CREATE TABLE `sales` (
   `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `sales`
---
-
-INSERT INTO `sales` (`sales_id`, `cust_id`, `user_id`, `cash_tendered`, `discount`, `amount_due`, `cash_change`, `date_added`, `modeofpayment`, `branch_id`, `total`, `status`) VALUES
-(1, 1, 6, NULL, NULL, '0.00', NULL, '2019-01-22 23:46:02', 'credit', 6, '15.00', ''),
-(2, 1, 6, NULL, NULL, '0.00', NULL, '2019-01-22 23:48:55', 'credit', 6, '600.00', ''),
-(3, 1, 6, NULL, NULL, '0.00', NULL, '2019-01-22 23:55:20', 'credit', 6, '15.00', ''),
-(4, 1, 6, '15000.00', '0.00', '15000.00', '0.00', '2019-01-22 23:56:19', 'cash', 6, '15000.00', ''),
-(5, 1, 6, '45000.00', '0.00', '45000.00', '0.00', '2019-01-22 23:57:01', 'cash', 6, '45000.00', '');
-
 -- --------------------------------------------------------
 
 --
@@ -332,17 +260,6 @@ CREATE TABLE `sales_details` (
   `qty` int(11) NOT NULL,
   `profit` double(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sales_details`
---
-
-INSERT INTO `sales_details` (`sales_details_id`, `sales_id`, `prod_id`, `price`, `qty`, `profit`) VALUES
-(1, 1, 1, '1500.00', 10, 0.00),
-(2, 2, 1, '15000.00', 40, 0.00),
-(3, 3, 1, '1500.00', 10, 5000.00),
-(4, 4, 1, '1500.00', 10, 5000.00),
-(5, 5, 1, '1500.00', 30, 15000.00);
 
 -- --------------------------------------------------------
 
@@ -359,15 +276,6 @@ CREATE TABLE `stockin` (
   `base_price` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `stockin`
---
-
-INSERT INTO `stockin` (`stockin_id`, `prod_id`, `qty`, `date`, `branch_id`, `base_price`) VALUES
-(1, 1, 100, '2019-01-22 23:45:17', 6, '1000.00'),
-(2, 1, 100, '2019-01-22 23:58:36', 6, '1000.00'),
-(3, 1, 100, '2019-01-22 23:58:44', 6, '1500.00');
-
 -- --------------------------------------------------------
 
 --
@@ -380,14 +288,6 @@ CREATE TABLE `supplier` (
   `supplier_address` varchar(300) NOT NULL,
   `supplier_contact` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `supplier`
---
-
-INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `supplier_address`, `supplier_contact`) VALUES
-(1, 'Pableona', 'sfsfs', '000'),
-(2, 'mikee', 'fsfs', '222');
 
 -- --------------------------------------------------------
 
@@ -402,6 +302,14 @@ CREATE TABLE `temp_trans` (
   `qty` int(11) NOT NULL,
   `branch_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `temp_trans`
+--
+
+INSERT INTO `temp_trans` (`temp_trans_id`, `prod_id`, `price`, `qty`, `branch_id`) VALUES
+(10, 1, '1300.00', 1, 6),
+(11, 1, '1300.00', 1, 6);
 
 -- --------------------------------------------------------
 
@@ -421,15 +329,6 @@ CREATE TABLE `term` (
   `interest` decimal(10,2) NOT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `term`
---
-
-INSERT INTO `term` (`term_id`, `sales_id`, `payable_for`, `term`, `due`, `payment_start`, `down`, `due_date`, `interest`, `status`) VALUES
-(1, 1, '1', 'Starter all', '15000.00', '2019-01-22', '0.00', '2019-02-22', '0.00', 'paid'),
-(2, 2, '2', 'Finisher al', '600000.00', '2019-01-22', '0.00', '2019-03-22', '0.00', 'paid'),
-(3, 3, '1', 'Starter all', '15000.00', '2019-01-22', '0.00', '2019-02-22', '0.00', 'paid');
 
 -- --------------------------------------------------------
 
@@ -600,13 +499,13 @@ ALTER TABLE `expensesinput`
 -- AUTO_INCREMENT for table `history_log`
 --
 ALTER TABLE `history_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -624,13 +523,13 @@ ALTER TABLE `purchase_request`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `sales_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `sales_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `stockin`
@@ -648,7 +547,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `temp_trans`
 --
 ALTER TABLE `temp_trans`
-  MODIFY `temp_trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `temp_trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `term`
